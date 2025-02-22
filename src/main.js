@@ -1,10 +1,10 @@
-import "./assets/style/index.css"
-
+import "./assets/style/index.scss"
+import "bootstrap-icons/font/bootstrap-icons.scss"
 import { createApp } from "vue"
 import App from "./App.vue"
 import PrimeVue from "primevue/config"
 import MyTheme from "./assets/theme/main"
-
+import pinia from "./stores"
 import router from "./router"
 
 const app = createApp(App)
@@ -21,5 +21,6 @@ app.use(PrimeVue, {
   },
 })
 app.use(router)
+app.use(pinia)
 
 app.mount("#app")
