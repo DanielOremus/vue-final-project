@@ -6,20 +6,20 @@
   height: #{$header-height};
 }
 .header-container {
-  background-color: rgb(10, 10, 10);
+  @apply min-w-full bg-zinc-950 h-full pl-32 flex flex-row justify-between;
 }
 .menu-right {
   font-size: 1.55rem;
 }
-.active-link {
-  color: var(--p-primary-color);
+.active-header-link {
+  @apply border-b-2 border-[var(--p-primary-color)];
 }
 .menu-item {
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  @apply text-[1rem] h-full uppercase font-semibold transition-colors duration-100 ease-in-out;
+  a {
+    @apply h-full inline-block flex items-center;
+  }
   letter-spacing: 0.1em;
-  transition: color 0.1s ease;
 }
 .menu-item:hover {
   color: var(--p-primary-color);

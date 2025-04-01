@@ -1,7 +1,7 @@
 @use "../variables" as *;
 
-.hero-img {
-  object-fit: cover;
+:deep(.hero-img) {
   width: 100%;
-  height: calc(100vh - #{$header-height});
+  // height: calc(100vh - #{$header-height});
+  filter: brightness(50%);
 }
