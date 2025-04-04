@@ -4,27 +4,19 @@ import "bootstrap-icons/font/bootstrap-icons.scss"
 import { createApp } from "vue"
 import App from "./App.vue"
 import PrimeVue from "primevue/config"
-import MyTheme from "./assets/theme/main"
+import MyTheme from "./config/theme/options"
 import MainLayout from "./layouts/MainLayout.vue"
 import pinia from "./stores"
 import { router } from "./router"
+import i18n from "@/plugins/i18n.js"
 
 const app = createApp(App)
 
-app.use(PrimeVue, {
-  theme: {
-    preset: MyTheme,
-    options: {
-      cssLayer: {
-        name: "primevue",
-        order: "tailwind-base, primevue, tailwind-utilities",
-      },
-      darkModeSelector: ".dark",
-    },
-  },
-})
+app.use(PrimeVue, MyTheme)
+
 app.use(router)
 app.use(pinia)
+app.use(i18n)
 
 app.component("main-layout", MainLayout)
 

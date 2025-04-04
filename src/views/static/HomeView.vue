@@ -1,6 +1,9 @@
 <template>
   <main-layout>
-    <hero-carousel />
+    <hero-carousel class="hero-carousel" />
+    <div class="carousel-inner-content">
+      <p>1111</p>
+    </div>
   </main-layout>
 </template>
 
@@ -14,4 +17,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+@import url(@/assets/style/views/home_view.scss);
+</style>

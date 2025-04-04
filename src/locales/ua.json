@@ -1,0 +1,31 @@
+{
+  "buttons": {
+    "login": "Увійти",
+    "register": "Зареєструватися",
+    "logout": "Вийти",
+    "create": "Створити",
+    "edit": "Редагувати",
+    "update": "Оновити",
+    "delete": "Видалити",
+    "cancel": "Відмінити"
+  },
+  "views": {
+    "home": {
+      "title": {
+        "menu": "Головна"
+      },
+      "messages": {
+        "main": "111",
+        "extra": "aaa"
+      },
+      "buttons": {
+        "join": "Приєднатись до нас"
+      }
+    },
+    "products": {
+      "title": {
+        "menu": "Товари"
+      }
+    }
+  }
+}

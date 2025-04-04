@@ -2,6 +2,7 @@
 
 :deep(.hero-img) {
   width: 100%;
-  // height: calc(100vh - #{$header-height});
+  object-fit: contain;
+  height: calc(100vh - #{$header-height});
   filter: brightness(50%);
 }

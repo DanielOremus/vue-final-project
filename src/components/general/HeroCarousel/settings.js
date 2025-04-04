@@ -3,10 +3,10 @@ import hero2 from "@/assets/images/hero-image-2.jpg"
 import hero3 from "@/assets/images/hero-image-3.jpg"
 
 export const heroImages = [
-  {
-    alt: "Hero Image",
-    image: hero1,
-  },
+  // {
+  //   alt: "Hero Image",
+  //   image: hero1,
+  // },
   {
     alt: "Hero Image",
     image: hero2,

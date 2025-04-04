@@ -1,0 +1,7 @@
+.hero-carousel {
+  @apply relative;
+}
+
+.carousel-inner-content {
+  @apply absolute left-[20%] top-1/2 -translate-x-1/2;
+}
