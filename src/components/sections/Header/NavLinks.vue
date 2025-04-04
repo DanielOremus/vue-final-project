@@ -3,7 +3,7 @@
     <li v-for="link in visibleLinks" :key="link" class="menu-item">
       <router-link :to="{ name: link.name }" active-class="active-header-link">
         <span>
-          {{ link.title ?? link.name }}
+          {{ $t(`views.${link.name}.title.menu`) }}
         </span>
       </router-link>
     </li>

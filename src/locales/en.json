@@ -22,9 +22,14 @@
         "join": "Join us now"
       }
     },
+    "about": {
+      "title": {
+        "menu": "About us"
+      }
+    },
     "products": {
       "title": {
-        "menu": "Products"
+        "menu": "Shop"
       }
     }
   }

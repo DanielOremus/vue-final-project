@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router"
 import { mainRoutes } from "./main"
+import { productRoutes } from "./products"
 
 const routes = [
   ...mainRoutes,
+  ...productRoutes,
   {
     path: "/:pathNotFound(.*)*",
   },

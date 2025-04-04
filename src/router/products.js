@@ -1,11 +1,14 @@
 export const productRoutes = [
   {
     path: "/products",
-    name: "products",
     children: [
       {
         path: "",
-        component: () => import("@/views/products/ProductView.vue"),
+        name: "products",
+        meta: {
+          useInMenu: true,
+        },
+        component: () => import("@/views/products/ProductsView.vue"),
       },
     ],
   },

@@ -3,34 +3,29 @@
   font-family: "Epilogue", sans-serif;
 }
 .header-wrapper {
-  height: #{$header-height};
+  @apply h-header-height;
 }
 .header-container {
   @apply min-w-full bg-zinc-950 h-full pl-32 flex flex-row justify-between;
 }
 .menu-right {
-  font-size: 1.55rem;
+  @apply text-[1.55rem];
 }
 .active-header-link {
   @apply border-b-2 border-[var(--p-primary-color)];
 }
 .menu-item {
-  @apply text-[1rem] h-full uppercase font-semibold transition-colors duration-100 ease-in-out;
+  @apply text-[1rem] h-full uppercase font-semibold tracking-wider hover:text-[var(--p-primary-color)] transition-colors duration-100 ease-in-out;
   a {
     @apply h-full inline-block flex items-center;
   }
-  letter-spacing: 0.1em;
-}
-.menu-item:hover {
-  color: var(--p-primary-color);
 }
 .cart-icon,
 .user-icon {
-  width: 70px;
-  text-align: center;
+  @apply w-[70px] text-center cursor-pointer hover:text-[var(--p-primary-color)] transition-colors duration-100;
 }
 .cart-icon {
-  position: relative;
+  @apply relative;
 }
 .cart-icon:before {
   content: "";
@@ -42,23 +37,20 @@
   border-left: 1px solid rgba(255, 255, 255, 0.16);
   transform: skew(20deg);
 }
-.cart-icon > i {
-  position: relative;
-}
 .cart-products-number {
   position: absolute;
-  line-height: 1em;
-  top: -8px;
-  right: -12px;
-  font-size: 1rem;
+  top: -5px;
+  right: 7px;
+  line-height: 1;
+  font-size: 1.15rem;
   font-style: normal;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  width: 20px;
-  height: 20px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  min-width: 1.35em;
+  min-height: 1.35em;
   color: black;
   background-color: var(--p-primary-color);
 }
