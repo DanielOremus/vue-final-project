@@ -1,6 +1,7 @@
 import apiEndpoints from "@/constants/apiEndpoints"
 import api from "@/config/axios"
 import pluralize from "pluralize"
+import { generalApiOperation } from "./generalApiOperation"
 
 function getDataNames(storeName) {
   const pluralLower = storeName
@@ -30,7 +31,7 @@ function getDataNames(storeName) {
   }
 }
 
-export function getStoreTemplateObj(storeName, generalApiOperation) {
+export const getStoreTemplateObj = (storeName) => {
   const { namedState, namedActions, nameVariations } = getDataNames(storeName)
 
   return {

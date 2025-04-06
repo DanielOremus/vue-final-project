@@ -1,13 +1,13 @@
-export const getGeneralStoreObj = () => {
-  const state = {
+export const generalStoreObj = {
+  state: {
     loading: false,
     error: null,
-  }
-  const getters = {
+  },
+  getters: {
     isLoading: (state) => state.loading,
     hasError: (state) => state.error,
-  }
-  const actions = {
+  },
+  actions: {
     setLoading(status) {
       this.loading = status
     },
@@ -26,17 +26,11 @@ export const getGeneralStoreObj = () => {
         if (successCallback) successCallback(response)
         return response
       } catch (error) {
-        this.error = error
+        this.setError(error)
         if (errorCallback) errorCallback(error)
       } finally {
         this.setLoading(false)
       }
     },
-  }
-
-  return {
-    state,
-    getters,
-    actions,
-  }
+  },
 }

@@ -1,14 +1,23 @@
 <template>
-  <main-layout> {{ productsList }} </main-layout>
+  <main-layout>
+    {{ productsList }}
+    <div>Loading : {{ isLoading }}</div>
+  </main-layout>
 </template>
 
 <script>
 import { useProductsStore } from "@/stores/products"
-import { mapState } from "pinia"
+import { mapState, mapActions } from "pinia"
 export default {
   name: "ProductsView",
   computed: {
-    ...mapState(useProductsStore, ["productsList"]),
+    ...mapState(useProductsStore, ["isLoading", "productsList"]),
+  },
+  methods: {
+    ...mapActions(useProductsStore, ["setLoading", "fetchProducts"]),
+  },
+  mounted() {
+    this.fetchProducts()
   },
 }
 </script>

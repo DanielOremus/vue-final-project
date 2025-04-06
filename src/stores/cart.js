@@ -7,4 +7,9 @@ export const useCartStore = defineStore("cart", {
   getters: {
     productsNumber: ({ productsList }) => productsList.length,
   },
+  actions: {
+    test() {
+      console.log(this)
+    },
+  },
 })

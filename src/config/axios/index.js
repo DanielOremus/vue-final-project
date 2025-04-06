@@ -2,7 +2,7 @@ import axios from "axios"
 import config from "../default"
 
 const api = axios.create({
-  baseURL: config.baseUrl,
+  baseURL: config.apiUrl,
 })
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("jwt")

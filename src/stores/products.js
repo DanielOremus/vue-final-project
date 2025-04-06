@@ -1,12 +1,12 @@
 import { defineStore } from "pinia"
-import { getGeneralStoreObj } from "./helpers/general"
+import { generalStoreObj } from "./helpers/generalStoreObj"
 import { getStoreTemplateObj } from "./helpers/storeTemplate"
 
-const generalStoreObj = getGeneralStoreObj()
 const storeTemplateObj = getStoreTemplateObj(
   "products",
   generalStoreObj.actions.generalApiOperation
 )
+
 export const useProductsStore = defineStore("products", {
   state: () => ({
     ...generalStoreObj.state,
@@ -16,8 +16,7 @@ export const useProductsStore = defineStore("products", {
     ...generalStoreObj.getters,
   },
   actions: {
-    // async test() {},
-    ...storeTemplateObj.actions,
     ...generalStoreObj.actions,
+    ...storeTemplateObj.actions,
   },
 })

@@ -4,6 +4,6 @@ export default Object.freeze({
     fetchById: (id) => `/products/${id}`,
     create: () => "/products",
     update: (id) => `/products/${id}`,
-    delete: (id) => `/products/${id}`,
+    delete: () => `/products`,
   },
 })
