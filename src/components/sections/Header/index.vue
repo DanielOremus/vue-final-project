@@ -18,6 +18,9 @@
                 </span>
               </i>
             </div>
+            <div class="ml-5">
+              <language-selector />
+            </div>
           </div>
         </div>
       </div>
@@ -29,10 +32,12 @@
 import { useCartStore } from "@/stores/cart"
 import { mapState } from "pinia"
 import NavLinks from "./NavLinks.vue"
+import LanguageSelector from "@/components/general/LanguageSelector/index.vue"
 export default {
   name: "Header",
   components: {
     NavLinks,
+    LanguageSelector,
   },
   computed: {
     ...mapState(useCartStore, ["productsNumber"]),
