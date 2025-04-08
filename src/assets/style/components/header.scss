@@ -3,7 +3,7 @@
   font-family: "Epilogue", sans-serif;
 }
 .header-wrapper {
-  @apply h-header-height;
+  @apply h-header-height z-50;
 }
 .header-container {
   @apply min-w-full bg-zinc-950 h-full pl-32 flex flex-row justify-between;

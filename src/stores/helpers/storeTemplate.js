@@ -43,55 +43,60 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
       async [namedActions.fetchItems]() {
         const response = await generalApiOperation.call(this, {
           operation: () => api.get(apiEndpoints[storeName].fetchList()),
+          successCallback: (response) => {
+            const resData = response.data
+            this[namedState.itemsList] = resData.data[storeName]
+          },
         })
-
-        const resData = response.data
-        this[namedState.itemsList] = resData.data[storeName]
       },
       async [namedActions.fetchItemById](id) {
         const response = await generalApiOperation.call(this, {
           operation: () => api.get(apiEndpoints[storeName].fetchById(id)),
+          successCallback: (response) => {
+            const resData = response.data
+            this[namedState.currentItem] =
+              resData.data[nameVariations.singularLower]
+          },
         })
-
-        const resData = response.data
-        this[namedState.currentItem] =
-          resData.data[nameVariations.singularLower]
       },
       async [namedActions.createItem](itemData) {
         const response = await generalApiOperation.call(this, {
           operation: () => api.post(apiEndpoints[storeName].create(), itemData),
+          successCallback: (response) => {
+            const resData = response.data
+            this[namedState.itemsList].push(
+              resData.data[nameVariations.singularLower]
+            )
+          },
         })
-
-        const resData = response.data
-        this[namedState.itemsList].push(
-          resData.data[nameVariations.singularLower]
-        )
       },
       async [namedActions.updateItem](itemData) {
         const response = await generalApiOperation.call(this, {
           operation: () =>
             api.put(apiEndpoints[storeName].updateItem(itemData._id), itemData),
+          successCallback: (response) => {
+            const resData = response.data
+            const updatedItem = resData.data[nameVariations.singularLower]
+
+            const itemInd = this[namedState.itemsList].findIndex(
+              (item) => item._id === itemData._id
+            )
+            if (itemInd > -1) {
+              this[namedState.itemsList][itemInd] = { ...updatedItem }
+            }
+          },
         })
-
-        const resData = response.data
-        const updatedItem = resData.data[nameVariations.singularLower]
-
-        const itemInd = this[namedState.itemsList].findIndex(
-          (item) => item._id === itemData._id
-        )
-        if (itemInd > -1) {
-          this[namedState.itemsList][itemInd] = { ...updatedItem }
-        }
       },
       async [namedActions.deleteItem](id) {
         await generalApiOperation.call(this, {
           operation: () =>
             api.delete(apiEndpoints[storeName].delete(), { data: { id } }),
+          successCallback: (response) => {
+            this[namedState.itemsList] = this[namedState.itemsList].filter(
+              (item) => item._id !== id
+            )
+          },
         })
-
-        this[namedState.itemsList] = this[namedState.itemsList].filter(
-          (item) => item._id !== id
-        )
       },
     },
   }

@@ -16,7 +16,7 @@ export const generalStoreObj = {
     },
     startLoading() {
       this.loading = true
-      this.error = false
+      this.error = null
     },
     async generalApiOperation({ operation, successCallback, errorCallback }) {
       this.startLoading()

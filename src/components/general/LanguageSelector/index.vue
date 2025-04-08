@@ -6,11 +6,13 @@
       label="Lang"
       class="h-12"
       @mouseenter="changeExpandedStatus(true)"
+      @mouseleave="changeExpandedStatus(false)"
     />
     <popover
       v-model="expanded"
       :langs-list="langsList"
       @mouseleave="changeExpandedStatus(false)"
+      @lang-select="changeLang"
     />
   </div>
 </template>
@@ -18,6 +20,7 @@
 <script>
 import localesList from "./settings"
 import Popover from "./components/Popover.vue"
+import LocaleController from "@/moduleHelpers/i18n"
 
 export default {
   name: "LanguageSelector",
@@ -38,6 +41,15 @@ export default {
     changeExpandedStatus(status) {
       this.expanded = status
     },
+    changeLang(lang) {
+      LocaleController.setLocale(lang.value)
+    },
+  },
+  created() {
+    LocaleController.init()
+  },
+  unmounted() {
+    LocaleController.destroy()
   },
 }
 </script>
