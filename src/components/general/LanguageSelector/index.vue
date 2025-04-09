@@ -1,17 +1,14 @@
 <template>
-  <div class="relative">
+  <div class="relative" @mouseleave="changeExpandedStatus(false)">
     <Button
-      type="button"
       variant="outlined"
       label="Lang"
       class="h-12"
       @mouseenter="changeExpandedStatus(true)"
-      @mouseleave="changeExpandedStatus(false)"
     />
     <popover
       v-model="expanded"
       :langs-list="langsList"
-      @mouseleave="changeExpandedStatus(false)"
       @lang-select="changeLang"
     />
   </div>
