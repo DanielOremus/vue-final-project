@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  @apply absolute bg-surface-800 overflow-hidden right-0 top-[90%] rounded-xl flex flex-col min-w-[10rem] text-lg px-4 py-3;
+  @apply absolute bg-surface-800 overflow-hidden right-0 top-[90%] rounded-xl flex flex-col min-w-[10rem] text-[1rem] px-4 py-3;
 }
 .lang {
   @apply transition-colors duration-100 ease-linear px-4 py-1.5 rounded-md cursor-pointer hover:bg-surface-700 hover:text-primary;

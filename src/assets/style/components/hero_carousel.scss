@@ -1,6 +1,6 @@
 @use "../variables" as *;
 
 :deep(.hero-img) {
-  @apply w-full object-contain brightness-50;
+  @apply w-full object-cover brightness-50;
   height: calc(100vh - theme("height.header-height"));
 }

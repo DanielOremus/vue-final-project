@@ -1,11 +1,9 @@
 <template>
   <div class="relative" @mouseleave="changeExpandedStatus(false)">
-    <Button
-      variant="outlined"
-      label="Lang"
-      class="h-12"
-      @mouseenter="changeExpandedStatus(true)"
-    />
+    <div class="lang-icon-container" @mouseenter="changeExpandedStatus(true)">
+      <i class="lang-icon bi bi-translate" />
+      <i class="bi bi-chevron-down text-sm" />
+    </div>
     <popover
       v-model="expanded"
       :langs-list="langsList"
@@ -51,4 +49,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.lang-icon-container {
+  @apply cursor-pointer flex items-center gap-2 hover:text-primary;
+}
+.lang-icon {
+  @apply text-2xl;
+}
+</style>

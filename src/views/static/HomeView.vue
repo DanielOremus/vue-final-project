@@ -2,7 +2,16 @@
   <main-layout>
     <hero-carousel class="hero-carousel" />
     <div class="carousel-inner-content">
-      <p>1111</p>
+      <div>
+        <h2 class="caption">Shape it up!</h2>
+        <h1 class="caption">Get fit don't quit</h1>
+      </div>
+      <p class="message">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolores
+        id veniam accusantium consectetur commodi perspiciatis optio amet odio,
+        tempore beatae fuga expedita aperiam quaerat, ullam, voluptates
+      </p>
+      <Button class="join-btn" label="Join us now" />
     </div>
   </main-layout>
 </template>

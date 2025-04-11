@@ -3,12 +3,12 @@
     :value="heroImages"
     :show-navigators="false"
     :pt="{
-      indicatorList: 'absolute left-1/2 bottom-2 -translate-x-1/2',
+      indicatorList: 'absolute left-1/2 bottom-4 -translate-x-1/2',
     }"
-    circular
-    :auto-play-interval="autoPlayInterval"
     :num-visible="1"
     :num-scroll="1"
+    circular
+    :autoplay-interval="autoPlayInterval"
   >
     <template #item="slotProps">
       <Image

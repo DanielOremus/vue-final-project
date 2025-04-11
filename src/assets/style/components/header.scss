@@ -6,7 +6,7 @@
   @apply h-header-height z-50;
 }
 .header-container {
-  @apply min-w-full bg-zinc-950 h-full pl-32 flex flex-row justify-between;
+  @apply min-w-full bg-zinc-950 h-full pl-32 pr-8 flex flex-row justify-between;
 }
 .menu-right {
   @apply text-[1.55rem];
