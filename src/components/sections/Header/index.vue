@@ -8,16 +8,9 @@
             <nav-links />
           </nav>
           <div class="menu-right flex justify-center items-center basis-1/4">
-            <div class="user-icon">
-              <i class="bi bi-person-circle"></i>
-            </div>
-            <div class="cart-icon">
-              <i class="bi bi-cart-plus">
-                <span class="cart-products-number">
-                  {{ productsNumber }}
-                </span>
-              </i>
-            </div>
+            <profile-section />
+            <cart-section />
+
             <div class="ml-5">
               <language-selector />
             </div>
@@ -29,18 +22,17 @@
 </template>
 
 <script>
-import { useCartStore } from "@/stores/cart"
-import { mapState } from "pinia"
-import NavLinks from "./NavLinks.vue"
+import NavLinks from "./components/NavLinks.vue"
 import LanguageSelector from "@/components/general/LanguageSelector/index.vue"
+import CartSection from "./components/CartSection.vue"
+import ProfileSection from "./components/ProfileSection.vue"
 export default {
   name: "Header",
   components: {
     NavLinks,
     LanguageSelector,
-  },
-  computed: {
-    ...mapState(useCartStore, ["productsNumber"]),
+    CartSection,
+    ProfileSection,
   },
 }
 </script>
