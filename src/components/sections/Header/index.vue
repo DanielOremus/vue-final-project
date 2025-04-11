@@ -3,11 +3,11 @@
     <div class="header-wrapper sticky top-0">
       <div class="header-container">
         <div class="branding grow"></div>
-        <div class="navigation w-3/5 flex items-center">
+        <div class="grow flex items-center">
           <nav class="main-navigation h-full basis-3/4">
-            <nav-links />
+            <nav-menu />
           </nav>
-          <div class="menu-right flex justify-center items-center basis-1/4">
+          <div class="menu-right">
             <profile-section />
             <cart-section />
 
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import NavLinks from "./components/NavLinks.vue"
+import NavMenu from "./components/NavMenu.vue"
 import LanguageSelector from "@/components/general/LanguageSelector/index.vue"
 import CartSection from "./components/CartSection.vue"
 import ProfileSection from "./components/ProfileSection.vue"
 export default {
   name: "Header",
   components: {
-    NavLinks,
+    NavMenu,
     LanguageSelector,
     CartSection,
     ProfileSection,

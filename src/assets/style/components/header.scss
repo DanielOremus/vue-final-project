@@ -8,8 +8,11 @@
 .header-container {
   @apply min-w-full bg-zinc-950 h-full pl-32 pr-8 flex flex-row justify-between;
 }
+.menu {
+  @apply w-full h-full flex items-center justify-between;
+}
 .menu-right {
-  @apply text-[1.55rem];
+  @apply flex justify-center items-center basis-1/4 ml-8 text-[1.55rem];
 }
 .active-header-link {
   @apply border-b-2 border-[var(--p-primary-color)];

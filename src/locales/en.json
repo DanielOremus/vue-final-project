@@ -15,8 +15,9 @@
         "menu": "Home"
       },
       "messages": {
-        "main": "111",
-        "extra": "aaa"
+        "main": "Get fit don't quit",
+        "extra": "Shape it up!",
+        "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolores id veniam accusantium consectetur commodi perspiciatis optio amet odio, tempore beatae fuga expedita aperiam quaerat, ullam, voluptates"
       },
       "buttons": {
         "join": "Join us now"
