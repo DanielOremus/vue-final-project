@@ -1,5 +1,5 @@
 <template>
-  <ul class="menu w-full h-full flex items-center justify-between">
+  <ul class="menu">
     <li v-for="link in visibleLinks" :key="link" class="menu-item">
       <router-link :to="{ name: link.name }" active-class="active-header-link">
         <span>
@@ -13,7 +13,7 @@
 <script>
 import { routes } from "@/router/index.js"
 export default {
-  name: "NavLinks",
+  name: "NavMenu",
   computed: {
     visibleLinks() {
       const visibleRoutes = []

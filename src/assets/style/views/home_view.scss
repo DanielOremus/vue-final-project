@@ -20,7 +20,7 @@
   @apply text-[1rem] w-1/2;
 }
 .join-btn {
-  @apply relative uppercase w-fit px-5 py-2 rounded-none overflow-visible;
+  @apply relative uppercase w-fit font-medium px-5 py-2 rounded-none overflow-visible;
 }
 .join-btn::before {
   content: "";

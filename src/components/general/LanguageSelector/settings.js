@@ -1,10 +1,10 @@
 import { messages } from "@/plugins/i18n"
-const locales = {
+const localesTitles = {
   en: "English",
-  ua: "UA",
+  ua: "Українська",
 }
 
 export default Object.keys(messages).map((locale) => ({
-  title: locales[locale],
+  title: localesTitles[locale],
   value: locale,
 }))
