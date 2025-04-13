@@ -1,6 +1,5 @@
-@use "../variables" as *;
 .header {
-  font-family: "Epilogue", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 .header-wrapper {
   @apply h-header-height z-50;
@@ -18,9 +17,9 @@
   @apply border-b-2 border-[var(--p-primary-color)];
 }
 .menu-item {
-  @apply text-[1rem] h-full uppercase font-semibold tracking-wider hover:text-[var(--p-primary-color)] transition-colors duration-100 ease-in-out;
+  @apply text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-[var(--p-primary-color)] transition-colors duration-100 ease-in-out;
   a {
-    @apply h-full inline-block flex items-center;
+    @apply h-full flex items-center;
   }
 }
 .cart-icon,

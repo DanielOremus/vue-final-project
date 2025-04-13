@@ -3,13 +3,13 @@
 }
 
 .carousel-inner-content {
-  @apply absolute left-[15%] top-1/2 -translate-y-1/2 flex flex-col gap-4;
+  @apply absolute left-[15%] top-1/2 -translate-y-1/2 flex flex-col gap-8;
   .caption:first-child {
-    @apply text-2xl font-semibold;
+    @apply text-4xl font-semibold;
     letter-spacing: 0.1rem;
   }
   .caption:last-child {
-    @apply font-bold italic text-4xl;
+    @apply font-bold italic text-6xl;
     letter-spacing: 0.3rem;
   }
 }
@@ -17,12 +17,5 @@
   @apply uppercase;
 }
 .message {
-  @apply text-[1rem] w-1/2;
-}
-.join-btn {
-  @apply relative uppercase w-fit font-medium px-5 py-2 rounded-none overflow-visible;
-}
-.join-btn::before {
-  content: "";
-  @apply absolute top-1.5 left-1.5 w-full h-full border-2 border-surface-0 -z-[1];
+  @apply text-[1.2rem] w-1/2;
 }

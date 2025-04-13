@@ -10,6 +10,8 @@ import Tooltip from "primevue/tooltip"
 import pinia from "./stores"
 import { router } from "./router"
 import i18n from "@/plugins/i18n.js"
+import HeadImgLayout from "./layouts/HeadImgLayout.vue"
+import BasicButton from "./components/general/BasicButton/index.vue"
 
 const app = createApp(App)
 
@@ -19,7 +21,8 @@ app.use(router)
 app.use(pinia)
 app.use(i18n)
 
-app.directive("tooltip", Tooltip)
 app.component("main-layout", MainLayout)
+app.component("head-img-layout", HeadImgLayout)
+app.component("basic-button", BasicButton)
 
 app.mount("#app")

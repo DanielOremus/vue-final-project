@@ -25,12 +25,14 @@
     },
     "about": {
       "title": {
-        "menu": "About us"
+        "menu": "About us",
+        "page": "About us"
       }
     },
-    "products": {
+    "shop": {
       "title": {
-        "menu": "Shop"
+        "menu": "Shop",
+        "page": "Shop"
       }
     }
   }

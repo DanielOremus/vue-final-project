@@ -1,10 +1,10 @@
 export const productRoutes = [
   {
-    path: "/products",
+    path: "/shop",
     children: [
       {
         path: "",
-        name: "products",
+        name: "shop",
         meta: {
           useInMenu: true,
         },

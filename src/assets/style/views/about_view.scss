@@ -1,0 +1,13 @@
+.general-section {
+  font-family: "Outfit", sans-serif;
+  @apply bg-white py-32 text-black;
+}
+.our-mission {
+  @apply relative uppercase text-white text-lg font-semibold;
+}
+.general-section__container {
+  @apply mx-auto w-2/3;
+}
+.mission-carousel__container {
+  @apply bg-zinc-900 p-8 relative w-full;
+}

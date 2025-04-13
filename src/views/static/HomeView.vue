@@ -9,9 +9,9 @@
       <p class="message">
         {{ $t("views.home.messages.caption") }}
       </p>
-      <Button class="join-btn">
+      <basic-button>
         {{ $t("views.home.buttons.join") }}
-      </Button>
+      </basic-button>
     </div>
   </main-layout>
 </template>

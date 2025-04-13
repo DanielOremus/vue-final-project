@@ -5,6 +5,7 @@
         v-for="lang in langsList"
         :key="lang"
         class="lang"
+        :class="{ selected: selectedLocale === lang.value }"
         @click="onLangSelect(lang)"
       >
         {{ lang.title }}
@@ -36,6 +37,9 @@ export default {
         this.$emit("update:modelValue", v)
       },
     },
+    selectedLocale() {
+      return this.$i18n.locale
+    },
   },
   methods: {
     onLangSelect(lang) {
@@ -48,10 +52,13 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  @apply absolute bg-surface-800 overflow-hidden right-0 top-[100%] rounded-xl flex flex-col min-w-[12rem] text-[1rem] px-4 py-3;
+  @apply absolute bg-surface-800 overflow-hidden right-0 top-[100%] rounded-xl flex flex-col min-w-[12rem] text-lg px-4 py-3;
 }
 .lang {
   @apply transition-colors duration-100 ease-linear px-4 py-1.5 rounded-md cursor-pointer hover:bg-surface-700 hover:text-primary;
+}
+.selected {
+  @apply font-bold;
 }
 .v-enter-active,
 .v-leave-active {
