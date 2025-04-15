@@ -3,7 +3,7 @@
 }
 
 .basic-btn {
-  @apply relative uppercase w-fit font-medium px-5 py-2 rounded-none overflow-visible hover:translate-x-1 hover:translate-y-1 transition-transform duration-75 ease-linear;
+  @apply relative uppercase w-fit font-medium px-5 py-2 rounded-none overflow-visible will-change-transform hover:translate-x-1 hover:translate-y-1 transition-transform duration-200 ease-linear;
 }
 
 .basic-btn-border {

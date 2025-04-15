@@ -7,7 +7,7 @@
           best service of healthy
         </span>
         <div class="text-zinc-600 mt-8 flex gap-8">
-          <div>
+          <div class="basis-7/12">
             <p>
               We want to help you live a fit and healthy lifestyle! We do this
               by helping you find the most suitable nutrition for your home gym,
@@ -23,9 +23,21 @@
 
             <basic-button dark-border label="See our classes" />
           </div>
-          <div class="mission-carousel__container">
-            <mission-carousel />
+          <div class="mission-carousel__container basis-5/12">
+            <div>
+              <mission-carousel />
+            </div>
           </div>
+        </div>
+        <div class="mt-20 flex gap-8">
+          <div class="basis-7/12">
+            <img
+              src="@/assets/images/about-1.jpg"
+              class="w-full h-auto will-change-transform transition-transform duration-500 ease-out hover:-translate-y-2"
+            />
+          </div>
+
+          <div class="border-2 border-red-500 basis-5/12"></div>
         </div>
       </div>
     </section>

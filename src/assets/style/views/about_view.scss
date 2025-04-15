@@ -6,7 +6,7 @@
   @apply relative uppercase text-white text-lg font-semibold;
 }
 .general-section__container {
-  @apply mx-auto w-2/3;
+  margin-inline: clamp(0.625rem, 32.438vw - 20.176rem, 18.75rem);
 }
 .mission-carousel__container {
   @apply bg-zinc-900 p-8 relative w-full;
