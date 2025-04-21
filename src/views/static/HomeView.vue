@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HeroCarousel from "@/components/general/HeroCarousel/index.vue"
+import HeroCarousel from "@/components/views-components/home/HeroCarousel/index.vue"
 export default {
   name: "HomeView",
   components: {

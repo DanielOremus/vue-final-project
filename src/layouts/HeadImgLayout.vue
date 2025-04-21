@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .page-title {
-  @apply absolute top-1/2 left-[10rem] -translate-y-1/2 uppercase text-5xl font-bold italic;
+  @apply absolute top-1/2 left-[10%] -translate-y-1/2 uppercase text-5xl font-bold italic;
   letter-spacing: 0.3rem;
 }
 :deep(.head-img) {
