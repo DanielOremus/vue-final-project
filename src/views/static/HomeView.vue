@@ -1,5 +1,5 @@
 <template>
-  <main-layout>
+  <main-layout :show-footer="false">
     <hero-carousel class="hero-carousel" />
     <div class="carousel-inner-content">
       <div>

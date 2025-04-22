@@ -5,6 +5,7 @@ import "swiper/css/bundle"
 import { createApp } from "vue"
 import App from "./App.vue"
 import PrimeVue from "primevue/config"
+
 import MyTheme from "./config/theme/options"
 import pinia from "./stores"
 import { router } from "./router"
