@@ -1,6 +1,8 @@
 <template>
   <div class="head-img-layout">
-    <Header />
+    <slot name="header">
+      <Header />
+    </slot>
     <div class="head-img-container relative w-full h-80">
       <Image v-if="headImgSrc" :src="headImg" image-class="head-img" />
       <slot name="headImgCaption">
@@ -14,15 +16,20 @@
     <div class="content">
       <slot></slot>
     </div>
+    <slot name="footer">
+      <Footer />
+    </slot>
   </div>
 </template>
 
 <script>
 import Header from "@/components/sections/Header/index.vue"
+import Footer from "@/components/sections/Footer/index.vue"
 export default {
   name: "HeadImgLayout",
   components: {
     Header,
+    Footer,
   },
   props: {
     headImgSrc: {

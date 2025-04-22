@@ -1,9 +1,16 @@
 <template>
   <header class="header">
-    <div class="header-wrapper sticky top-0">
+    <div class="header-wrapper">
       <div class="header-container">
-        <div class="branding grow"></div>
-        <div class="grow flex items-center">
+        <div class="logo flex items-center">
+          <img
+            src="@/assets/images/logo-light.png"
+            class="max-h-9 w-auto cursor-pointer"
+            alt="Logo"
+            @click="onLogoClick"
+          />
+        </div>
+        <div class="flex items-center">
           <nav class="main-navigation h-full basis-3/4">
             <nav-menu />
           </nav>
@@ -33,6 +40,11 @@ export default {
     LanguageSelector,
     CartSection,
     ProfileSection,
+  },
+  methods: {
+    onLogoClick() {
+      this.$router.push({ name: "home" })
+    },
   },
 }
 </script>

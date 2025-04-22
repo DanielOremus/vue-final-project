@@ -1,30 +1,32 @@
 .header {
+  @apply sticky top-0 z-10;
   font-family: "Outfit", sans-serif;
 }
 .header-wrapper {
   @apply h-header-height z-50;
 }
 .header-container {
-  @apply min-w-full bg-zinc-950 h-full pl-32 pr-8 flex flex-row justify-between;
+  @apply min-w-full bg-zinc-950 h-full pl-32 pr-8 flex justify-between;
 }
 .menu {
-  @apply w-full h-full flex items-center justify-between;
+  @apply w-full h-full flex items-center justify-end gap-20;
+  gap: clamp(2rem, 3.636vw + 0.636rem, 5rem);
 }
 .menu-right {
   @apply flex justify-center items-center basis-1/4 ml-8 text-[1.55rem];
 }
 .active-header-link {
-  @apply border-b-2 border-[var(--p-primary-color)];
+  @apply border-b-2 border-primary;
 }
 .menu-item {
-  @apply text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-[var(--p-primary-color)] transition-colors duration-100 ease-in-out;
+  @apply text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-primary transition-colors duration-100 ease-in-out;
   a {
     @apply h-full flex items-center;
   }
 }
 .cart-icon,
 .user-icon {
-  @apply w-[70px] text-center cursor-pointer hover:text-[var(--p-primary-color)] transition-colors duration-100;
+  @apply w-[70px] text-center cursor-pointer hover:text-primary transition-colors duration-100;
 }
 .cart-icon {
   @apply relative;
