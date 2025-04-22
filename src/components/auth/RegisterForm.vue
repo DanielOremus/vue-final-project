@@ -4,7 +4,7 @@
     class="flex flex-col gap-4"
     :validate-on-submit="true"
     :validate-on-value-update="false"
-    :resolver="validator"
+    :resolver="resolver"
     @submit="onSubmit"
   >
     <Divider :pt="{ content: 'bg-transparent' }">
@@ -43,11 +43,13 @@
       >
     </div>
     <div class="flex flex-col gap-1">
-      <InputText
+      <Password
         name="password"
         :placeholder="$t('views.auth.fields.password')"
         size="large"
+        :feedback="false"
         fluid
+        toggle-mask
       />
       <Message
         v-if="$credentials.password?.invalid"
@@ -75,9 +77,23 @@
 </template>
 
 <script>
+import AuthValidator from "@/validators/AuthValidator"
+import { yupResolver } from "@primevue/forms/resolvers/yup"
 export default {
   name: "RegisterForm",
-  components: {},
+  data() {
+    return {
+      resolver: yupResolver(AuthValidator.registerSchema),
+      error: null,
+    }
+  },
+  methods: {
+    onSubmit({ valid, values }) {
+      if (valid) {
+        this.$emit("form-submit", { data: values, form: "register" })
+      }
+    },
+  },
 }
 </script>
 

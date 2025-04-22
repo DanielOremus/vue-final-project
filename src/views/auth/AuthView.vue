@@ -2,19 +2,34 @@
   <main-layout>
     <div class="form-wrapper">
       <div class="form-container">
-        <component :is="formComponent" />
+        <component :is="formComponent" @form-submit="signUser" />
       </div>
     </div>
   </main-layout>
 </template>
 
 <script>
+import { mapActions, mapState } from "pinia"
+import { useAuthStore } from "@/stores/auth"
 export default {
   name: "AuthView",
   props: {
     formComponent: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    ...mapState(useAuthStore, ["isLoading", "hasError"]),
+  },
+  methods: {
+    ...mapActions(useAuthStore, ["authenticate"]),
+    async signUser(e) {
+      if (!["login", "register"].includes(e.form)) return
+      await this.authenticate(e.data, e.form)
+      if (this.hasError) {
+        console.log(this.hasError)
+      }
     },
   },
 }

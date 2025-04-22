@@ -6,4 +6,8 @@ export default Object.freeze({
     update: (id) => `/products/${id}`,
     delete: () => `/products`,
   },
+  auth: {
+    login: "/auth/login",
+    register: "/auth/register",
+  },
 })

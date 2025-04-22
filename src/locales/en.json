@@ -9,6 +9,23 @@
     "delete": "Delete",
     "cancel": "Cancel"
   },
+  "validation": {
+    "mixed": {
+      "required": "*{field}* is a required field"
+    },
+    "string": {
+      "email": "*{field}* must be a valid email address",
+      "max": "*{field}* must be at most {max} characters",
+      "min": "*{field}* must be at least {min} characters"
+    },
+    "number": {
+      "gt": "*{field}* must be greater than {min}",
+      "gte": "*{field}* must be greater than or equal {min}",
+      "lt": "*{field}* must be lower than {max}",
+      "lte": "*{field}* must be lower than or equal {max}",
+      "positive": "*{field}* must be a positive number"
+    }
+  },
   "views": {
     "home": {
       "title": {
@@ -41,7 +58,7 @@
         "registerForm": "Register"
       },
       "fields": {
-        "email": "E-mail",
+        "email": "Email",
         "username": "Username",
         "password": "Password"
       },
