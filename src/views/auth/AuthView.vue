@@ -22,9 +22,12 @@ export default {
 
 <style lang="scss" scoped>
 .form-wrapper {
-  @apply h-full flex justify-center items-center;
+  @apply h-full flex justify-center;
 }
 .form-container {
-  @apply w-[700px];
+  @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] fixed top-[20%];
+}
+:deep(.account-link) {
+  @apply text-slate-400 text-[0.95rem] hover:underline hover:cursor-pointer w-fit;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="basic-btn-wrapper">
+  <div :class="btnWrapperClass">
     <span class="basic-btn-border" :class="{ 'dark-border': darkBorder }" />
-    <Button class="basic-btn">
+    <Button class="basic-btn" :type="type">
       <slot>{{ label }}</slot>
     </Button>
   </div>
@@ -18,6 +18,18 @@ export default {
     label: {
       type: String,
       default: "",
+    },
+    type: {
+      type: String,
+    },
+    block: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    btnWrapperClass() {
+      return this.block ? "basic-btn-wrapper-full" : "basic-btn-wrapper"
     },
   },
 }

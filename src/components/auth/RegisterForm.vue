@@ -1,4 +1,78 @@
-<template></template>
+<template>
+  <Form
+    v-slot="$credentials"
+    class="flex flex-col gap-4"
+    :validate-on-submit="true"
+    :validate-on-value-update="false"
+    :resolver="validator"
+    @submit="onSubmit"
+  >
+    <Divider :pt="{ content: 'bg-transparent' }">
+      <h1 class="text-3xl text-center font-semibold text-slate-200 mb-2">
+        {{ $t(`views.auth.title.registerForm`) }}
+      </h1>
+    </Divider>
+    <div class="flex flex-col gap-1">
+      <InputText
+        name="email"
+        :placeholder="$t('views.auth.fields.email')"
+        size="large"
+        fluid
+      />
+      <Message
+        v-if="$credentials.email?.invalid"
+        severity="error"
+        size="small"
+        variant="simple"
+        >{{ $credentials.email.error?.message }}</Message
+      >
+    </div>
+    <div class="flex flex-col gap-1">
+      <InputText
+        name="username"
+        :placeholder="$t('views.auth.fields.username')"
+        size="large"
+        fluid
+      />
+      <Message
+        v-if="$credentials.username?.invalid"
+        severity="error"
+        size="small"
+        variant="simple"
+        >{{ $credentials.username.error?.message }}</Message
+      >
+    </div>
+    <div class="flex flex-col gap-1">
+      <InputText
+        name="password"
+        :placeholder="$t('views.auth.fields.password')"
+        size="large"
+        fluid
+      />
+      <Message
+        v-if="$credentials.password?.invalid"
+        severity="error"
+        size="small"
+        variant="simple"
+        >{{ $credentials.password.error?.message }}</Message
+      >
+      <div class="mt-1">
+        <span class="account-link">
+          <router-link :to="{ name: 'login' }">
+            {{ $t(`views.auth.messages.alreadyHasAccount`) }}
+          </router-link>
+        </span>
+      </div>
+    </div>
+    <Message v-if="error" size="small" variant="simple" severity="error">
+      {{ errorMessage }}
+    </Message>
+
+    <BasicButton type="submit" class="w-full" block>
+      {{ $t(`views.auth.buttons.register`) }}
+    </BasicButton>
+  </Form>
+</template>
 
 <script>
 export default {
@@ -7,8 +81,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.login-link {
-  @apply text-slate-400 text-sm hover:underline hover:cursor-pointer w-fit;
-}
-</style>
+<style lang="scss" scoped></style>

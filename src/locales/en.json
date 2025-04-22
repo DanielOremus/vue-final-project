@@ -34,6 +34,25 @@
         "menu": "Shop",
         "page": "Shop"
       }
+    },
+    "auth": {
+      "title": {
+        "loginForm": "Log in",
+        "registerForm": "Register"
+      },
+      "fields": {
+        "email": "E-mail",
+        "username": "Username",
+        "password": "Password"
+      },
+      "messages": {
+        "alreadyHasAccount": "Already has an account?",
+        "noAccountYet": "Don't have an account yet?"
+      },
+      "buttons": {
+        "register": "Register",
+        "login": "Log in"
+      }
     }
   }
 }

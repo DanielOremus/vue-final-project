@@ -34,6 +34,25 @@
         "menu": "Магазин",
         "page": "Магазин"
       }
+    },
+    "auth": {
+      "title": {
+        "loginForm": "Вхід",
+        "registerForm": "Реєстрація"
+      },
+      "fields": {
+        "email": "Ел. скринька",
+        "username": "Ім'я користувача",
+        "password": "Пароль"
+      },
+      "messages": {
+        "alreadyHasAccount": "Вже маєте акаунт?",
+        "noAccountYet": "Перший раз у нас?"
+      },
+      "buttons": {
+        "register": "Зареєструватись",
+        "login": "Увійти"
+      }
     }
   }
 }
