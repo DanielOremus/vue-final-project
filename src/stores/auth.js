@@ -25,11 +25,29 @@ export const useAuthStore = defineStore("auth", {
         )
         const resData = response.data
         localStorage.setItem("token", resData.data.token)
+
+        await this.fetchProfileData()
       } catch (error) {
         this.error = error
       } finally {
         this.loading = false
       }
+    },
+    async fetchProfileData() {
+      this.startLoading()
+      try {
+        const response = await api.get(apiEndpoints.auth.fetchProfile)
+        const resData = response.data
+        this.user = resData.data.profile
+      } catch (error) {
+        this.error = error
+      } finally {
+        this.loading = false
+      }
+    },
+    logout() {
+      this.user = null
+      localStorage.removeItem("token")
     },
     startLoading() {
       this.loading = true

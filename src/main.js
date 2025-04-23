@@ -5,7 +5,8 @@ import "swiper/css/bundle"
 import { createApp } from "vue"
 import App from "./App.vue"
 import PrimeVue from "primevue/config"
-
+import ToastService from "primevue/toastservice"
+import ConfirmationService from "primevue/confirmationservice"
 import MyTheme from "./config/theme/options"
 import pinia from "./stores"
 import { router } from "./router"
@@ -18,6 +19,8 @@ import BasicButton from "./components/general/BasicButton/index.vue"
 const app = createApp(App)
 
 app.use(PrimeVue, MyTheme)
+app.use(ToastService)
+app.use(ConfirmationService)
 
 app.use(router)
 app.use(pinia)

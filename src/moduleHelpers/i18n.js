@@ -35,7 +35,7 @@ class LocaleController {
   }
   static checkLocale() {
     const lastLocale = localStorage.getItem("lastLocale")
-    if (lastLocale && lastLocale !== locale.value) {
+    if (lastLocale && lastLocale !== LocaleController.i18n.locale.value) {
       LocaleController.setLocale(lastLocale)
       LocaleController.router.go()
     }

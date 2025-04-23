@@ -9,5 +9,6 @@ export default Object.freeze({
   auth: {
     login: "/auth/login",
     register: "/auth/register",
+    fetchProfile: "/auth/profile",
   },
 })

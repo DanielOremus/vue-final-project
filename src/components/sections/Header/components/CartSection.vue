@@ -1,6 +1,6 @@
 <template>
-  <div class="cart-icon">
-    <i class="bi bi-cart-plus">
+  <div class="cart-icon__wrapper">
+    <i class="bi bi-cart-plus cart-icon">
       <span class="cart-products-number">
         {{ productsNumber }}
       </span>

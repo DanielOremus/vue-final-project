@@ -5,7 +5,7 @@ const api = axios.create({
   baseURL: config.apiUrl,
 })
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("jwt")
+  const token = localStorage.getItem("token")
   if (token) {
     config.headers.authorization = `Bearer ${token}`
   }

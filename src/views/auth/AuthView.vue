@@ -11,6 +11,7 @@
 <script>
 import { mapActions, mapState } from "pinia"
 import { useAuthStore } from "@/stores/auth"
+import { showToast } from "@/primeVueServiceHelpers/toast"
 export default {
   name: "AuthView",
   props: {
@@ -27,9 +28,26 @@ export default {
     async signUser(e) {
       if (!["login", "register"].includes(e.form)) return
       await this.authenticate(e.data, e.form)
-      if (this.hasError) {
-        console.log(this.hasError)
+
+      const toastSettings = this.getToastSettings(this.hasError)
+      showToast(this.$toast, toastSettings)
+
+      if (!this.hasError) {
+        setTimeout(() => this.$router.push({ name: "home" }), 4000)
       }
+    },
+    getToastSettings(error) {
+      return error
+        ? {
+            severity: "error",
+            summary: "Oops",
+            detail: "Something went wrong, please try again later!",
+          }
+        : {
+            severity: "success",
+            summary: "Success",
+            detail: "You've successfully logged in! Redirecting...",
+          }
     },
   },
 }

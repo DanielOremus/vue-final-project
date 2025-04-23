@@ -1,4 +1,6 @@
 <template>
+  <Toast />
+  <ConfirmDialog :draggable="false" />
   <router-view></router-view>
 </template>
 
