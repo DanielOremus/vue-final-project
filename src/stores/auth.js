@@ -41,6 +41,7 @@ export const useAuthStore = defineStore("auth", {
         this.user = resData.data.profile
       } catch (error) {
         this.error = error
+        localStorage.removeItem("token")
       } finally {
         this.loading = false
       }

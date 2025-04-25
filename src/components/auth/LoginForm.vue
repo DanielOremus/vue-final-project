@@ -54,9 +54,9 @@
     <Message v-if="error" size="small" variant="simple" severity="error">
       {{ errorMessage }}
     </Message>
-    <BasicButton type="submit" block>
+    <basic-button type="submit" block>
       {{ $t(`views.auth.buttons.login`) }}
-    </BasicButton>
+    </basic-button>
   </Form>
 </template>
 

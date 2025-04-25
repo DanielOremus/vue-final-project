@@ -3,7 +3,7 @@
     <div class="bg-overlay"></div>
     <div class="info-section__container">
       <div class="text-center">
-        <h1 class="uppercase text-5xl font-bold">Why choose peeker</h1>
+        <h1 class="uppercase text-5xl font-bold">Why choose peaker</h1>
         <p class="mt-5 text-zinc-300">
           After you decide to start training we will make sure you get the best
           fitness program. Our sport experts and latest <br />

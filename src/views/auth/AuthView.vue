@@ -33,7 +33,11 @@ export default {
       showToast(this.$toast, toastSettings)
 
       if (!this.hasError) {
-        setTimeout(() => this.$router.push({ name: "home" }), 4000)
+        setTimeout(() => {
+          const redirectPath = this.$route.query?.redirect
+          if (redirectPath) this.$router.push(redirectPath)
+          else this.$router.push({ name: "home" })
+        }, 4000)
       }
     },
     getToastSettings(error) {

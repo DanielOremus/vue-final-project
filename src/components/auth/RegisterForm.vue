@@ -70,9 +70,9 @@
       {{ errorMessage }}
     </Message>
 
-    <BasicButton type="submit" class="w-full" block>
+    <basic-button type="submit" class="w-full" block>
       {{ $t(`views.auth.buttons.register`) }}
-    </BasicButton>
+    </basic-button>
   </Form>
 </template>
 
