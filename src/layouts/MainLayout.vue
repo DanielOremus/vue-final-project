@@ -13,10 +13,12 @@
 <script>
 import Header from "@/components/sections/Header/index.vue"
 import Footer from "@/components/sections/Footer/index.vue"
+//TODO: fix content-height and productsList loading height
 export default {
   name: "MainMasterPage",
   components: {
     Header,
+    Footer,
   },
   props: {
     showFooter: {
@@ -29,9 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-layout {
-  @apply min-h-screen h-full flex flex-col;
-}
-.content {
-  @apply grow h-full;
+  @apply min-h-screen grid;
+  grid-template-rows: auto 1fr auto;
 }
 </style>

@@ -64,7 +64,7 @@ export default {
 .form-container {
   @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] fixed top-[20%];
 }
-:deep(.account-link) {
+:deep(.link) {
   @apply text-slate-400 text-[0.95rem] hover:underline hover:cursor-pointer w-fit;
 }
 </style>

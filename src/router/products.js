@@ -16,12 +16,12 @@ export const productRoutes = [
         props: true,
         meta: {
           requiresAuth: true,
-          hasAccess: (permissions, route) => {
-            const id = route.params.id
-            console.log(id)
+          hasAccess: (permissions, routeParams) => {
+            const id = routeParams?.id
 
-            if (id) return permissions?.products.edit
-            else permissions?.products.create
+            return id
+              ? permissions?.products.edit
+              : permissions?.products.create
           },
         },
       },

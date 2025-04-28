@@ -1,20 +1,27 @@
 <template>
   <main-layout>
-    {{ productsList }}
-    <div>Loading : {{ isLoading }}</div>
+    <div class="page-content">
+      <div class="products-list__wrapper">
+        <products-list :products="productsList" :is-loading="isLoading" />
+      </div>
+    </div>
   </main-layout>
 </template>
 
 <script>
 import { useProductsStore } from "@/stores/products"
 import { mapState, mapActions } from "pinia"
+import ProductsList from "@/components/products/ProductsList/index.vue"
 export default {
   name: "ProductsView",
+  components: {
+    ProductsList,
+  },
   computed: {
     ...mapState(useProductsStore, ["isLoading", "productsList"]),
   },
   methods: {
-    ...mapActions(useProductsStore, ["setLoading", "fetchProducts"]),
+    ...mapActions(useProductsStore, ["fetchProducts"]),
   },
   mounted() {
     this.fetchProducts()
@@ -22,4 +29,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page-content {
+  @apply bg-white h-full overflow-hidden flex flex-col items-center;
+}
+.products-list__wrapper {
+  @apply m-8;
+}
+</style>

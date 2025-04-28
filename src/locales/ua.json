@@ -64,7 +64,8 @@
       },
       "messages": {
         "alreadyHasAccount": "Вже маєте акаунт?",
-        "noAccountYet": "Перший раз у нас?"
+        "noAccountYet": "Перший раз у нас?",
+        "backToHome": "На головну"
       },
       "buttons": {
         "register": "Зареєструватись",

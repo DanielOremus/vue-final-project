@@ -43,10 +43,15 @@
         variant="simple"
         >{{ $credentials.password.error?.message }}</Message
       >
-      <div class="mt-1">
-        <span class="account-link">
+      <div class="mt-1 flex justify-between">
+        <span class="link">
           <router-link :to="{ name: 'register' }">
             {{ $t(`views.auth.messages.noAccountYet`) }}
+          </router-link>
+        </span>
+        <span class="link">
+          <router-link :to="{ name: 'home' }">
+            {{ $t(`views.auth.messages.backToHome`) }}
           </router-link>
         </span>
       </div>

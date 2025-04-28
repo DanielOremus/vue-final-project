@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { isRouteAvailable } from "@/router/helpers"
 import { routes } from "@/router/index.js"
 export default {
   name: "NavMenu",
@@ -26,7 +27,7 @@ export default {
       for (const routeItem of routeItems) {
         if (routeItem.children)
           this.checkRoutesList(routeItem.children, menuRoutes)
-        else if (routeItem.meta?.useInMenu) {
+        else if (routeItem.meta?.useInMenu && isRouteAvailable(routeItem)) {
           menuRoutes.push(routeItem)
         }
       }

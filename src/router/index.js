@@ -33,7 +33,7 @@ router.beforeEach(async (to) => {
   }
   const permissions = authStore.userPermissions
 
-  if (to.meta?.hasAccess && !to.meta.hasAccess(permissions, to)) {
+  if (to.meta?.hasAccess && !to.meta.hasAccess(permissions, to.params)) {
     return { name: "notFound" }
   }
 })

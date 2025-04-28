@@ -64,7 +64,8 @@
       },
       "messages": {
         "alreadyHasAccount": "Already has an account?",
-        "noAccountYet": "Don't have an account yet?"
+        "noAccountYet": "Don't have an account yet?",
+        "backToHome": "Return to Home"
       },
       "buttons": {
         "register": "Register",
