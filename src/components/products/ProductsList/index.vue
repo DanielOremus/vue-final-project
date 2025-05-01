@@ -12,7 +12,9 @@
       size="medium"
       class="w-8 border-[2.5px] border-surface-500"
     />
-    <div v-if="!isLoading && !products.length">We haven't fount anything</div>
+    <span v-if="!isLoading && !products.length" class="text-black"
+      >We haven't fount anything</span
+    >
   </div>
 </template>
 

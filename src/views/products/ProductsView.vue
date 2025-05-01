@@ -1,11 +1,11 @@
 <template>
-  <main-layout>
+  <head-img-layout head-img-src="@/assets/images/pages-head-images/shop.jpg">
     <div class="page-content">
       <div class="products-list__wrapper">
         <products-list :products="productsList" :is-loading="isLoading" />
       </div>
     </div>
-  </main-layout>
+  </head-img-layout>
 </template>
 
 <script>

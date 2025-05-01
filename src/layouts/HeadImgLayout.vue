@@ -56,6 +56,19 @@ export default {
   letter-spacing: 0.3rem;
 }
 :deep(.head-img) {
-  @apply w-full h-full object-cover brightness-75;
+  @apply w-full h-full object-cover brightness-[0.65];
+}
+.head-img-layout {
+  @apply min-h-screen grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+// .head-img-layout {
+//   @apply min-h-screen flex flex-col;
+// }
+// .content {
+//   @apply grow flex flex-col;
+// }
+.content {
+  @apply min-h-0 overflow-hidden;
 }
 </style>

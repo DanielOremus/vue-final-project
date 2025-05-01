@@ -1,6 +1,8 @@
 <template>
   <div class="main-layout">
-    <Header />
+    <slot name="header">
+      <Header />
+    </slot>
     <div class="content">
       <slot></slot>
     </div>
@@ -13,7 +15,6 @@
 <script>
 import Header from "@/components/sections/Header/index.vue"
 import Footer from "@/components/sections/Footer/index.vue"
-//TODO: fix content-height and productsList loading height
 export default {
   name: "MainMasterPage",
   components: {
