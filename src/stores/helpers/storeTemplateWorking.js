@@ -2,7 +2,7 @@ import apiEndpoints from "@/constants/apiEndpoints"
 import api from "@/config/axios"
 import pluralize from "pluralize"
 import { generalApiOperation } from "./generalApiOperation"
-
+//!!DEPRECATED
 function getDataNames(storeName) {
   const pluralLower = storeName
   const pluralCapital = storeName[0].toUpperCase() + pluralLower.slice(1)

@@ -1,6 +1,9 @@
 <template>
   <div class="product-card">
     <div class="product-image__container group">
+      <div v-show="isLoading" class="absolute top-0 left-0 w-full h-full">
+        <shimmer-overlay />
+      </div>
       <img class="product-image" :src="product.image" />
       <div class="add-to-cart-btn">
         {{ $t("views.shop.buttons.addToCart") }}
@@ -26,6 +29,10 @@ export default {
       type: Object,
       required: true,
     },
+    isLoading: {
+      type: Boolean,
+      required: true,
+    },
   },
   computed: {
     roundedProductPrice() {
@@ -41,8 +48,9 @@ export default {
   @apply text-zinc-800 flex flex-col gap-4;
 }
 .product-image__container {
-  @apply relative h-[42rem] overflow-hidden w-auto bg-surface-200;
+  @apply relative h-[38rem] overflow-hidden bg-surface-200;
 }
+
 .product-image {
   @apply object-cover;
 }

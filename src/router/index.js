@@ -18,6 +18,9 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  scrollBehavior(to, from) {
+    return { top: 0, behavior: "smooth" }
+  },
 })
 
 router.beforeEach(async (to) => {

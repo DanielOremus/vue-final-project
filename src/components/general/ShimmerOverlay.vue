@@ -1,0 +1,39 @@
+<template>
+  <div class="shimmer-overlay"></div>
+</template>
+
+<script>
+export default {
+  name: "ShimmerOverlay",
+}
+</script>
+
+<style lang="scss" scoped>
+.shimmer-overlay {
+  @apply relative w-full h-full bg-surface-200;
+}
+.shimmer-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200%;
+  width: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 75%
+  );
+  transform: translate(-100%, -100%);
+  animation: shimmer 1.8s infinite;
+}
+@keyframes shimmer {
+  0% {
+    transform: translate(-100%, -100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+</style>

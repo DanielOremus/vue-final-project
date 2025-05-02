@@ -1,10 +1,10 @@
 import { defineStore } from "pinia"
 import QueryHelper from "../helpers/QueryHelper"
 import { fieldsConfig } from "@/constants/product"
+import { generalStoreObj } from "../helpers/generalStoreObj"
 export const useProductsFiltersStore = defineStore("productsFilters", {
   state: () => ({
-    loading: false,
-    error: null,
+    ...generalStoreObj.state,
     categoriesList: [],
 
     //...other filters,
@@ -16,8 +16,7 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
     },
   }),
   getters: {
-    isLoading: (state) => state.loading,
-    hasError: (state) => state.error,
+    ...generalStoreObj.getters,
     productsQueryObj: (state) => {
       const query = QueryHelper.prepareQuery(
         fieldsConfig,
@@ -29,6 +28,7 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
     },
   },
   actions: {
+    ...generalStoreObj.actions,
     setFilterValue(filterName, filterValue) {
       this.selectedFilters[filterName] = filterValue
     },
