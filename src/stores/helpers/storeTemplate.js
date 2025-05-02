@@ -37,15 +37,25 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
     state: {
       [namedState.itemsList]: [],
       [namedState.currentItem]: null,
+      startPage: 0,
+      perPage: 8,
+      total: null,
     },
 
     actions: {
-      async [namedActions.fetchItems]() {
+      async [namedActions.fetchItems](query) {
         const response = await generalApiOperation.call(this, {
-          operation: () => api.get(apiEndpoints[storeName].fetchList()),
+          operation: () =>
+            api.get(apiEndpoints[storeName].fetchList(), {
+              params: query,
+            }),
+
           successCallback: (response) => {
             const resData = response.data
             this[namedState.itemsList] = resData.data[storeName]
+            this.page = resData.data.page
+            this.perPage = resData.data.perPage
+            this.total = resData.data.count
           },
         })
       },

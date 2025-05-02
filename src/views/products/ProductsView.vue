@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import { useProductsStore } from "@/stores/products"
+import { useProductsStore } from "@/stores/products/index"
+import { useProductsFiltersStore } from "@/stores/products/filters"
 import { mapState, mapActions } from "pinia"
 import ProductsList from "@/components/products/ProductsList/index.vue"
 export default {
@@ -19,12 +20,13 @@ export default {
   },
   computed: {
     ...mapState(useProductsStore, ["isLoading", "productsList"]),
+    ...mapState(useProductsFiltersStore, ["productsQueryObj"]),
   },
   methods: {
     ...mapActions(useProductsStore, ["fetchProducts"]),
   },
   mounted() {
-    this.fetchProducts()
+    this.fetchProducts(this.productsQueryObj)
   },
 }
 </script>

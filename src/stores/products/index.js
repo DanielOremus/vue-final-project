@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
-import { generalStoreObj } from "./helpers/generalStoreObj"
-import { getStoreTemplateObj } from "./helpers/storeTemplate"
+import { generalStoreObj } from "../helpers/generalStoreObj"
+import { getStoreTemplateObj } from "../helpers/storeTemplate"
 
 const storeTemplateObj = getStoreTemplateObj(
   "products",
