@@ -7,7 +7,7 @@
     :resolver="resolver"
     @submit="onSubmit"
   >
-    <Divider :pt="{ content: 'bg-transparent' }">
+    <Divider>
       <h1 class="text-3xl text-center font-semibold text-slate-200 mb-2">
         {{ $t(`views.auth.title.registerForm`) }}
       </h1>
