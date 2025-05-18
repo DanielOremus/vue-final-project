@@ -1,28 +1,30 @@
 <template>
   <div class="form-container">
     <Form
-      v-slot="$product"
       :key="currentProduct"
-      class="flex flex-col gap-4"
-      :validate-on-submit="true"
-      :validate-on-value-update="false"
-      :resolver="validator"
+      class="flex flex-col gap-3"
+      :resolver="resolver"
       @submit="onSubmit"
     >
-      <FormField #default="$field" name="toDeleteImg" class="flex justify-end">
+      <FormField
+        #default="$field"
+        name="toDeleteImg"
+        :initial-value="false"
+        class="flex justify-end"
+      >
         <label
           class="flex cursor-pointer items-center text-lg text-slate-400 gap-4"
         >
-          {{ $t("views.productEdit.fields.deleteImage") }}
+          {{ $t("views.productEdit.messages.deleteImg") }}
           <ToggleSwitch />
         </label>
       </FormField>
-      <div class="row">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <FormField
           #default="$field"
           name="name"
           :initial-value="currentProduct?.name"
-          class="flex flex-col gap-1 basis-1/2"
+          class="flex flex-col gap-1"
         >
           <InputText
             :placeholder="$t('views.productEdit.fields.name')"
@@ -41,7 +43,7 @@
           #default="$field"
           name="category"
           :initial-value="currentProduct?.category.value"
-          class="flex flex-col gap-1 basis-1/2"
+          class="flex flex-col gap-1"
         >
           <Select
             :options="categoriesList"
@@ -61,13 +63,8 @@
             >{{ $field.error?.message }}</Message
           >
         </FormField>
-      </div>
-      <div class="row">
-        <FormField
-          #default="$field"
-          name="price"
-          class="flex flex-col gap-1 basis-1/2"
-        >
+
+        <FormField #default="$field" name="price" class="flex flex-col gap-1">
           <InputNumber
             mode="currency"
             currency="UAH"
@@ -85,11 +82,7 @@
             >{{ $field.error?.message }}</Message
           >
         </FormField>
-        <FormField
-          #default="$field"
-          name="mass"
-          class="flex flex-col gap-1 basis-1/2"
-        >
+        <FormField #default="$field" name="mass" class="flex flex-col gap-1">
           <InputText
             :placeholder="$t('views.productEdit.fields.mass')"
             size="large"
@@ -130,13 +123,15 @@
         @select="onNewFileSelected"
         :caption="$t('views.productEdit.fields.image')"
       />
-      <div class="row">
-        <Button class="basis-1/2" severity="secondary" @click="onBack">{{
+      <div class="grid grid-cols-2 gap-3 font-medium">
+        <Button severity="danger" @click="onCancel">{{
           $t("buttons.cancel")
         }}</Button>
-        <Button type="submit" class="basis-1/2" severity="secondary">{{
-          btnTitle
-        }}</Button>
+        <Button
+          type="submit"
+          :severity="currentProduct?._id ? 'info' : 'success'"
+          >{{ btnTitle }}</Button
+        >
       </div>
     </Form>
   </div>
@@ -198,12 +193,12 @@ export default {
           image: this.isNewImageSelected ? this.currentImage : undefined,
         })
       }
-      if (!this.error) {
-        this.$router.push({ name: "productsList" })
+      if (!this.productsStore.hasError) {
+        this.$router.push({ name: "shop" })
       } //TODO: add error render
     },
-    onBack() {
-      this.$router.push({ name: "productsList" })
+    onCancel() {
+      this.$router.push({ name: "shop" })
     },
     async createFileFromImg(imgSrc) {
       if (!imgSrc) return
@@ -223,6 +218,7 @@ export default {
       return this.$t(`categories.${category.value}`)
     },
   },
+  //TODO: розібрати код
   watch: {
     currentProduct: {
       handler: async function (newValue) {
@@ -242,7 +238,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.row {
-  @apply flex gap-4;
+.form-container {
+  @apply w-full max-w-[800px];
 }
 </style>

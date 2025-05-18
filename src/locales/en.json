@@ -9,7 +9,8 @@
     "delete": "Delete",
     "cancel": "Cancel",
     "apply": "Apply",
-    "clear": "Clear"
+    "clear": "Clear",
+    "browse": "Browse"
   },
   "validation": {
     "mixed": {
@@ -76,6 +77,9 @@
         "category": "Category",
         "description": "Description",
         "image": "Image"
+      },
+      "messages": {
+        "deleteImg": "Delete Image?"
       }
     },
     "auth": {

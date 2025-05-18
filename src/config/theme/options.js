@@ -14,5 +14,11 @@ export default {
     inputText: {
       root: "border-2",
     },
+    textArea: {
+      root: "border-2",
+    },
+    select: {
+      root: "border-2",
+    },
   },
 }

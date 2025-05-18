@@ -20,6 +20,6 @@ export default {
 
 <style lang="scss" scoped>
 .page-content {
-  @apply h-full flex justify-center;
+  @apply h-full flex justify-center mx-4 my-6;
 }
 </style>

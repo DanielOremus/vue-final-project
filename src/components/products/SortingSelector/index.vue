@@ -1,15 +1,16 @@
 <template>
   <SingleSelect
     v-model="selectedSorting"
-    :option-config="config"
+    :option-config="settings.optionConfig"
     :options="sortingOptions"
     :placeholder="placeholder"
-    :dt="selectorDt"
+    :dt="settings.selectDt"
+    :pt="settings.selectPt"
   />
 </template>
 
 <script>
-import { optionConfig, selectDt } from "./settings"
+import { optionConfig, selectDt, selectPt } from "./settings"
 import { useProductsFiltersStore } from "@/stores/products/filters"
 import { mapState } from "pinia"
 import SingleSelect from "@/components/general/SingleSelect.vue"
@@ -29,11 +30,8 @@ export default {
   },
   computed: {
     ...mapState(useProductsFiltersStore, ["sortingOptions"]),
-    config() {
-      return optionConfig
-    },
-    selectorDt() {
-      return selectDt
+    settings() {
+      return { optionConfig, selectDt, selectPt }
     },
     selectedSorting: {
       get() {

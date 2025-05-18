@@ -9,7 +9,8 @@
     "delete": "Видалити",
     "cancel": "Відмінити",
     "apply": "Застосувати",
-    "clear": "Очистити"
+    "clear": "Очистити",
+    "browse": "Обрати"
   },
   "validation": {
     "mixed": {
@@ -76,6 +77,9 @@
         "category": "Категорія",
         "description": "Опис",
         "image": "Зображення"
+      },
+      "messages": {
+        "deleteImg": "Видалити зображення?"
       }
     },
     "auth": {

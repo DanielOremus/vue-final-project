@@ -7,6 +7,8 @@
     :options="options"
     :option-label="optionConfig.label"
     :option-value="optionConfig.value"
+    :dt="dt"
+    :pt="pt"
   >
   </Select>
 </template>
@@ -19,6 +21,10 @@ export default {
       type: [Number, String, Object],
     },
     dt: {
+      type: Object,
+      default: () => ({}),
+    },
+    pt: {
       type: Object,
       default: () => ({}),
     },

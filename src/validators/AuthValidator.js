@@ -1,10 +1,9 @@
 import * as yup from "yup"
-import { setLocale } from "yup"
 import i18n from "@/plugins/i18n"
 
 const $t = i18n.global.t
 
-setLocale({
+yup.setLocale({
   mixed: {
     required: ({ path }) =>
       $t("validation.mixed.required", {

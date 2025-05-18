@@ -6,7 +6,7 @@
   @apply h-header-height z-50;
 }
 .header-container {
-  @apply min-w-full bg-zinc-950 h-full pl-32 pr-8 flex justify-between;
+  @apply min-w-full bg-zinc-950 h-full pl-[clamp(1rem,6.914vw-0.296rem,8rem)] pr-[clamp(1rem,0.988vw+0.815rem,2rem)] flex justify-between;
 }
 .menu {
   @apply w-full h-full flex items-center justify-end gap-20;
