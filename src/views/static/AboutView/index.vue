@@ -1,5 +1,8 @@
 <template>
-  <head-img-layout head-img-src="@/assets/images/pages-head-images/about.jpg">
+  <head-img-layout
+    head-img-src="@/assets/images/pages-head-images/about.jpg"
+    :content-overflow-hidden="true"
+  >
     <general-section />
     <info-section />
     <div class="brands-carousel__container">

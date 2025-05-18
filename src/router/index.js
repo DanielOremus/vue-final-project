@@ -25,15 +25,15 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   const authStore = useAuthStore()
-  if (!authStore.isAuthenticated) {
+  if (!authStore.hasTriedUserFetch) {
     await authStore.fetchProfileData()
-
-    if (to.meta?.requiresAuth) {
-      if (!authStore.isAuthenticated) {
-        return { name: "login", query: { redirect: to.fullPath } }
-      }
+  }
+  if (to.meta?.requiresAuth) {
+    if (!authStore.isAuthenticated) {
+      return { name: "login", query: { redirect: to.fullPath } }
     }
   }
+
   const permissions = authStore.userPermissions
 
   if (to.meta?.hasAccess && !to.meta.hasAccess(permissions, to.params)) {

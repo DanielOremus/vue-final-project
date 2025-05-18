@@ -16,21 +16,33 @@ export const fieldsConfig = [
   },
 ]
 
-export const sortOptions = [
+export const sortingOptions = [
   {
-    field: "name",
-    order: 1,
+    title: "Name: A-Z",
+    value: {
+      field: "name",
+      order: 1,
+    },
   },
   {
-    field: "name",
-    order: -1,
+    title: "Name: Z-A",
+    value: {
+      field: "name",
+      order: -1,
+    },
   },
   {
-    field: "price",
-    order: 1,
+    title: "Price: Low-High",
+    value: {
+      field: "price",
+      order: 1,
+    },
   },
   {
-    field: "price",
-    order: -1,
+    title: "Price: High-Low",
+    value: {
+      field: "price",
+      order: -1,
+    },
   },
 ]

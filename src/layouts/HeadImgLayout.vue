@@ -13,7 +13,7 @@
         </div>
       </slot>
     </div>
-    <div class="content">
+    <div class="content" :class="{ 'overflow-hidden': contentOverflowHidden }">
       <slot></slot>
     </div>
     <slot name="footer">
@@ -35,6 +35,10 @@ export default {
     headImgSrc: {
       type: String,
       default: null,
+    },
+    contentOverflowHidden: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -69,6 +73,6 @@ export default {
 //   @apply grow flex flex-col;
 // }
 .content {
-  @apply min-h-0 overflow-hidden;
+  @apply min-h-0;
 }
 </style>

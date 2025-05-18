@@ -7,7 +7,9 @@
     "edit": "Редагувати",
     "update": "Оновити",
     "delete": "Видалити",
-    "cancel": "Відмінити"
+    "cancel": "Відмінити",
+    "apply": "Застосувати",
+    "clear": "Очистити"
   },
   "validation": {
     "mixed": {
@@ -32,8 +34,8 @@
         "menu": "Головна"
       },
       "messages": {
-        "main": "Не відступай",
-        "extra": "Прийди в форму!",
+        "main": "Прийди в форму",
+        "extra": "",
         "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolores id veniam accusantium consectetur commodi perspiciatis optio amet odio, tempore beatae fuga expedita aperiam quaerat, ullam, voluptates"
       },
       "buttons": {
@@ -53,6 +55,27 @@
       },
       "buttons": {
         "addToCart": "Додати в кошик"
+      },
+      "fields": {
+        "price": "Ціна",
+        "category": "Категорія",
+        "search": "Пошук",
+        "from": "Від",
+        "to": "До"
+      }
+    },
+    "productEdit": {
+      "title": {
+        "menu": "Редагування",
+        "page": "Редагування продукту"
+      },
+      "fields": {
+        "name": "Назва продукту",
+        "price": "Ціна",
+        "mass": "Маса (g)",
+        "category": "Категорія",
+        "description": "Опис",
+        "image": "Зображення"
       }
     },
     "auth": {

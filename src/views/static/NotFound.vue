@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="page-content">
     <div class="flex flex-col h-full justify-center items-center">
       <img
         src="@/assets/images/pages-inner-images/not-found/404.png"
@@ -33,5 +33,8 @@ export default {
 }
 .not-found-img {
   @apply max-w-screen-sm;
+}
+.page-content {
+  @apply h-screen;
 }
 </style>

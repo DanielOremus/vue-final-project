@@ -20,10 +20,11 @@ export const productRoutes = [
             const id = routeParams?.id
 
             return id
-              ? permissions?.products.edit
+              ? permissions?.products.update
               : permissions?.products.create
           },
         },
+        component: () => import("@/views/products/ProductEditView.vue"),
       },
     ],
   },

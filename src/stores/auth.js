@@ -7,6 +7,7 @@ export const useAuthStore = defineStore("auth", {
     user: null,
     loading: false,
     error: null,
+    hasTriedUserFetch: false,
   }),
   getters: {
     isAuthenticated: (state) => !!state.user,
@@ -35,6 +36,7 @@ export const useAuthStore = defineStore("auth", {
     },
     async fetchProfileData() {
       this.startLoading()
+      this.hasTriedUserFetch = true
       try {
         const response = await api.get(apiEndpoints.auth.fetchProfile)
         const resData = response.data

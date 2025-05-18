@@ -1,9 +1,11 @@
 <template>
   <main-layout>
-    <div class="form-wrapper">
-      <div class="form-container">
-        <component :is="formComponent" @form-submit="signUser" />
-      </div>
+    <div class="page-content">
+      <component
+        :is="formComponent"
+        @form-submit="signUser"
+        class="fixed top-[20%]"
+      />
     </div>
   </main-layout>
 </template>
@@ -58,12 +60,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form-wrapper {
+.page-content {
   @apply h-full flex justify-center;
 }
-.form-container {
-  @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] fixed top-[20%];
-}
+
 :deep(.link) {
   @apply text-slate-400 text-[0.95rem] hover:underline hover:cursor-pointer w-fit;
 }

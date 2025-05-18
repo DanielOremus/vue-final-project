@@ -1,0 +1,44 @@
+.product-card {
+  font-family: "Outfit", sans-serif;
+  @apply text-zinc-800 flex flex-col gap-4;
+}
+.product-image__container {
+  @apply relative h-[38rem] overflow-hidden bg-surface-200;
+}
+
+.product-image {
+  @apply object-cover;
+}
+.product-data__container {
+  & > :first-child,
+  & > :last-child {
+    @apply flex justify-between;
+  }
+  & > :first-child {
+    @apply pb-2;
+  }
+  & > :last-child {
+    @apply border-t-[1.5px] border-surface-400 pt-2;
+  }
+}
+.product-name {
+  @apply text-xl font-semibold uppercase;
+}
+.product-mass {
+}
+.product-price {
+  @apply text-[1.15rem] italic font-medium;
+}
+.add-to-cart-btn {
+  @apply absolute left-0 bottom-0 w-full h-10 bg-black flex justify-center items-center translate-y-full group-hover:translate-y-0 transition-transform will-change-transform duration-300 uppercase text-white cursor-pointer;
+}
+.edit-icon,
+.delete-icon {
+  @apply cursor-pointer text-black text-2xl transition-colors duration-200;
+}
+.edit-icon {
+  @apply hover:text-blue-400;
+}
+.delete-icon {
+  @apply hover:text-red-700;
+}

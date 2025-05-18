@@ -32,7 +32,7 @@
 import NavMenu from "./components/NavMenu.vue"
 import LanguageSelector from "@/components/general/LanguageSelector/index.vue"
 import CartSection from "./components/CartSection.vue"
-import ProfileSection from "./components/ProfileSection.vue"
+import ProfileSection from "./components/ProfileSection/index.vue"
 export default {
   name: "Header",
   components: {

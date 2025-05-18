@@ -6,6 +6,8 @@
           :key="product._id"
           :product="product"
           :is-loading="isLoading"
+          @product-delete="$emit('product-delete', $event)"
+          @product-edit="$emit('product-edit', $event)"
         />
       </div>
     </div>
@@ -21,7 +23,7 @@
 </template>
 
 <script>
-import ProductCard from "./ProductCard.vue"
+import ProductCard from "./ProductCard/index.vue"
 import LoadingSpinner from "@/components/general/LoadingSpinner.vue"
 export default {
   name: "ProductsList",
@@ -44,6 +46,6 @@ export default {
 
 <style lang="scss" scoped>
 .products-list {
-  @apply grid justify-center grid-rows-[auto] gap-y-12 gap-x-10 grid-cols-[repeat(1,minmax(350px,500px))] md:grid-cols-[repeat(2,minmax(350px,500px))];
+  @apply grid justify-center grid-rows-[auto] gap-y-12 gap-x-10 grid-cols-[repeat(1,minmax(350px,450px))] lg:grid-cols-[repeat(2,minmax(380px,450px))] 2xl:grid-cols-[repeat(3,minmax(380px,450px))];
 }
 </style>

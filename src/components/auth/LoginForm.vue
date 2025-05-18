@@ -1,68 +1,70 @@
 <template>
-  <Form
-    v-slot="$credentials"
-    class="flex flex-col gap-4"
-    :validate-on-submit="true"
-    :validate-on-value-update="false"
-    :resolver="resolver"
-    @submit="onSubmit"
-  >
-    <Divider>
-      <h1 class="text-3xl text-center font-semibold text-slate-200 mb-2">
-        {{ $t(`views.auth.title.loginForm`) }}
-      </h1>
-    </Divider>
-    <div class="flex flex-col gap-1">
-      <InputText
-        name="email"
-        :placeholder="$t('views.auth.fields.email')"
-        size="large"
-        fluid
-      />
-      <Message
-        v-if="$credentials.email?.invalid"
-        severity="error"
-        size="small"
-        variant="simple"
-        >{{ $credentials.email.error?.message }}</Message
-      >
-    </div>
-    <div class="flex flex-col gap-1">
-      <Password
-        name="password"
-        :placeholder="$t('views.auth.fields.password')"
-        size="large"
-        :feedback="false"
-        fluid
-        toggle-mask
-      />
-      <Message
-        v-if="$credentials.password?.invalid"
-        severity="error"
-        size="small"
-        variant="simple"
-        >{{ $credentials.password.error?.message }}</Message
-      >
-      <div class="mt-1 flex justify-between">
-        <span class="link">
-          <router-link :to="{ name: 'register' }">
-            {{ $t(`views.auth.messages.noAccountYet`) }}
-          </router-link>
-        </span>
-        <span class="link">
-          <router-link :to="{ name: 'home' }">
-            {{ $t(`views.auth.messages.backToHome`) }}
-          </router-link>
-        </span>
+  <div class="form-container">
+    <Form
+      v-slot="$credentials"
+      class="flex flex-col gap-4"
+      :validate-on-submit="true"
+      :validate-on-value-update="false"
+      :resolver="resolver"
+      @submit="onSubmit"
+    >
+      <Divider>
+        <h1 class="text-3xl text-center font-semibold text-slate-200 mb-2">
+          {{ $t(`views.auth.title.loginForm`) }}
+        </h1>
+      </Divider>
+      <div class="flex flex-col gap-1">
+        <InputText
+          name="email"
+          :placeholder="$t('views.auth.fields.email')"
+          size="large"
+          fluid
+        />
+        <Message
+          v-if="$credentials.email?.invalid"
+          severity="error"
+          size="small"
+          variant="simple"
+          >{{ $credentials.email.error?.message }}</Message
+        >
       </div>
-    </div>
-    <Message v-if="error" size="small" variant="simple" severity="error">
-      {{ errorMessage }}
-    </Message>
-    <basic-button type="submit" block>
-      {{ $t(`views.auth.buttons.login`) }}
-    </basic-button>
-  </Form>
+      <div class="flex flex-col gap-1">
+        <Password
+          name="password"
+          :placeholder="$t('views.auth.fields.password')"
+          size="large"
+          :feedback="false"
+          fluid
+          toggle-mask
+        />
+        <Message
+          v-if="$credentials.password?.invalid"
+          severity="error"
+          size="small"
+          variant="simple"
+          >{{ $credentials.password.error?.message }}</Message
+        >
+        <div class="mt-1 flex justify-between">
+          <span class="link">
+            <router-link :to="{ name: 'register' }">
+              {{ $t(`views.auth.messages.noAccountYet`) }}
+            </router-link>
+          </span>
+          <span class="link">
+            <router-link :to="{ name: 'home' }">
+              {{ $t(`views.auth.messages.backToHome`) }}
+            </router-link>
+          </span>
+        </div>
+      </div>
+      <Message v-if="error" size="small" variant="simple" severity="error">
+        {{ errorMessage }}
+      </Message>
+      <basic-button type="submit" block>
+        {{ $t(`views.auth.buttons.login`) }}
+      </basic-button>
+    </Form>
+  </div>
 </template>
 
 <script>
@@ -86,4 +88,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.form-container {
+  @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px];
+}
+</style>

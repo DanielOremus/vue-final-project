@@ -20,9 +20,10 @@ export const generalStoreObj = {
     },
     async generalApiOperation({ operation, successCallback, errorCallback }) {
       this.startLoading()
-
       try {
-        const response = await operation()
+        const response = await new Promise((res) =>
+          setTimeout(() => res(operation()), 2000)
+        )
         if (successCallback) successCallback(response)
         return response
       } catch (error) {

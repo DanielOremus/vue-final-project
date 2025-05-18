@@ -13,7 +13,7 @@
 <script>
 import { mapState, mapActions } from "pinia"
 import { useAuthStore } from "@/stores/auth"
-import { showConfirmation } from "@/primeVueServiceHelpers/confirmationDialog"
+import { logoutDialogSettings } from "./settings"
 export default {
   name: "ProfileSection",
   computed: {
@@ -22,24 +22,13 @@ export default {
   methods: {
     ...mapActions(useAuthStore, ["logout"]),
     onLogout() {
-      const dialogSettings = {
-        message: "Do you really want to log out?",
-        header: "Are you sure?",
-        rejectProps: {
-          label: "Cancel",
-          severity: "secondary",
-          outlined: true,
-        },
-        acceptProps: {
-          label: "Log out",
-          severity: "danger",
-        },
+      this.$confirm.require({
+        ...logoutDialogSettings,
         accept: () => {
           this.logout()
           this.$router.push({ name: "home" })
         },
-      }
-      showConfirmation(this.$confirm, dialogSettings)
+      })
     },
     onSign() {
       this.$router.push({ name: "login" })

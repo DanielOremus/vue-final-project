@@ -7,7 +7,9 @@
     "edit": "Edit",
     "update": "Update",
     "delete": "Delete",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "clear": "Clear"
   },
   "validation": {
     "mixed": {
@@ -53,6 +55,27 @@
       },
       "buttons": {
         "addToCart": "Add to cart"
+      },
+      "fields": {
+        "price": "Price",
+        "category": "Category",
+        "search": "Search",
+        "from": "From",
+        "to": "To"
+      }
+    },
+    "productEdit": {
+      "title": {
+        "menu": "Edit",
+        "page": "Product Edit"
+      },
+      "fields": {
+        "name": "Product Name",
+        "price": "Price",
+        "mass": "Mass (g)",
+        "category": "Category",
+        "description": "Description",
+        "image": "Image"
       }
     },
     "auth": {

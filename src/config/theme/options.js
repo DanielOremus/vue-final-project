@@ -10,4 +10,9 @@ export default {
       darkModeSelector: ".dark",
     },
   },
+  pt: {
+    inputText: {
+      root: "border-2",
+    },
+  },
 }
