@@ -79,7 +79,7 @@
         "image": "Image"
       },
       "messages": {
-        "deleteImg": "Delete Image?"
+        "deleteImg": "Delete preview image"
       }
     },
     "auth": {

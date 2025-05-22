@@ -4,7 +4,7 @@
       <div v-show="isLoading" class="absolute top-0 left-0 w-full h-full">
         <shimmer-overlay />
       </div>
-      <img class="product-image" :src="product.image" />
+      <img class="product-image" :src="product.image ?? noImage" />
       <div class="add-to-cart-btn">
         {{ $t("views.shop.buttons.addToCart") }}
       </div>
@@ -36,7 +36,7 @@
 <script>
 import { useAuthStore } from "@/stores/auth"
 import { mapState } from "pinia"
-import { deleteDialogSettings } from "./settings"
+import { deleteDialogSettings, noImage } from "./settings"
 export default {
   name: "ProductCard",
   props: {
@@ -54,7 +54,12 @@ export default {
     roundedProductPrice() {
       return this.product.price.toFixed(2)
     },
+    noImage() {
+      return noImage
+    },
   },
+
+  //TODO: Fix image showing when shimmer
   methods: {
     onEdit() {
       this.$emit("product-edit", this.product._id)

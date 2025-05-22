@@ -1,2 +1,6 @@
 @import url(../components/index.scss);
 @import url(../fonts/index.scss);
+
+body {
+  @apply overflow-y-scroll;
+}

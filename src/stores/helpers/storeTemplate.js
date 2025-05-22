@@ -1,6 +1,7 @@
 import apiEndpoints from "@/constants/apiEndpoints"
 import api from "@/config/axios"
 import pluralize from "pluralize"
+import { packInFormData } from "./index"
 
 function getDataNames(storeName) {
   const pluralLower = storeName
@@ -20,6 +21,7 @@ function getDataNames(storeName) {
       createItem: `create${singularCapital}`,
       updateItem: `update${singularCapital}`,
       deleteItem: `delete${singularCapital}`,
+      clearCurrentItem: `clearCurrent${singularCapital}`,
     },
     nameVariations: {
       singularLower,
@@ -74,8 +76,11 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
         })
       },
       async [namedActions.createItem](itemData) {
+        const itemFormData = packInFormData(itemData)
+
         const response = await generalApiOperation.call(this, {
-          operation: () => api.post(apiEndpoints[storeName].create(), itemData),
+          operation: () =>
+            api.post(apiEndpoints[storeName].create(), itemFormData),
           successCallback: (response) => {
             const resData = response.data
             this[namedState.itemsList].push(
@@ -85,9 +90,11 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
         })
       },
       async [namedActions.updateItem](itemData) {
+        const itemFormData = packInFormData(itemData)
+
         const response = await generalApiOperation.call(this, {
           operation: () =>
-            api.put(apiEndpoints[storeName].updateItem(itemData._id), itemData),
+            api.put(apiEndpoints[storeName].update(itemData._id), itemFormData),
           successCallback: (response) => {
             const resData = response.data
             const updatedItem = resData.data[nameVariations.singularLower]
@@ -114,6 +121,10 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
       },
       setListPage(pageNumber) {
         this.currentPage = pageNumber
+      },
+      [namedActions.clearCurrentItem]() {
+        this[namedState.currentItem] = null
+        this.setError(null)
       },
     },
   }

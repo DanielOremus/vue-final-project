@@ -1,3 +1,5 @@
+import noImageAvailable from "@/assets/images/no-image.jpg"
+
 export const deleteDialogSettings = {
   message: "Do you really want to delete this product?",
   header: "Are you sure?",
@@ -11,3 +13,5 @@ export const deleteDialogSettings = {
     severity: "danger",
   },
 }
+
+export const noImage = noImageAvailable

@@ -1,14 +1,15 @@
 <template>
   <div class="form-container">
     <Form
-      :key="currentProduct"
       class="flex flex-col gap-3"
+      #default="$productForm"
+      :key="currentProduct"
       :resolver="resolver"
       @submit="onSubmit"
     >
       <FormField
         #default="$field"
-        name="toDeleteImg"
+        name="shouldDeleteImg"
         :initial-value="false"
         class="flex justify-end"
       >
@@ -47,7 +48,7 @@
         >
           <Select
             :options="categoriesList"
-            :loading="loading"
+            :loading="areCategoriesLoading"
             :option-label="getTranslatedCategory"
             option-value="value"
             :placeholder="$t('views.productEdit.fields.category')"
@@ -64,13 +65,18 @@
           >
         </FormField>
 
-        <FormField #default="$field" name="price" class="flex flex-col gap-1">
+        <FormField
+          #default="$field"
+          name="price"
+          class="flex flex-col gap-1"
+          :initial-value="currentProduct?.price"
+        >
           <InputNumber
             mode="currency"
             currency="UAH"
             locale="de-DE"
-            :placeholder="$t('views.productEdit.fields.price')"
             size="large"
+            :placeholder="$t('views.productEdit.fields.price')"
             :min="0"
             fluid
           />
@@ -82,7 +88,12 @@
             >{{ $field.error?.message }}</Message
           >
         </FormField>
-        <FormField #default="$field" name="mass" class="flex flex-col gap-1">
+        <FormField
+          #default="$field"
+          name="mass"
+          class="flex flex-col gap-1"
+          :initial-value="currentProduct?.mass"
+        >
           <InputText
             :placeholder="$t('views.productEdit.fields.mass')"
             size="large"
@@ -101,6 +112,7 @@
         #default="$field"
         name="description"
         class="flex flex-col gap-1"
+        :initial-value="currentProduct?.description"
       >
         <Textarea
           rows="5"
@@ -130,6 +142,7 @@
         <Button
           type="submit"
           :severity="currentProduct?._id ? 'info' : 'success'"
+          :disabled="!$productForm.valid"
           >{{ btnTitle }}</Button
         >
       </div>
@@ -138,8 +151,6 @@
 </template>
 
 <script>
-import { useProductsStore } from "@/stores/products"
-import { mapActions, mapState, mapStores } from "pinia"
 import { yupResolver } from "@primevue/forms/resolvers/yup"
 import ProductValidator from "@/validators/ProductValidator"
 import ImageUpload from "./components/ImageUploader.vue"
@@ -148,6 +159,28 @@ export default {
   components: {
     ImageUpload,
   },
+  props: {
+    currentProduct: {
+      type: Object,
+      default: null,
+    },
+    categoriesList: {
+      type: Array,
+      default: () => [],
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    areCategoriesLoading: {
+      type: Boolean,
+      default: false,
+    },
+    error: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       isNewImageSelected: false,
@@ -155,50 +188,28 @@ export default {
     }
   },
   computed: {
-    ...mapStores(useProductsStore),
-    ...mapState(useProductsStore, ["hasError", "isLoading"]),
     resolver() {
       return yupResolver(ProductValidator.defaultSchema)
-    },
-    currentProduct() {
-      return this.productsStore.currentProduct
     },
     btnTitle() {
       return this.currentProduct?._id
         ? this.$t("buttons.update")
         : this.$t("buttons.create")
     },
-    initialData() {
-      if (!this.currentProduct) return { toDeleteImg: false }
-      return {
-        ...this.currentProduct,
-        category: this.currentProduct.category._id,
-        toDeleteImg: false,
-      }
-    },
   },
   methods: {
-    ...mapActions(useProductsStore, ["createProduct", "updateProduct"]),
-    async onSubmit(form) {
+    onSubmit(form, e) {
       if (!form.valid) return
-      if (this.currentProduct?._id) {
-        await this.updateProduct({
-          ...form.values,
-          _id: this.currentProduct._id,
-          image: this.isNewImageSelected ? this.currentImage : undefined,
-        })
-      } else {
-        await this.createProduct({
-          ...form.values,
-          image: this.isNewImageSelected ? this.currentImage : undefined,
-        })
+      const productData = {
+        ...form.values,
+        _id: this.currentProduct?._id,
+        image: this.isNewImageSelected ? this.currentImage : undefined,
       }
-      if (!this.productsStore.hasError) {
-        this.$router.push({ name: "shop" })
-      } //TODO: add error render
+
+      this.$emit("submitProduct", productData)
     },
     onCancel() {
-      this.$router.push({ name: "shop" })
+      this.$emit("cancel")
     },
     async createFileFromImg(imgSrc) {
       if (!imgSrc) return
@@ -209,28 +220,21 @@ export default {
     onNewFileSelected() {
       this.isNewImageSelected = true
     },
-    reset() {
-      this.productsStore.$reset()
-      this.isNewImageSelected = false
-      this.currentImage = null
-    },
+    // reset() {
+    //   this.productsStore.$reset()
+    //   this.isNewImageSelected = false
+    //   this.currentImage = null
+    // },
     getTranslatedCategory(category) {
       return this.$t(`categories.${category.value}`)
     },
   },
-  //TODO: розібрати код
   watch: {
     currentProduct: {
       handler: async function (newValue) {
         if (newValue?.image) {
           this.currentImage = await this.createFileFromImg(newValue?.image)
         }
-      },
-    },
-    $route: {
-      immediate: true,
-      handler() {
-        this.reset()
       },
     },
   },
