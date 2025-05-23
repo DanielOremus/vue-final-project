@@ -35,10 +35,14 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
     setFilterValue(filterName, filterValue) {
       this.selectedFilters[filterName] = filterValue
     },
-    setFilters(filtersObj) {
-      this.selectedFilters = JSON.parse(JSON.parse(filtersObj))
+    resetSelectedFilters() {
+      this.selectedFilters = {
+        category: [],
+        name: null,
+        price: [null, null],
+        sort: null,
+      }
     },
-    //TODO: Fix category from disappearing when pinia.reset()
     //TODO: make store reset when leaving
     async fetchFilters() {
       this.startLoading()

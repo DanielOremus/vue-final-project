@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-layout {
-  @apply min-h-screen grid;
+  @apply min-h-screen grid w-full;
   grid-template-rows: auto 1fr auto;
 }
 </style>

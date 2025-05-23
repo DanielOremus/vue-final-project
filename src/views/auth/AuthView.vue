@@ -13,7 +13,9 @@
 <script>
 import { mapActions, mapState } from "pinia"
 import { useAuthStore } from "@/stores/auth"
-import { showToast } from "@/primeVueServiceHelpers/toast"
+import { showAlert } from "@/primeVueServiceHelpers/toast"
+import { errorMessages } from "vue/compiler-sfc"
+import { toastTypes } from "@/constants/toast"
 export default {
   name: "AuthView",
   props: {
@@ -31,29 +33,35 @@ export default {
       if (!["login", "register"].includes(e.form)) return
       await this.authenticate(e.data, e.form)
 
-      const toastSettings = this.getToastSettings(this.hasError)
-      showToast(this.$toast, toastSettings)
+      // this.getAlertSettings(this.hasError)
 
       if (!this.hasError) {
+        showAlert("success", {
+          detail: `You\'ve successfully ${
+            e.form === "login" ? "logged in" : "registered"
+          }! Redirecting...`,
+        })
         setTimeout(() => {
           const redirectPath = this.$route.query?.redirect
           if (redirectPath) this.$router.push(redirectPath)
           else this.$router.push({ name: "home" })
-        }, 4000)
+        }, 3500)
+      } else {
+        console.log(this.hasError)
+
+        showAlert("error", { detail: this.getErrorMessage(this.hasError) })
       }
     },
-    getToastSettings(error) {
-      return error
-        ? {
-            severity: "error",
-            summary: "Oops",
-            detail: "Something went wrong, please try again later!",
-          }
-        : {
-            severity: "success",
-            summary: "Success",
-            detail: "You've successfully logged in! Redirecting...",
-          }
+
+    getErrorMessage(error) {
+      switch (error?.status) {
+        case 401:
+          return "Email or password is incorrect"
+        case 400:
+          return "Provided data is not valid"
+        default:
+          return toastTypes.error.detail
+      }
     },
   },
 }

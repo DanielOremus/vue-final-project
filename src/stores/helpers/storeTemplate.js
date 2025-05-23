@@ -81,12 +81,12 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
         const response = await generalApiOperation.call(this, {
           operation: () =>
             api.post(apiEndpoints[storeName].create(), itemFormData),
-          successCallback: (response) => {
-            const resData = response.data
-            this[namedState.itemsList].push(
-              resData.data[nameVariations.singularLower]
-            )
-          },
+          // successCallback: (response) => {
+          //   const resData = response.data
+          //   this[namedState.itemsList].push(
+          //     resData.data[nameVariations.singularLower]
+          //   )
+          // },
         })
       },
       async [namedActions.updateItem](itemData) {

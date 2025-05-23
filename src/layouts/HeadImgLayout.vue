@@ -63,7 +63,7 @@ export default {
   @apply w-full h-full object-cover brightness-[0.65];
 }
 .head-img-layout {
-  @apply min-h-screen grid;
+  @apply min-h-screen grid w-full;
   grid-template-rows: auto auto 1fr auto;
 }
 // .head-img-layout {

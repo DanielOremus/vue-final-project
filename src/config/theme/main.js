@@ -667,6 +667,10 @@ const MyPreset = definePreset(Aura, {
         background: "rgb(18,18,18)",
       },
     },
+    toast: {
+      detailFontSize: "0.95rem",
+      width: "{width.sm}",
+    },
   },
 })
 

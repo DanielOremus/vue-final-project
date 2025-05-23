@@ -1,4 +1,4 @@
-import noImageAvailable from "@/assets/images/no-image.jpg"
+import noImageAvailable from "@/assets/images/no-image.png"
 
 export const deleteDialogSettings = {
   message: "Do you really want to delete this product?",

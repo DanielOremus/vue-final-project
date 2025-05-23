@@ -16,6 +16,7 @@
 
 <script>
 import { useProductsStore } from "@/stores/products"
+import { useAuthStore } from "@/stores/auth"
 import { mapActions, mapStores } from "pinia"
 import MainLayout from "@/layouts/MainLayout.vue"
 import ProductForm from "@/components/products/ProductForm/index.vue"
@@ -33,7 +34,7 @@ export default {
     },
   },
   computed: {
-    ...mapStores(useProductsStore, useProductsFiltersStore),
+    ...mapStores(useProductsStore, useProductsFiltersStore, useAuthStore),
   },
   methods: {
     ...mapActions(useProductsStore, [
@@ -52,7 +53,15 @@ export default {
       }
       if (!this.productsStore.hasError) {
         this.$router.push({ name: "shop" })
-      } //TODO: add error render
+      } else {
+        if (this.productsStore.hasError.status === 401) {
+          this.authStore.logout()
+          this.$router.push({
+            name: "login",
+            query: { redirect: this.$route.path },
+          })
+        }
+      }
     },
     onCancel() {
       this.$router.push({ name: "shop" })

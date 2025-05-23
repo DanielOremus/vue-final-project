@@ -66,6 +66,11 @@ export default {
       type: Object,
       default: null,
     },
+
+    reset: {
+      type: Number,
+      default: null,
+    },
   },
   computed: {
     checkboxDt() {
@@ -79,6 +84,12 @@ export default {
     onClear() {
       this.selectedCategories = []
       this.onCategoryApply()
+    },
+  },
+
+  watch: {
+    reset() {
+      this.selectedCategories = []
     },
   },
 }

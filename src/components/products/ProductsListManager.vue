@@ -1,13 +1,22 @@
 <template>
   <div class="h-full flex flex-col">
-    <div class="w-full flex justify-between items-center mb-6">
-      <div>
+    <div class="w-full flex justify-between flex-wrap gap-4 items-center mb-6">
+      <div class="w-full lg:w-fit">
         <span class="text-black text-lg font-medium"
           >Showing {{ itemStartIndex }}-{{ itemEndIndex }} of
           {{ productsStore.total }} results</span
         >
       </div>
-      <SortingSelector v-model="selectedSorting" />
+      <div class="grow flex flex-wrap gap-4 justify-between lg:justify-end">
+        <SortingSelector v-model="selectedSorting" class="grow lg:grow-0" />
+        <Button
+          v-if="authStore.userPermissions?.products.create"
+          @click="onProductCreate"
+          severity="success"
+          class="w-full lg:w-fit"
+          >Create Product</Button
+        >
+      </div>
     </div>
     <div class="products-list__wrapper">
       <products-list
@@ -30,6 +39,7 @@
 <script>
 import { useProductsStore } from "@/stores/products/index"
 import { useProductsFiltersStore } from "@/stores/products/filters"
+import { useAuthStore } from "@/stores/auth"
 import { mapActions, mapStores } from "pinia"
 import ProductsList from "@/components/products/ProductsList/index.vue"
 import GeneralPaginator from "@/components/general/GeneralPaginator.vue"
@@ -48,7 +58,7 @@ export default {
     }
   },
   computed: {
-    ...mapStores(useProductsStore, useProductsFiltersStore),
+    ...mapStores(useProductsStore, useProductsFiltersStore, useAuthStore),
     currentPage: {
       get() {
         // return this.sortBy
@@ -111,6 +121,9 @@ export default {
     },
     onProductEdit(id) {
       this.$router.push({ name: "productEdit", params: { id } })
+    },
+    onProductCreate() {
+      this.$router.push({ name: "productEdit" })
     },
   },
 

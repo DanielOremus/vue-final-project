@@ -1,6 +1,14 @@
-export const showToast = ($toast, settings) => {
-  $toast.add({ life: 4000, ...settings })
+import { globals } from "@/main"
+import { toastTypes } from "@/constants/toast"
+const { $toast } = globals
+export const showAlert = (type = "default", additionalSettings = {}) => {
+  const settingsToUse = toastTypes[type]
+  if (!settingsToUse) {
+    console.debug("No toast settings found!")
+  } else {
+    $toast.add({ ...settingsToUse, ...additionalSettings })
+  }
 }
-export const closeToast = ($toast) => {
+export const closeAlert = () => {
   $toast.remove()
 }

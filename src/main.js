@@ -33,3 +33,5 @@ app.component("swiper", Swiper)
 app.component("swiper-slide", SwiperSlide)
 
 app.mount("#app")
+
+export const globals = app.config.globalProperties

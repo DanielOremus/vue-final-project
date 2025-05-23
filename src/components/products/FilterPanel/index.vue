@@ -48,7 +48,6 @@ export default {
         this.searchProductName
       },
       set(v) {
-        this.productsFiltersStore.$reset()
         this.resetFilters()
         this.searchProductName = v
         this.onFilterApply("name", v)
@@ -68,6 +67,12 @@ export default {
     },
     resetFilters() {
       this.resetKey = Date.now()
+      this.productsFiltersStore.resetSelectedFilters({
+        category: [],
+        name: null,
+        price: [null, null],
+        sort: null,
+      })
     },
   },
   mounted() {

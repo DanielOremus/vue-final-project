@@ -142,7 +142,7 @@
         <Button
           type="submit"
           :severity="currentProduct?._id ? 'info' : 'success'"
-          :disabled="!$productForm.valid"
+          :disabled="!$productForm.valid || isLoading"
           >{{ btnTitle }}</Button
         >
       </div>
@@ -151,6 +151,7 @@
 </template>
 
 <script>
+import { showAlert } from "@/primeVueServiceHelpers/toast"
 import { yupResolver } from "@primevue/forms/resolvers/yup"
 import ProductValidator from "@/validators/ProductValidator"
 import ImageUpload from "./components/ImageUploader.vue"
@@ -236,6 +237,12 @@ export default {
           this.currentImage = await this.createFileFromImg(newValue?.image)
         }
       },
+    },
+    error: {
+      handler() {
+        showAlert("error")
+      },
+      deep: true,
     },
   },
 }
