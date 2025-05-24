@@ -7,10 +7,12 @@
         class="not-found-img"
       />
       <div class="caption">
-        The page you are looking is not available or has been removed. Try going
-        to Home Page by using the button below.
+        {{ $t("views.notFound.messages.main") }}
       </div>
-      <basic-button label="Back to Home" @click="onHome" />
+      <basic-button
+        :label="$t('views.notFound.buttons.backToHome')"
+        @click="onHome"
+      />
     </div>
   </div>
 </template>
@@ -29,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .caption {
   @apply text-center text-lg max-w-screen-md mt-4 mb-8;
-  font-family: "Outfit", sans-serif;
+  font-family: "Outfit", "Montserrat", sans-serif;
 }
 .not-found-img {
   @apply max-w-screen-sm;

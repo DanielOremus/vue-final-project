@@ -221,11 +221,7 @@ export default {
     onNewFileSelected() {
       this.isNewImageSelected = true
     },
-    // reset() {
-    //   this.productsStore.$reset()
-    //   this.isNewImageSelected = false
-    //   this.currentImage = null
-    // },
+
     getTranslatedCategory(category) {
       return this.$t(`categories.${category.value}`)
     },

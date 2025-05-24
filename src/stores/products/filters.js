@@ -43,7 +43,6 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
         sort: null,
       }
     },
-    //TODO: make store reset when leaving
     async fetchFilters() {
       this.startLoading()
       await this.generalApiOperation({

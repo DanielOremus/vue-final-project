@@ -101,6 +101,14 @@
         "register": "Register",
         "login": "Log in"
       }
+    },
+    "notFound": {
+      "messages": {
+        "main": "The page you are looking is not available or has been removed. Try going to Home Page by using the button below."
+      },
+      "buttons": {
+        "backToHome": "Back to home"
+      }
     }
   }
 }

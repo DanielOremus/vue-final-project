@@ -1,11 +1,15 @@
 <template>
   <div class="product-card">
     <div class="product-image__container group">
-      <div v-show="isLoading" class="absolute top-0 left-0 w-full h-full">
+      <div v-show="isLoading" class="product-shimmer__container">
         <shimmer-overlay />
       </div>
-      <img class="product-image" :src="product.image ?? noImage" />
-      <div class="add-to-cart-btn">
+      <img
+        class="product-image"
+        @click="onShowDetails"
+        :src="product.image ?? noImage"
+      />
+      <div class="add-to-cart-btn" @click="console.log(1)">
         {{ $t("views.shop.buttons.addToCart") }}
       </div>
     </div>
@@ -30,6 +34,7 @@
         </div>
       </div>
     </div>
+    <product-details-dialog :product="product" v-model="areDetailsShown" />
   </div>
 </template>
 
@@ -37,8 +42,17 @@
 import { useAuthStore } from "@/stores/auth"
 import { mapState } from "pinia"
 import { deleteDialogSettings, noImage } from "./settings"
+import ProductDetailsDialog from "./ProductDetailsDialog.vue"
 export default {
   name: "ProductCard",
+  components: {
+    ProductDetailsDialog,
+  },
+  data() {
+    return {
+      areDetailsShown: false,
+    }
+  },
   props: {
     product: {
       type: Object,
@@ -59,7 +73,6 @@ export default {
     },
   },
 
-  //TODO: Fix image showing when shimmer
   methods: {
     onEdit() {
       this.$emit("product-edit", this.product._id)
@@ -69,6 +82,9 @@ export default {
         ...deleteDialogSettings,
         accept: () => this.$emit("product-delete", this.product._id),
       })
+    },
+    onShowDetails() {
+      this.areDetailsShown = true
     },
   },
 }

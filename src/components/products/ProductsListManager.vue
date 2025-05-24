@@ -52,16 +52,10 @@ export default {
     GeneralPaginator,
     SortingSelector,
   },
-  data() {
-    return {
-      // sortBy: null,
-    }
-  },
   computed: {
     ...mapStores(useProductsStore, useProductsFiltersStore, useAuthStore),
     currentPage: {
       get() {
-        // return this.sortBy
         return this.productsStore.currentPage
       },
       async set(v) {

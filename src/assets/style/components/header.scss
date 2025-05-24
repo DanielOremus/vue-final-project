@@ -1,6 +1,6 @@
 .header {
   @apply sticky top-0 z-20;
-  font-family: "Outfit", sans-serif;
+  font-family: "Outfit", "Montserrat" sans-serif;
 }
 .header-wrapper {
   @apply h-header-height z-50;
@@ -59,18 +59,18 @@
 }
 .cart-products-number {
   position: absolute;
-  top: -5px;
+  top: -8px;
   right: -15px;
-  line-height: 1;
-  font-size: 1.15rem;
+  line-height: 1em;
+  font-size: 1.05rem;
   font-style: normal;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Outfit", "Montserrat", sans-serif;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 1.35em;
-  min-height: 1.35em;
+  min-width: 1.45em;
+  min-height: 1.45em;
   color: black;
   background-color: var(--p-primary-color);
 }

@@ -39,7 +39,6 @@
 </template>
 
 <script>
-//TODO Fix price validation
 import ProductValidator from "@/validators/ProductValidator"
 import { yupResolver } from "@primevue/forms/resolvers/yup"
 import { priceInputDt } from "../settings"

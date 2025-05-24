@@ -42,7 +42,6 @@ export default {
 .page-content {
   @apply bg-white h-full py-8 flex flex-col md:flex-row justify-between gap-4;
   padding-inline: clamp(0rem, 2.326vw - 0.291rem, 2.5rem);
-  //
 }
 .filter-panel__wrapper {
   position: sticky;

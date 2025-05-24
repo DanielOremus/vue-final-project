@@ -1,4 +1,4 @@
-import { globals } from "@/main"
+import { globals } from "@/config/app"
 import { toastTypes } from "@/constants/toast"
 const { $toast } = globals
 export const showAlert = (type = "default", additionalSettings = {}) => {
