@@ -27,11 +27,10 @@
           :initial-value="currentProduct?.name"
           class="flex flex-col gap-1"
         >
-          <InputText
-            :placeholder="$t('views.productEdit.fields.name')"
-            size="large"
-            fluid
-          />
+          <FloatLabel variant="on">
+            <InputText id="name" size="large" fluid />
+            <label for="name">{{ $t("views.productEdit.fields.name") }}</label>
+          </FloatLabel>
           <Message
             v-if="$field?.invalid"
             severity="error"
@@ -46,16 +45,21 @@
           :initial-value="currentProduct?.category.value"
           class="flex flex-col gap-1"
         >
-          <Select
-            :options="categoriesList"
-            :loading="areCategoriesLoading"
-            :option-label="getTranslatedCategory"
-            option-value="value"
-            :placeholder="$t('views.productEdit.fields.category')"
-            size="large"
-            fluid
-          >
-          </Select>
+          <FloatLabel variant="on">
+            <Select
+              option-value="value"
+              size="large"
+              id="category"
+              :options="categoriesList"
+              :loading="areCategoriesLoading"
+              :option-label="getTranslatedCategory"
+              fluid
+            >
+            </Select>
+            <label for="category">{{
+              $t("views.productEdit.fields.category")
+            }}</label>
+          </FloatLabel>
           <Message
             v-if="$field?.invalid"
             severity="error"
@@ -71,15 +75,20 @@
           class="flex flex-col gap-1"
           :initial-value="currentProduct?.price"
         >
-          <InputNumber
-            mode="currency"
-            currency="UAH"
-            locale="de-DE"
-            size="large"
-            :placeholder="$t('views.productEdit.fields.price')"
-            :min="0"
-            fluid
-          />
+          <FloatLabel variant="on">
+            <InputNumber
+              mode="currency"
+              id="price"
+              currency="UAH"
+              locale="de-DE"
+              size="large"
+              :min="0"
+              fluid
+            />
+            <label for="price">{{
+              $t("views.productEdit.fields.price")
+            }}</label>
+          </FloatLabel>
           <Message
             v-if="$field?.invalid"
             severity="error"
@@ -94,11 +103,10 @@
           class="flex flex-col gap-1"
           :initial-value="currentProduct?.mass"
         >
-          <InputText
-            :placeholder="$t('views.productEdit.fields.mass')"
-            size="large"
-            fluid
-          />
+          <FloatLabel variant="on">
+            <InputText id="mass" size="large" fluid />
+            <label for="mass">{{ $t("views.productEdit.fields.mass") }}</label>
+          </FloatLabel>
           <Message
             v-if="$field?.invalid"
             severity="error"
@@ -143,8 +151,9 @@
           type="submit"
           :severity="currentProduct?._id ? 'info' : 'success'"
           :disabled="!$productForm.valid || isLoading"
-          >{{ btnTitle }}</Button
-        >
+          :loading="isLoading"
+          :label="btnTitle"
+        />
       </div>
     </Form>
   </div>

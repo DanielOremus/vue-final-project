@@ -38,7 +38,7 @@ export const useAuthStore = defineStore("auth", {
       this.startLoading()
       this.hasTriedUserFetch = true
       try {
-        const response = await api.get(apiEndpoints.auth.fetchProfile)
+        const response = await api.post(apiEndpoints.auth.fetchProfile)
         const resData = response.data
         this.user = resData.data.profile
       } catch (error) {

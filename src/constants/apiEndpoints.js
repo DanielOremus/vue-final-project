@@ -12,4 +12,7 @@ export default Object.freeze({
     register: "/auth/register",
     fetchProfile: "/auth/profile",
   },
+  roles: {
+    fetchList: () => "/roles",
+  },
 })

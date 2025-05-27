@@ -1,0 +1,32 @@
+<template>
+  <main-layout>
+    <div class="page-content">
+      <roles-manager />
+    </div>
+  </main-layout>
+</template>
+
+<script>
+//TODO: finish roles rendering and editing
+import RolesManager from "@/components/roles/RolesManager.vue"
+import { mapStores } from "pinia"
+import { useRolesStore } from "@/stores/roles"
+export default {
+  name: "RolesView",
+  components: {
+    RolesManager,
+  },
+  computed: {
+    ...mapStores(useRolesStore),
+  },
+  beforeRouteLeave() {
+    this.rolesStore.$reset()
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.page-content {
+  @apply h-full flex justify-center mx-4 py-6;
+}
+</style>

@@ -57,6 +57,9 @@ export default {
     inputDt() {
       return priceInputDt
     },
+    currencyLocale() {
+      if (this.$i18n.locale === "en") return "de-DE"
+    },
   },
   methods: {
     onPriceApply({ valid, values }) {

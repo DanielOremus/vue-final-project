@@ -17,7 +17,7 @@
 <script>
 import { useProductsStore } from "@/stores/products"
 import { useAuthStore } from "@/stores/auth"
-import { mapActions, mapStores } from "pinia"
+import { mapStores } from "pinia"
 import MainLayout from "@/layouts/MainLayout.vue"
 import ProductForm from "@/components/products/ProductForm/index.vue"
 import { useProductsFiltersStore } from "@/stores/products/filters"
@@ -37,19 +37,13 @@ export default {
     ...mapStores(useProductsStore, useProductsFiltersStore, useAuthStore),
   },
   methods: {
-    ...mapActions(useProductsStore, [
-      "clearCurrentProduct",
-      "createProduct",
-      "updateProduct",
-      "fetchProductById",
-    ]),
     async onSubmit(productData) {
       console.log(productData)
 
       if (productData._id) {
-        await this.updateProduct(productData)
+        await this.productsStore.updateProduct(productData)
       } else {
-        await this.createProduct(productData)
+        await this.productsStore.createProduct(productData)
       }
       if (!this.productsStore.hasError) {
         this.$router.push({ name: "shop" })
@@ -70,17 +64,17 @@ export default {
   created() {
     this.productsFiltersStore.fetchFilters()
     if (this.id) {
-      this.fetchProductById(this.id)
+      this.productsStore.fetchProductById(this.id)
     }
   },
-  beforeRouteUpdate() {
-    this.clearCurrentProduct()
+  beforeRouteLeave() {
+    this.productsStore.clearCurrentProduct()
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .page-content {
-  @apply h-full flex justify-center mx-4 my-6;
+  @apply h-full flex justify-center mx-4 py-6;
 }
 </style>

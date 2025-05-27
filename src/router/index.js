@@ -2,12 +2,14 @@ import { createRouter, createWebHistory } from "vue-router"
 import { mainRoutes } from "./main"
 import { productRoutes } from "./products"
 import { authRoutes } from "./auth"
+import { roleRoutes } from "./roles"
 import { useAuthStore } from "@/stores/auth"
 
 const routes = [
   ...mainRoutes,
   ...productRoutes,
   ...authRoutes,
+  ...roleRoutes,
   {
     path: "/:pathNotFound(.*)*",
     name: "notFound",

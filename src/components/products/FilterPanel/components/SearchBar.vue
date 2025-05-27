@@ -1,11 +1,14 @@
 <template>
-  <InputText
-    :placeholder="$t('views.shop.fields.search')"
-    class="searchbar w-full"
-    :dt="searchbarDt"
-    v-model="currentValue"
-    @change="emitUpdateIfLazy"
-  />
+  <IconField>
+    <InputText
+      :placeholder="$t('views.shop.fields.search')"
+      class="searchbar w-full"
+      :dt="searchbarDt"
+      v-model="currentValue"
+      @change="emitUpdateIfLazy"
+    />
+    <InputIcon class="bi bi-search" />
+  </IconField>
 </template>
 
 <script>

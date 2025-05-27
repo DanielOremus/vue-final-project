@@ -19,7 +19,7 @@
 import { useProductsStore } from "@/stores/products/index"
 import { useProductsFiltersStore } from "@/stores/products/filters"
 import { mapStores } from "pinia"
-import ProductsListManager from "@/components/products/ProductsListManager.vue"
+import ProductsListManager from "@/components/products/ProductsListManager/index.vue"
 import FilterPanel from "@/components/products/FilterPanel/index.vue"
 export default {
   name: "ProductsView",

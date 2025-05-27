@@ -22,12 +22,12 @@
         <span class="product-price">{{ roundedProductPrice }} ₴</span>
         <div class="flex gap-3">
           <i
-            v-if="userPermissions?.products.update"
+            v-if="canEdit"
             class="edit-icon bi bi-pencil-square"
             @click="onEdit"
           />
           <i
-            v-if="userPermissions?.products.delete"
+            v-if="canDelete"
             class="delete-icon bi bi-trash-fill"
             @click="onDelete"
           />
@@ -39,8 +39,6 @@
 </template>
 
 <script>
-import { useAuthStore } from "@/stores/auth"
-import { mapState } from "pinia"
 import { deleteDialogSettings, noImage } from "./settings"
 import ProductDetailsDialog from "./ProductDetailsDialog.vue"
 export default {
@@ -62,9 +60,16 @@ export default {
       type: Boolean,
       required: true,
     },
+    canEdit: {
+      type: Boolean,
+      default: false,
+    },
+    canDelete: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
-    ...mapState(useAuthStore, ["userPermissions"]),
     roundedProductPrice() {
       return this.product.price.toFixed(2)
     },

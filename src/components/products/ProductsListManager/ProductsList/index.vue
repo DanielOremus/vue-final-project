@@ -6,6 +6,8 @@
           :key="product._id"
           :product="product"
           :is-loading="isLoading"
+          :can-edit="canEdit"
+          :can-delete="canDelete"
           @product-delete="$emit('product-delete', $event)"
           @product-edit="$emit('product-edit', $event)"
         />
@@ -37,6 +39,14 @@ export default {
       default: () => [],
     },
     isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    canEdit: {
+      type: Boolean,
+      default: false,
+    },
+    canDelete: {
       type: Boolean,
       default: false,
     },

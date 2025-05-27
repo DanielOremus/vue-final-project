@@ -22,6 +22,8 @@
       <products-list
         :products="productsStore.productsList"
         :is-loading="productsStore.isLoading"
+        :can-edit="authStore.userPermissions?.products.update"
+        :can-delete="authStore.userPermissions?.products.delete"
         @product-delete="onProductDelete"
         @product-edit="onProductEdit"
       />
@@ -30,6 +32,7 @@
       <GeneralPaginator
         :items-per-page="productsStore.perPage"
         :total-items-number="productsStore.total"
+        type="light"
         v-model="currentPage"
       />
     </div>
@@ -41,10 +44,10 @@ import { useProductsStore } from "@/stores/products/index"
 import { useProductsFiltersStore } from "@/stores/products/filters"
 import { useAuthStore } from "@/stores/auth"
 import { mapActions, mapStores } from "pinia"
-import ProductsList from "@/components/products/ProductsList/index.vue"
-import GeneralPaginator from "@/components/general/GeneralPaginator.vue"
+import ProductsList from "@/components/products/ProductsListManager/ProductsList/index.vue"
+import GeneralPaginator from "@/components/general/GeneralPaginator/index.vue"
 import SortingSelector from "@/components/products/SortingSelector/index.vue"
-import generalSettings from "./settings"
+import generalSettings from "../settings"
 export default {
   name: "ProductsView",
   components: {

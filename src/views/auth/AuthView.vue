@@ -14,7 +14,6 @@
 import { mapActions, mapState } from "pinia"
 import { useAuthStore } from "@/stores/auth"
 import { showAlert } from "@/primeVueServiceHelpers/toast"
-import { errorMessages } from "vue/compiler-sfc"
 import { toastTypes } from "@/constants/toast"
 export default {
   name: "AuthView",

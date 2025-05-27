@@ -35,4 +35,7 @@ export default {
   @apply min-h-screen grid w-full;
   grid-template-rows: auto 1fr auto;
 }
+.content {
+  @apply min-h-0;
+}
 </style>
