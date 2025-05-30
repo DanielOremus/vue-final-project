@@ -13,6 +13,8 @@
     "browse": "Browse"
   },
   "validation": {
+    "alreadyExists": "'{value}' already exists",
+
     "mixed": {
       "required": "*{field}* is a required field"
     },
@@ -114,6 +116,15 @@
       "title": {
         "menu": "Roles",
         "page": "Roles"
+      },
+      "messages": {
+        "success": {
+          "create": "Role was successfully created",
+          "update": "Role was successfully updated"
+        }
+      },
+      "fields": {
+        "name": "Name"
       }
     }
   }

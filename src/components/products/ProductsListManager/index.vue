@@ -21,9 +21,6 @@
     <div class="products-list__wrapper">
       <products-list
         :products="productsStore.productsList"
-        :is-loading="productsStore.isLoading"
-        :can-edit="authStore.userPermissions?.products.update"
-        :can-delete="authStore.userPermissions?.products.delete"
         @product-delete="onProductDelete"
         @product-edit="onProductEdit"
       />
@@ -44,16 +41,25 @@ import { useProductsStore } from "@/stores/products/index"
 import { useProductsFiltersStore } from "@/stores/products/filters"
 import { useAuthStore } from "@/stores/auth"
 import { mapActions, mapStores } from "pinia"
-import ProductsList from "@/components/products/ProductsListManager/ProductsList/index.vue"
+import ProductsList from "./ProductsList/index.vue"
 import GeneralPaginator from "@/components/general/GeneralPaginator/index.vue"
 import SortingSelector from "@/components/products/SortingSelector/index.vue"
 import generalSettings from "../settings"
+import { toRef, computed } from "vue"
 export default {
-  name: "ProductsView",
+  name: "ProductsListManager",
   components: {
     ProductsList,
     GeneralPaginator,
     SortingSelector,
+  },
+  provide() {
+    return {
+      isLoading: toRef(this.productsStore, "isLoading"),
+      operationPerms: computed(
+        () => this.authStore.userPermissions?.products ?? {}
+      ),
+    }
   },
   computed: {
     ...mapStores(useProductsStore, useProductsFiltersStore, useAuthStore),
@@ -132,7 +138,7 @@ export default {
 
 <style lang="scss" scoped>
 .products-list__wrapper {
-  @apply h-full;
+  @apply flex h-full;
 }
 .paginator__container {
   @apply mt-6;

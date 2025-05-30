@@ -1,32 +1,7 @@
+import { setYupLocale } from "@/plugins/yup"
 import * as yup from "yup"
-import i18n from "@/plugins/i18n"
 
-const $t = i18n.global.t
-
-yup.setLocale({
-  mixed: {
-    required: ({ path }) =>
-      $t("validation.mixed.required", {
-        field: $t(`views.auth.fields.${path}`),
-      }),
-  },
-  string: {
-    email: ({ path }) =>
-      $t("validation.string.email", {
-        field: $t(`views.auth.fields.${path}`),
-      }),
-    min: ({ path, min }) =>
-      $t("validation.string.min", {
-        field: $t(`views.auth.fields.${path}`),
-        min,
-      }),
-    max: ({ path, max }) =>
-      $t("validation.string.max", {
-        field: $t(`views.auth.fields.${path}`),
-        max,
-      }),
-  },
-})
+setYupLocale("views.auth.fields")
 
 class AuthValidator {
   static loginSchema = yup.object({

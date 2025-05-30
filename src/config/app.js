@@ -28,6 +28,4 @@ app.component("basic-button", BasicButton)
 app.component("swiper", Swiper)
 app.component("swiper-slide", SwiperSlide)
 
-const globals = app.config.globalProperties
-
-export { app, globals }
+export { app }

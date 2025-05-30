@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .loading-spinner {
-  @apply aspect-square border-l-transparent border-r-transparent border-b-transparent rounded-full mx-auto;
+  @apply aspect-square border-l-transparent border-r-transparent border-b-transparent rounded-full;
   animation: spin linear infinite;
 }
 @keyframes spin {

@@ -1,43 +1,7 @@
+import { setYupLocale } from "@/plugins/yup"
 import * as yup from "yup"
-import i18n from "@/plugins/i18n"
 
-const $t = i18n.global.t
-
-yup.setLocale({
-  mixed: {
-    required: ({ path }) =>
-      $t("validation.mixed.required", {
-        field: $t(`views.productEdit.fields.${path}`),
-      }),
-  },
-  string: {
-    email: ({ path }) =>
-      $t("validation.string.email", {
-        field: $t(`views.productEdit.fields.${path}`),
-      }),
-    min: ({ path, min }) =>
-      $t("validation.string.min", {
-        field: $t(`views.productEdit.fields.${path}`),
-        min,
-      }),
-    max: ({ path, max }) =>
-      $t("validation.string.max", {
-        field: $t(`views.productEdit.fields.${path}`),
-        max,
-      }),
-  },
-  number: {
-    min: ({ path, gte }) =>
-      $t("validation.number.gte", {
-        field: $t(`views.productEdit.fields.${path}`),
-        gte,
-      }),
-    positive: ({ path }) =>
-      $t("validation.number.positive", {
-        field: $t(`views.productEdit.fields.${path}`),
-      }),
-  },
-})
+setYupLocale("views.productEdit.fields")
 
 class ProductValidator {
   static filtersPriceSchema = yup.object({

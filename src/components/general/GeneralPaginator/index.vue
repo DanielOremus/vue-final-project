@@ -13,6 +13,7 @@
 import { generalPaginatorTypes } from "./settings"
 export default {
   name: "GeneralPaginator",
+  emits: ["update:modelValue"],
   props: {
     totalItemsNumber: {
       type: Number,
@@ -40,6 +41,7 @@ export default {
         return this.modelValue
       },
       set(v) {
+        if (v === this.modelValue) return
         this.$emit("update:modelValue", v)
       },
     },

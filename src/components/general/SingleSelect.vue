@@ -16,6 +16,7 @@
 <script>
 export default {
   name: "SingleSelect",
+  emits: ["update:modelValue"],
   props: {
     modelValue: {
       type: [Number, String, Object],

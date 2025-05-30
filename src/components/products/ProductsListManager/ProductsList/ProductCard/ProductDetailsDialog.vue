@@ -49,6 +49,7 @@
 import { noImage } from "./settings"
 export default {
   name: "ProductDetailsDialog",
+  emits: ["update:modelValue"],
   props: {
     product: {
       type: Object,

@@ -3,10 +3,12 @@
     <AccordionHeader> {{ $t("views.shop.fields.category") }} </AccordionHeader>
     <AccordionContent>
       <div class="categories-list flex flex-col gap-2">
-        <loading-spinner
-          v-show="isLoading"
-          class="border-2 border-surface-400 w-8"
-        />
+        <div class="flex justify-center">
+          <loading-spinner
+            v-show="isLoading"
+            class="border-2 border-surface-400 w-8"
+          />
+        </div>
         <div
           v-for="category in categoriesList"
           :key="category._id"
@@ -48,6 +50,7 @@
 import { categoryCheckboxDt } from "../settings"
 export default {
   name: "CategoryPanel",
+  emits: ["apply"],
   data() {
     return {
       selectedCategories: [],

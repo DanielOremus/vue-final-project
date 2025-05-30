@@ -21,6 +21,7 @@ import { mapStores } from "pinia"
 import MainLayout from "@/layouts/MainLayout.vue"
 import ProductForm from "@/components/products/ProductForm/index.vue"
 import { useProductsFiltersStore } from "@/stores/products/filters"
+
 export default {
   name: "ProductEditView",
   components: {
@@ -41,20 +42,17 @@ export default {
       console.log(productData)
 
       if (productData._id) {
-        await this.productsStore.updateProduct(productData)
+        await this.productsStore.updateProduct(productData, {
+          "Content-Type": "multipart/form-data",
+        })
       } else {
-        await this.productsStore.createProduct(productData)
+        await this.productsStore.createProduct(productData, {
+          "Content-Type": "multipart/form-data",
+        })
       }
       if (!this.productsStore.hasError) {
         this.$router.push({ name: "shop" })
       } else {
-        if (this.productsStore.hasError.status === 401) {
-          this.authStore.logout()
-          this.$router.push({
-            name: "login",
-            query: { redirect: this.$route.path },
-          })
-        }
       }
     },
     onCancel() {

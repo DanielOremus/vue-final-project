@@ -13,6 +13,7 @@
     "browse": "Обрати"
   },
   "validation": {
+    "alreadyExists": "'{value}' вже існує",
     "mixed": {
       "required": "*{field}* є обов'язковим полем"
     },
@@ -114,6 +115,15 @@
       "title": {
         "menu": "Ролі",
         "page": "Ролі"
+      },
+      "messages": {
+        "success": {
+          "create": "Нова роль була успішно створена",
+          "update": "Роль була успішно оновлена"
+        }
+      },
+      "fields": {
+        "name": "Назва"
       }
     }
   }

@@ -52,7 +52,7 @@
               id="category"
               :options="categoriesList"
               :loading="areCategoriesLoading"
-              :option-label="getTranslatedCategory"
+              option-label="name"
               fluid
             >
             </Select>
@@ -160,7 +160,7 @@
 </template>
 
 <script>
-import { showAlert } from "@/primeVueServiceHelpers/toast"
+import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
 import { yupResolver } from "@primevue/forms/resolvers/yup"
 import ProductValidator from "@/validators/ProductValidator"
 import ImageUpload from "./components/ImageUploader.vue"
@@ -186,7 +186,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    error: {
+    incomingError: {
       type: Object,
       default: null,
     },
@@ -208,7 +208,7 @@ export default {
     },
   },
   methods: {
-    onSubmit(form, e) {
+    onSubmit(form) {
       if (!form.valid) return
       const productData = {
         ...form.values,
@@ -230,10 +230,6 @@ export default {
     onNewFileSelected() {
       this.isNewImageSelected = true
     },
-
-    getTranslatedCategory(category) {
-      return this.$t(`categories.${category.value}`)
-    },
   },
   watch: {
     currentProduct: {
@@ -243,9 +239,11 @@ export default {
         }
       },
     },
-    error: {
-      handler() {
-        showAlert("error")
+    incomingError: {
+      handler(newValue) {
+        if (newValue) {
+          ToastHelper.showAlert("error")
+        }
       },
       deep: true,
     },

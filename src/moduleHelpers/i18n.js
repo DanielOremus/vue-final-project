@@ -26,18 +26,20 @@ import i18n from "@/plugins/i18n"
 import { router } from "@/router"
 
 class LocaleController {
-  static i18n = i18n.global
-  static router = router
+  static #i18n = i18n.global
+  static #router = router
+  static t = i18n.global.t
+  static locale = i18n.global.locale
 
   static setLocale(lang) {
-    LocaleController.i18n.locale = lang
+    LocaleController.#i18n.locale = lang
     localStorage.setItem("lastLocale", lang)
   }
   static checkLocale() {
     const lastLocale = localStorage.getItem("lastLocale")
-    if (lastLocale && lastLocale !== LocaleController.i18n.locale.value) {
+    if (lastLocale && lastLocale !== LocaleController.#i18n.locale.value) {
       LocaleController.setLocale(lastLocale)
-      LocaleController.router.go()
+      LocaleController.#router.go()
     }
   }
   static init() {

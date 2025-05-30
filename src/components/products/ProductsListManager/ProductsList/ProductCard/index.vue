@@ -22,12 +22,12 @@
         <span class="product-price">{{ roundedProductPrice }} ₴</span>
         <div class="flex gap-3">
           <i
-            v-if="canEdit"
+            v-if="operationPerms.update"
             class="edit-icon bi bi-pencil-square"
             @click="onEdit"
           />
           <i
-            v-if="canDelete"
+            v-if="operationPerms.delete"
             class="delete-icon bi bi-trash-fill"
             @click="onDelete"
           />
@@ -46,6 +46,7 @@ export default {
   components: {
     ProductDetailsDialog,
   },
+  inject: ["isLoading", "operationPerms"],
   data() {
     return {
       areDetailsShown: false,
@@ -55,18 +56,6 @@ export default {
     product: {
       type: Object,
       required: true,
-    },
-    isLoading: {
-      type: Boolean,
-      required: true,
-    },
-    canEdit: {
-      type: Boolean,
-      default: false,
-    },
-    canDelete: {
-      type: Boolean,
-      default: false,
     },
   },
   computed: {

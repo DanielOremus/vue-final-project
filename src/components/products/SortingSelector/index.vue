@@ -16,6 +16,7 @@ import { mapState } from "pinia"
 import SingleSelect from "@/components/general/SingleSelect.vue"
 export default {
   name: "SortingSelector",
+  emits: ["update:modelValue"],
   components: {
     SingleSelect,
   },

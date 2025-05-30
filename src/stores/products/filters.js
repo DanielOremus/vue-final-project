@@ -5,6 +5,9 @@ import { generalStoreObj } from "../helpers/generalStoreObj"
 import { sortingOptions } from "@/constants/product"
 import api from "@/config/axios"
 import apiEndpoints from "@/constants/apiEndpoints"
+import config from "@/config/default"
+import LocaleController from "@/moduleHelpers/i18n"
+
 export const useProductsFiltersStore = defineStore("productsFilters", {
   state: () => ({
     ...generalStoreObj.state,
@@ -46,7 +49,12 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
     async fetchFilters() {
       this.startLoading()
       await this.generalApiOperation({
-        operation: () => api.get(apiEndpoints.products.fetchFilters()),
+        operation: () =>
+          api.get(apiEndpoints.products.fetchFilters(), {
+            params: {
+              lang: LocaleController.locale ?? config.fallbackLocale,
+            },
+          }),
         successCallback: (response) => {
           this.categoriesList = response.data.data.categories
         },

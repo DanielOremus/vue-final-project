@@ -13,7 +13,7 @@
 <script>
 import { mapActions, mapState } from "pinia"
 import { useAuthStore } from "@/stores/auth"
-import { showAlert } from "@/primeVueServiceHelpers/toast"
+import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
 import { toastTypes } from "@/constants/toast"
 export default {
   name: "AuthView",
@@ -32,23 +32,22 @@ export default {
       if (!["login", "register"].includes(e.form)) return
       await this.authenticate(e.data, e.form)
 
-      // this.getAlertSettings(this.hasError)
-
       if (!this.hasError) {
-        showAlert("success", {
+        ToastHelper.showAlert("success", {
           detail: `You\'ve successfully ${
             e.form === "login" ? "logged in" : "registered"
           }! Redirecting...`,
+          life: 1500,
         })
         setTimeout(() => {
           const redirectPath = this.$route.query?.redirect
           if (redirectPath) this.$router.push(redirectPath)
           else this.$router.push({ name: "home" })
-        }, 3500)
+        }, 2000)
       } else {
-        console.log(this.hasError)
-
-        showAlert("error", { detail: this.getErrorMessage(this.hasError) })
+        ToastHelper.showAlert("error", {
+          detail: this.getErrorMessage(this.hasError),
+        })
       }
     },
 

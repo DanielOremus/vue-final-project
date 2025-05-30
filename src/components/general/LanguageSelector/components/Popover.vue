@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  emits: ["lang-select"],
+  emits: ["lang-select", "update:modelValue"],
   name: "LanguagePopover",
   props: {
     modelValue: {

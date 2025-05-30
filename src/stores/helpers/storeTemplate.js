@@ -45,7 +45,7 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
     },
 
     actions: {
-      async [namedActions.fetchItems](query) {
+      async [namedActions.fetchItems](query = {}) {
         const response = await generalApiOperation.call(this, {
           operation: () =>
             api.get(apiEndpoints[storeName].fetchList(), {
@@ -65,9 +65,10 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
           },
         })
       },
-      async [namedActions.fetchItemById](id) {
+      async [namedActions.fetchItemById](id, query = {}) {
         const response = await generalApiOperation.call(this, {
-          operation: () => api.get(apiEndpoints[storeName].fetchById(id)),
+          operation: () =>
+            api.get(apiEndpoints[storeName].fetchById(id), { params: query }),
           successCallback: (response) => {
             const resData = response.data
             this[namedState.currentItem] =
@@ -75,12 +76,16 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
           },
         })
       },
-      async [namedActions.createItem](itemData) {
-        const itemFormData = packInFormData(itemData)
+      async [namedActions.createItem](itemData, headers = {}) {
+        if (headers["Content-Type"] === "multipart/form-data") {
+          itemData = packInFormData(itemData)
+        }
 
         const response = await generalApiOperation.call(this, {
           operation: () =>
-            api.post(apiEndpoints[storeName].create(), itemFormData),
+            api.post(apiEndpoints[storeName].create(), itemData, {
+              headers,
+            }),
           // successCallback: (response) => {
           //   const resData = response.data
           //   this[namedState.itemsList].push(
@@ -89,12 +94,16 @@ export function getStoreTemplateObj(storeName, generalApiOperation) {
           // },
         })
       },
-      async [namedActions.updateItem](itemData) {
-        const itemFormData = packInFormData(itemData)
-
+      async [namedActions.updateItem](itemData, headers = {}) {
+        const { _id } = itemData
+        if (headers["Content-Type"] === "multipart/form-data") {
+          itemData = packInFormData(itemData)
+        }
         const response = await generalApiOperation.call(this, {
           operation: () =>
-            api.put(apiEndpoints[storeName].update(itemData._id), itemFormData),
+            api.put(apiEndpoints[storeName].update(_id), itemData, {
+              headers,
+            }),
           successCallback: (response) => {
             const resData = response.data
             const updatedItem = resData.data[nameVariations.singularLower]

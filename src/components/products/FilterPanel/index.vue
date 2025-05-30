@@ -25,6 +25,7 @@ import { useProductsFiltersStore } from "@/stores/products/filters"
 import { useProductsStore } from "@/stores/products"
 import { mapStores } from "pinia"
 import generalSettings from "../settings"
+
 export default {
   name: "FilterPanel",
   components: {

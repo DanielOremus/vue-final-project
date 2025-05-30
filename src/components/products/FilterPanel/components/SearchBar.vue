@@ -15,6 +15,7 @@
 import { searchbarDt } from "../settings.js"
 export default {
   name: "Searchbar",
+  emits: ["update:modelValue"],
   data() {
     return {
       currentValue: this.modelValue,

@@ -44,7 +44,6 @@ export const useAuthStore = defineStore("auth", {
       } catch (error) {
         this.error = error
         this.user = null
-        localStorage.removeItem("token")
       } finally {
         this.loading = false
       }

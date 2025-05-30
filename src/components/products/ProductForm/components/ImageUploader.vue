@@ -28,6 +28,7 @@
 <script>
 export default {
   name: "ImageUploader",
+  emits: ["select", "update:modelValue"],
   props: {
     modelValue: {
       type: Object,
