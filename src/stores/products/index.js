@@ -2,12 +2,16 @@ import { defineStore } from "pinia"
 import { generalStoreObj } from "../helpers/generalStoreObj"
 import { getStoreTemplateObj } from "../helpers/storeTemplate"
 import { useProductsFiltersStore } from "./filters"
+import LocaleController from "@/moduleHelpers/i18n"
+import config from "@/config/default"
+const STORE_NAME = "products"
+
 const storeTemplateObj = getStoreTemplateObj(
-  "products",
+  STORE_NAME,
   generalStoreObj.actions.generalApiOperation
 )
 
-export const useProductsStore = defineStore("products", {
+export const useProductsStore = defineStore(STORE_NAME, {
   state: () => ({
     ...generalStoreObj.state,
     ...storeTemplateObj.state,
@@ -24,6 +28,7 @@ export const useProductsStore = defineStore("products", {
 
       await storeTemplateObj.actions.fetchProducts.call(this, {
         ...productsFiltersStore.productsQueryObj,
+        lang: LocaleController.locale ?? config.fallbackLocale,
         ...query,
       })
     },

@@ -222,10 +222,15 @@ export default {
       this.$emit("cancel")
     },
     async createFileFromImg(imgSrc) {
-      if (!imgSrc) return
-      const response = await fetch(imgSrc)
-      const blob = await response.blob()
-      return new File([blob], "image", { type: blob.type })
+      if (!imgSrc) return null
+      try {
+        const response = await fetch(imgSrc)
+        const blob = await response.blob()
+        return new File([blob], "image", { type: blob.type })
+      } catch (error) {
+        console.error(error)
+        return null
+      }
     },
     onNewFileSelected() {
       this.isNewImageSelected = true

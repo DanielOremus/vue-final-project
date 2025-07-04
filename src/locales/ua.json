@@ -12,8 +12,22 @@
     "clear": "Очистити",
     "browse": "Обрати"
   },
+  "toast": {
+    "error": {
+      "header": "Упс",
+      "message": "Щось пішло не так, спробуйте пізніше!"
+    },
+    "success": {
+      "header": "Успіх",
+      "message": "Операція виконана успішно!"
+    },
+    "default": {
+      "header": "Заголовок",
+      "message": "Звичайне повідомлення"
+    }
+  },
   "validation": {
-    "alreadyExists": "'{value}' вже існує",
+    "alreadyInUse": "Це(й/я) {value} вже використовується",
     "mixed": {
       "required": "*{field}* є обов'язковим полем"
     },
@@ -55,15 +69,26 @@
         "menu": "Магазин",
         "page": "Магазин"
       },
+      "messages": {
+        "deleteConfirm": {
+          "message": "Ви дійсно хочете видалити цей продукт?",
+          "header": "Ви впевнені?"
+        },
+        "renderedResults": "Відображено {first}-{last} з {total} результатів(у)"
+      },
       "buttons": {
-        "addToCart": "Додати в кошик"
+        "addToCart": "Додати в кошик",
+        "confirmRemoval": "Так, видалити",
+        "cancelRemoval": "Ні, я не впевнений(а)",
+        "createProduct": "Додати продукт"
       },
       "fields": {
         "price": "Ціна",
         "category": "Категорія",
         "search": "Пошук",
         "from": "Від",
-        "to": "До"
+        "to": "До",
+        "sortBy": "Сортувати за"
       }
     },
     "productEdit": {
@@ -96,7 +121,15 @@
       "messages": {
         "alreadyHasAccount": "Вже маєте акаунт?",
         "noAccountYet": "Перший раз у нас?",
-        "backToHome": "На головну"
+        "backToHome": "На головну",
+        "success": {
+          "login": "Ви успішно ввійшли! Перенаправлення...",
+          "register": "Ви успішно зареєструвалися! Перенаправлення..."
+        },
+        "error": {
+          "incorrectCredentials": "Ел. скринька або пароль невірні",
+          "invalidCredentials": "Надані облікові дані недійсні"
+        }
       },
       "buttons": {
         "register": "Зареєструватись",
@@ -118,12 +151,30 @@
       },
       "messages": {
         "success": {
-          "create": "Нова роль була успішно створена",
-          "update": "Роль була успішно оновлена"
+          "create": "Нова роль успішно створена",
+          "update": "Роль успішно оновлена"
+        },
+        "deleteConfirm": {
+          "message": "Ви намагаєтесь видалити роль, що прив'язана до {userNumber} користувачів. Після видалення, користувацькі ролі будуть скинуті за замовчуванням!",
+          "header": "Зачекайте, це небезпечно!"
         }
       },
       "fields": {
         "name": "Назва"
+      },
+      "buttons": {
+        "roleCreation": "Створення ролі",
+        "deleteAnyway": "Все одно видалити"
+      }
+    },
+    "cart": {
+      "title": {
+        "menu": "Кошик",
+        "page": "Кошик"
+      },
+      "messages": {
+        "empty": "Кошик порожній, швидше додайте товар :)",
+        "total": "До сплати"
       }
     }
   }

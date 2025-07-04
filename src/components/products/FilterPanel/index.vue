@@ -57,8 +57,6 @@ export default {
   },
   methods: {
     async onFilterApply(filterName, filterValue) {
-      console.log(filterValue)
-
       this.productsFiltersStore.setFilterValue(filterName, filterValue)
       await this.productsStore.fetchProducts()
       window.scrollTo(

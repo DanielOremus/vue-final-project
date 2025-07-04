@@ -7,7 +7,6 @@
 </template>
 
 <script>
-//TODO: finish roles rendering and editing
 import RolesManager from "@/components/roles/RolesManager.vue"
 import { mapStores } from "pinia"
 import { useRolesStore } from "@/stores/roles"
@@ -19,6 +18,7 @@ export default {
   computed: {
     ...mapStores(useRolesStore),
   },
+
   beforeRouteLeave() {
     this.rolesStore.$reset()
   },

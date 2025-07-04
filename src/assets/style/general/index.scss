@@ -4,3 +4,6 @@
 body {
   @apply overflow-y-scroll;
 }
+.confirm-dialog {
+  @apply w-[300px] sm:w-[400px] md:w-[500px];
+}

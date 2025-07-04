@@ -28,7 +28,6 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
         fieldsConfig,
         state.selectedFilters
       )
-      console.log(query)
 
       return query
     },
@@ -46,13 +45,14 @@ export const useProductsFiltersStore = defineStore("productsFilters", {
         sort: null,
       }
     },
-    async fetchFilters() {
+    async fetchFilters(query = {}) {
       this.startLoading()
       await this.generalApiOperation({
         operation: () =>
           api.get(apiEndpoints.products.fetchFilters(), {
             params: {
               lang: LocaleController.locale ?? config.fallbackLocale,
+              ...query,
             },
           }),
         successCallback: (response) => {

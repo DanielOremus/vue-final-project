@@ -7,6 +7,7 @@
           :product="product"
           @product-delete="$emit('product-delete', $event)"
           @product-edit="$emit('product-edit', $event)"
+          @add-to-cart="$emit('add-to-cart', $event)"
         />
       </div>
     </div>

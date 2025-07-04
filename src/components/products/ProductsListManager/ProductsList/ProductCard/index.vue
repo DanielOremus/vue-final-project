@@ -9,7 +9,7 @@
         @click="onShowDetails"
         :src="product.image ?? noImage"
       />
-      <div class="add-to-cart-btn" @click="console.log(1)">
+      <div class="add-to-cart-btn" @click="onAddToCart">
         {{ $t("views.shop.buttons.addToCart") }}
       </div>
     </div>
@@ -79,6 +79,9 @@ export default {
     },
     onShowDetails() {
       this.areDetailsShown = true
+    },
+    onAddToCart() {
+      this.$emit("add-to-cart", this.product._id)
     },
   },
 }

@@ -3,13 +3,16 @@ import { mainRoutes } from "./main"
 import { productRoutes } from "./products"
 import { authRoutes } from "./auth"
 import { roleRoutes } from "./roles"
+import { cartRoutes } from "./cart"
 import { useAuthStore } from "@/stores/auth"
+import { useCartStore } from "@/stores/cart"
 
 const routes = [
   ...mainRoutes,
   ...productRoutes,
   ...authRoutes,
   ...roleRoutes,
+  ...cartRoutes,
   {
     path: "/:pathNotFound(.*)*",
     name: "notFound",
@@ -27,13 +30,17 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   const authStore = useAuthStore()
+  const cartStore = useCartStore()
   if (!authStore.hasTriedUserFetch) {
     await authStore.fetchProfileData()
   }
-  if (to.meta?.requiresAuth) {
-    if (!authStore.isAuthenticated) {
-      return { name: "login", query: { redirect: to.fullPath } }
-    }
+
+  if (!cartStore.isInitialized && to.name !== "cart") {
+    cartStore.initCart()
+  }
+
+  if (to.meta?.requiresAuth && !authStore.isAuthenticated) {
+    return { name: "login", query: { redirect: to.fullPath } }
   }
 
   const permissions = authStore.userPermissions

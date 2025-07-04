@@ -37,14 +37,14 @@ export default {
       this.expanded = status
     },
     changeLang(lang) {
-      LocaleController.setLocale(lang.value)
+      LocaleController.locale = lang.value
     },
   },
   created() {
     LocaleController.init()
   },
   unmounted() {
-    LocaleController.destroy()
+    LocaleController.removeListener()
   },
 }
 </script>

@@ -29,23 +29,25 @@ class LocaleController {
   static #i18n = i18n.global
   static #router = router
   static t = i18n.global.t
-  static locale = i18n.global.locale
+  static get locale() {
+    return LocaleController.#i18n.locale
+  }
 
-  static setLocale(lang) {
+  static set locale(lang) {
     LocaleController.#i18n.locale = lang
     localStorage.setItem("lastLocale", lang)
   }
   static checkLocale() {
     const lastLocale = localStorage.getItem("lastLocale")
-    if (lastLocale && lastLocale !== LocaleController.#i18n.locale.value) {
-      LocaleController.setLocale(lastLocale)
+    if (lastLocale && lastLocale !== LocaleController.locale) {
+      LocaleController.locale = lastLocale
       LocaleController.#router.go()
     }
   }
   static init() {
     window.addEventListener("storage", LocaleController.checkLocale)
   }
-  static destroy() {
+  static removeListener() {
     window.removeEventListener("storage", LocaleController.checkLocale)
   }
 }

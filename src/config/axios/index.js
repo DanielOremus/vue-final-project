@@ -17,9 +17,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const authStore = useAuthStore()
-    if (error.status === 401) {
-      const wasAuthenticated = !!authStore.jwtToken
+    if (error.response?.status === 401) {
+      const authStore = useAuthStore()
+      const wasAuthenticated = authStore.isAuthenticated
       authStore.logout()
       const route = router.currentRoute.value
       if (wasAuthenticated && route.meta?.requiresAuth) {

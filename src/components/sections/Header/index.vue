@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <div class="header-wrapper">
-      <div class="header-container">
+    <div class="header__wrapper">
+      <div class="header__container">
         <div class="logo flex items-center">
           <img
             src="@/assets/images/logo-light.png"

@@ -1,29 +1,47 @@
 <template>
-  <Panel class="role-card" toggleable>
+  <Panel class="role-card" :toggleable="toggleable">
     <template #header>
       <div class="my-2">
-        <FloatLabel v-if="operationPerms.update" variant="on">
-          <InputText :id="`role-${role.name}`" v-model="roleName" />
-          <label :for="`role-${role.name}`">Name</label>
-        </FloatLabel>
-        <span v-else class="text-lg font-medium">{{ roleName }}</span>
+        <template v-if="operationPerms.update">
+          <FloatLabel variant="on">
+            <InputText
+              :id="`role-${currentRole?.name ?? 'new'}`"
+              v-model="roleData.name"
+            />
+
+            <label :for="`role-${currentRole?.name ?? 'new'}`">{{
+              $t("views.roles.fields.name")
+            }}</label>
+          </FloatLabel>
+          <Message
+            v-if="this.errors.name"
+            class="mt-1"
+            severity="error"
+            size="small"
+            variant="simple"
+            >{{ this.errors.name }}</Message
+          >
+        </template>
+        <span v-else class="text-lg font-medium">{{ currentRole?.name }}</span>
       </div>
     </template>
     <div class="pages">
       <Fieldset
-        v-for="page in Object.keys(role.permissions)"
+        v-for="page in Object.keys(permsConfig)"
         class="page"
         :legend="page"
       >
         <div class="flex justify-evenly">
           <div
             class="flex gap-2 flex-wrap items-center"
-            v-for="perm in Object.keys(role.permissions[page])"
+            v-for="perm in permsConfig[page]"
           >
-            <label :for="`${role.name}-${page}-${perm}`"> {{ perm }}: </label>
+            <label :for="`${currentRole?.name ?? 'new'}-${page}-${perm}`">
+              {{ perm }}:
+            </label>
             <Checkbox
-              :input-id="`${role.name}-${page}-${perm}`"
-              v-model="rolePermissions[page][perm]"
+              :input-id="`${currentRole?.name ?? 'new'}-${page}-${perm}`"
+              v-model="roleData.permissions[page][perm]"
               binary
               :disabled="!operationPerms.update"
             />
@@ -33,83 +51,110 @@
     </div>
     <div class="actions">
       <Button
-        v-if="operationPerms.update"
+        v-if="operationPerms.update || operationPerms.create"
         size="small"
         class="action-btn"
         severity="secondary"
         :loading="isLoading"
-        :label="$t('buttons.update')"
-        @click="onDelete"
+        :label="saveBtnLabel"
+        :disabled="!isRoleDataValid || isLoading"
+        @click="onSave"
       />
       <Button
-        v-if="operationPerms.delete"
+        v-if="operationPerms.delete && currentRole?._id"
         size="small"
         class="action-btn"
         severity="danger"
         :loading="isLoading"
+        :disabled="isLoading"
         :label="$t('buttons.delete')"
-        @click="onUpdate"
+        @click="onDelete"
       />
     </div>
   </Panel>
 </template>
 
 <script>
+import RoleValidator from "@/validators/RoleValidator"
+import { roleTemplate } from "./settings"
 export default {
   name: "RoleCard",
+  inject: ["isLoading", "operationPerms", "permsConfig"],
+  emits: ["role-edit", "role-create", "role-delete"],
   data() {
     return {
-      roleName: null,
-      rolePermissions: {},
+      roleData: null,
+      errors: {},
     }
   },
   props: {
-    role: {
-      type: Object,
-      required: true,
-    },
-    operationPerms: {
+    incomingErrors: {
       type: Object,
       default: () => ({}),
     },
-    isLoading: {
+    currentRole: {
+      type: Object,
+      default: null,
+    },
+    toggleable: {
       type: Boolean,
       default: false,
     },
-    permsConfig: {
-      type: Object,
-      required: true,
+  },
+  computed: {
+    isRoleDataValid() {
+      return !Object.values(this.errors).some((v) => v)
+    },
+    saveBtnLabel() {
+      return this.currentRole?._id
+        ? this.$t("buttons.update")
+        : this.$t("buttons.create")
     },
   },
   methods: {
-    getDefaultPermissions() {
-      const res = {}
-      for (const page in this.permsConfig) {
-        res[page] = {}
-        for (const perm of this.permsConfig[page]) {
-          res[page][perm] = false
-        }
-      }
-      return res
-    },
     onDelete() {
       if (this.isLoading) return
-      this.$emit("role-delete", this.role._id)
+      this.$emit("role-delete", this.currentRole?._id)
     },
-    onUpdate() {
-      if (!this.isLoading) return
-      //TODO: add validation
-      this.$emit("role-edit", {
-        name: this.roleName,
-        permissions: this.rolePermissions,
-        _id: this.role._id,
-      })
+    onSave() {
+      if (this.isLoading) return
+      this.validateData()
+      if (!this.isRoleDataValid) return
+      if (this.currentRole?._id) {
+        this.$emit("role-edit", this.roleData)
+      } else {
+        this.$emit("role-create", this.roleData)
+      }
+    },
+    validateData() {
+      try {
+        RoleValidator.defaultSchema.validateSync({
+          name: this.roleData.name,
+        })
+      } catch (error) {
+        const { path, message } = error
+        this.errors[path] = message
+      }
     },
   },
-
-  created() {
-    this.roleName = this.role.name
-    this.rolePermissions = this.role.permissions
+  watch: {
+    "roleData.name"() {
+      this.errors.name = null
+    },
+    incomingErrors: {
+      handler(v) {
+        this.errors = { ...this.errors, ...v }
+      },
+      deep: true,
+    },
+    currentRole: {
+      immediate: true,
+      handler(v) {
+        this.roleData = v
+          ? JSON.parse(JSON.stringify(v))
+          : JSON.parse(JSON.stringify(roleTemplate))
+      },
+    },
   },
 }
 </script>

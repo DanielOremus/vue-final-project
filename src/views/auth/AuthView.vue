@@ -34,16 +34,15 @@ export default {
 
       if (!this.hasError) {
         ToastHelper.showAlert("success", {
-          detail: `You\'ve successfully ${
-            e.form === "login" ? "logged in" : "registered"
-          }! Redirecting...`,
-          life: 1500,
+          detail: this.$t(`views.auth.messages.success.${e.form}`),
+
+          life: 2000,
         })
         setTimeout(() => {
           const redirectPath = this.$route.query?.redirect
           if (redirectPath) this.$router.push(redirectPath)
           else this.$router.push({ name: "home" })
-        }, 2000)
+        }, 3000)
       } else {
         ToastHelper.showAlert("error", {
           detail: this.getErrorMessage(this.hasError),
@@ -54,9 +53,9 @@ export default {
     getErrorMessage(error) {
       switch (error?.status) {
         case 401:
-          return "Email or password is incorrect"
+          return this.$t("views.auth.messages.error.incorrectCredentials")
         case 400:
-          return "Provided data is not valid"
+          return this.$t("views.auth.messages.error.invalidCredentials")
         default:
           return toastTypes.error.detail
       }

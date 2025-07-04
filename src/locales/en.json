@@ -12,8 +12,22 @@
     "clear": "Clear",
     "browse": "Browse"
   },
+  "toast": {
+    "error": {
+      "header": "Oops",
+      "message": "Something went wrong, please try again later!"
+    },
+    "success": {
+      "header": "Success",
+      "message": "Operation finished successfully!"
+    },
+    "default": {
+      "header": "Header",
+      "message": "Default message"
+    }
+  },
   "validation": {
-    "alreadyExists": "'{value}' already exists",
+    "alreadyInUse": "This {value} is already in use",
 
     "mixed": {
       "required": "*{field}* is a required field"
@@ -56,15 +70,26 @@
         "menu": "Shop",
         "page": "Shop"
       },
+      "messages": {
+        "deleteConfirm": {
+          "message": "Do you really want to delete this product?",
+          "header": "Are you sure?"
+        },
+        "renderedResults": "Showing {first}-{last} of {total} result(s)"
+      },
       "buttons": {
-        "addToCart": "Add to cart"
+        "addToCart": "Add to cart",
+        "confirmRemoval": "Yes, delete it",
+        "cancelRemoval": "No, I'm not sure",
+        "createProduct": "Create Product"
       },
       "fields": {
         "price": "Price",
         "category": "Category",
         "search": "Search",
         "from": "From",
-        "to": "To"
+        "to": "To",
+        "sortBy": "Sort By"
       }
     },
     "productEdit": {
@@ -97,7 +122,15 @@
       "messages": {
         "alreadyHasAccount": "Already has an account?",
         "noAccountYet": "Don't have an account yet?",
-        "backToHome": "Return to Home"
+        "backToHome": "Return to Home",
+        "success": {
+          "login": "You've successfully logged in! Redirecting...",
+          "register": "You've successfully registered! Redirecting..."
+        },
+        "error": {
+          "incorrectCredentials": "Email or password is incorrect",
+          "invalidCredentials": "Provided credentials are not valid"
+        }
       },
       "buttons": {
         "register": "Register",
@@ -121,10 +154,28 @@
         "success": {
           "create": "Role was successfully created",
           "update": "Role was successfully updated"
+        },
+        "deleteConfirm": {
+          "message": "You're trying to delete role, which has {userNumber} user(s). After removal, users' role will reset!",
+          "header": "Wait, it's dangerous!"
         }
       },
       "fields": {
         "name": "Name"
+      },
+      "buttons": {
+        "roleCreation": "Role Creation",
+        "deleteAnyway": "Delete anyway"
+      }
+    },
+    "cart": {
+      "title": {
+        "menu": "Cart",
+        "page": "Cart"
+      },
+      "messages": {
+        "empty": "Cart is empty, let's add some product :)",
+        "total": "Total"
       }
     }
   }

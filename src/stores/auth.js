@@ -1,22 +1,23 @@
 import { defineStore } from "pinia"
 import api from "@/config/axios"
 import apiEndpoints from "@/constants/apiEndpoints"
+import { useCartStore } from "./cart"
+import { generalStoreObj } from "./helpers/generalStoreObj"
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
+    ...generalStoreObj.state,
     user: null,
-    loading: false,
-    error: null,
     hasTriedUserFetch: false,
   }),
   getters: {
+    ...generalStoreObj.getters,
     isAuthenticated: (state) => !!state.user,
     jwtToken: () => localStorage.getItem("token"),
     userPermissions: (state) => state.user?.role.permissions,
-    isLoading: (state) => state.loading,
-    hasError: (state) => state.error,
   },
   actions: {
+    ...generalStoreObj.actions,
     async authenticate(credentials, authType) {
       this.startLoading()
       try {
@@ -27,11 +28,13 @@ export const useAuthStore = defineStore("auth", {
         const resData = response.data
         localStorage.setItem("token", resData.data.token)
 
-        await this.fetchProfileData()
+        const cartStore = useCartStore()
+
+        Promise.all([this.fetchProfileData(), cartStore.mergeCarts()])
       } catch (error) {
-        this.error = error
+        this.setError(error)
       } finally {
-        this.loading = false
+        this.setLoading(false)
       }
     },
     async fetchProfileData() {
@@ -42,19 +45,16 @@ export const useAuthStore = defineStore("auth", {
         const resData = response.data
         this.user = resData.data.profile
       } catch (error) {
-        this.error = error
+        this.setError(error)
         this.user = null
       } finally {
-        this.loading = false
+        this.setLoading(false)
       }
     },
     logout() {
       this.user = null
       localStorage.removeItem("token")
-    },
-    startLoading() {
-      this.loading = true
-      this.error = null
+      useCartStore().$reset()
     },
   },
 })

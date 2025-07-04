@@ -1,10 +1,12 @@
 <template>
   <div class="cart-icon__wrapper">
-    <i class="bi bi-cart-plus cart-icon">
-      <span class="cart-products-number">
-        {{ productsNumber }}
-      </span>
-    </i>
+    <router-link :to="{ name: 'cart' }" active-class="text-primary">
+      <i class="bi bi-cart-plus cart-icon">
+        <span class="cart-products-number">
+          {{ cartProductsNumber }}
+        </span>
+      </i>
+    </router-link>
   </div>
 </template>
 
@@ -14,7 +16,7 @@ import { useCartStore } from "@/stores/cart"
 export default {
   name: "CartSection",
   computed: {
-    ...mapState(useCartStore, ["productsNumber"]),
+    ...mapState(useCartStore, ["cartProductsNumber"]),
   },
 }
 </script>

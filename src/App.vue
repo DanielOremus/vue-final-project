@@ -1,13 +1,17 @@
 <template>
   <Toast />
-  <ConfirmDialog :draggable="false" />
+  <ConfirmDialog class="confirm-dialog" :draggable="false" />
   <router-view></router-view>
   <!-- <transition name="fade"> -->
   <!-- <component :is="Component" /> -->
   <!-- </transition> -->
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "App",
+}
+</script>
 
 <style lang="scss" scoped>
 // .slide-enter-active,

@@ -2,18 +2,18 @@
   @apply sticky top-0 z-20;
   font-family: "Outfit", "Montserrat" sans-serif;
 }
-.header-wrapper {
+.header__wrapper {
   @apply h-header-height z-50;
 }
-.header-container {
-  @apply min-w-full bg-zinc-950 h-full pl-[clamp(1rem,6.914vw-0.296rem,8rem)] pr-[clamp(1rem,0.988vw+0.815rem,2rem)] flex justify-between;
+.header__container {
+  @apply min-w-full bg-zinc-950 h-full px-1 sm:pl-[clamp(1rem,6.914vw-0.296rem,8rem)] sm:pr-[clamp(1rem,0.988vw+0.815rem,2rem)] flex justify-between;
 }
 .menu {
   @apply w-full h-full flex items-center justify-end gap-20;
   gap: clamp(2rem, 3.636vw + 0.636rem, 5rem);
 }
 .menu-right {
-  @apply flex justify-center items-center basis-1/4 ml-8 text-[1.55rem];
+  @apply flex justify-center items-center basis-1/4 m-0 sm:ml-8 text-[1.55rem];
 }
 .active-header-link {
   @apply border-b-2 border-primary;
@@ -59,7 +59,7 @@
 }
 .cart-products-number {
   position: absolute;
-  top: -8px;
+  top: -5px;
   right: -15px;
   line-height: 1em;
   font-size: 1.05rem;

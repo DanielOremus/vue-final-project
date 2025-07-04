@@ -21,6 +21,7 @@ import { mapStores } from "pinia"
 import MainLayout from "@/layouts/MainLayout.vue"
 import ProductForm from "@/components/products/ProductForm/index.vue"
 import { useProductsFiltersStore } from "@/stores/products/filters"
+import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
 
 export default {
   name: "ProductEditView",
@@ -39,8 +40,6 @@ export default {
   },
   methods: {
     async onSubmit(productData) {
-      console.log(productData)
-
       if (productData._id) {
         await this.productsStore.updateProduct(productData, {
           "Content-Type": "multipart/form-data",
@@ -50,10 +49,8 @@ export default {
           "Content-Type": "multipart/form-data",
         })
       }
-      if (!this.productsStore.hasError) {
-        this.$router.push({ name: "shop" })
-      } else {
-      }
+      if (this.productsStore.hasError) ToastHelper.showAlert("error")
+      else this.$router.push({ name: "shop" })
     },
     onCancel() {
       this.$router.push({ name: "shop" })
