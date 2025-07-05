@@ -160,14 +160,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.role-card {
-  @apply w-full;
-  font-family: "Outfit", "Montserrat", sans-serif;
-}
-.action-btn {
-  @apply px-4 text-[0.95rem] font-medium;
-}
-.actions {
-  @apply mt-4 flex justify-end gap-2;
-}
+@import url("@/assets/style/components/role/role_card.scss");
 </style>

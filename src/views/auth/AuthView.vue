@@ -65,11 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-content {
-  @apply h-full flex justify-center;
-}
-
-:deep(.link) {
-  @apply text-slate-400 text-[0.95rem] hover:underline hover:cursor-pointer w-fit;
-}
+@import url("@/assets/style/views/auth_view.scss");
 </style>

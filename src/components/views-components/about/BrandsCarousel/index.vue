@@ -30,8 +30,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.brand-img {
-  @apply inline-block max-h-20 w-auto cursor-pointer opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-150 ease-in;
-}
-</style>
+<style lang="scss" scoped></style>

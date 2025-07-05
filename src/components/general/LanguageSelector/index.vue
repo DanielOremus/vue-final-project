@@ -49,11 +49,4 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-.lang-icon-container {
-  @apply cursor-pointer flex items-center gap-2 hover:text-primary;
-}
-.lang-icon {
-  @apply text-2xl;
-}
-</style>
+<style lang="css" scoped></style>

@@ -14,7 +14,7 @@
         <img
           :src="product.image ?? noImage"
           alt="Product Image"
-          class="product-image"
+          class="details-image"
         />
         <div>
           <h2 class="text-2xl font-semibold mb-4">{{ product.name }}</h2>
@@ -77,14 +77,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.details__container {
-  @apply w-[20rem] sm:w-[30rem] lg:w-[38rem];
-  font-family: "Outfit", "Montserrat", sans-serif;
-}
-.details__main {
-  @apply grid grid-cols-1 gap-y-4 sm:grid-cols-2;
-}
-.product-image {
-  @apply w-full max-h-60 object-contain rounded-lg;
-}
+@import url("@/assets/style/components/product/product_card.scss");
 </style>

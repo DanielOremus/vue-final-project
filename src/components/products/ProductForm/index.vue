@@ -257,7 +257,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.form-container {
-  @apply w-full max-w-[800px];
-}
+@import url("@/assets/style/components/product/product_form.scss");
 </style>

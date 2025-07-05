@@ -40,10 +40,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cart-items {
-  @apply bg-surface-100 grid grid-cols-1 gap-8 py-4 h-fit min-h-[10rem] w-full border-t-4 border-primary-300;
-}
-.no-items {
-  @apply text-slate-600 text-lg font-medium;
-}
+@import url("@/assets/style/components/cart/items_list.scss");
 </style>

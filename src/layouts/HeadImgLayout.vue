@@ -55,24 +55,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-title {
-  @apply absolute top-1/2 left-[10%] -translate-y-1/2 uppercase text-5xl font-bold italic;
-  letter-spacing: 0.3rem;
-}
-:deep(.head-img) {
-  @apply w-full h-full object-cover brightness-[0.65];
-}
-.head-img-layout {
-  @apply min-h-screen grid w-full;
-  grid-template-rows: auto auto 1fr auto;
-}
-// .head-img-layout {
-//   @apply min-h-screen flex flex-col;
-// }
-// .content {
-//   @apply grow flex flex-col;
-// }
-.content {
-  @apply min-h-0;
-}
+@import url("@/assets/style/layouts/head_img.scss");
 </style>

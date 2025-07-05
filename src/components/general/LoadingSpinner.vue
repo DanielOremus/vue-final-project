@@ -21,18 +21,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.loading-spinner {
-  @apply aspect-square border-l-transparent border-r-transparent border-b-transparent rounded-full;
-  animation: spin linear infinite;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-</style>
+<style lang="scss" scoped></style>

@@ -151,10 +151,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.products-list__wrapper {
-  @apply flex h-full justify-center lg:justify-normal;
-}
-.paginator__container {
-  @apply mt-6;
-}
+@import url("@/assets/style/components/product/products_list.scss");
 </style>

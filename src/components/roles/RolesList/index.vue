@@ -45,10 +45,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.roles-list {
-  @apply grid grid-cols-1 gap-4 lg:grid-cols-2;
-}
-.roles-list__container {
-  @apply h-full grid grid-rows-[auto,1fr];
-}
+@import url("@/assets/style/components/role/roles_list.scss");
 </style>

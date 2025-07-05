@@ -151,7 +151,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.roles-manager {
-  @apply h-full grid grid-rows-[auto,1fr,auto] w-full grid-cols-[auto] gap-y-4 max-w-[800px] lg:max-w-[1200px];
-}
+@import url("@/assets/style/components/role/roles_manager.scss");
 </style>

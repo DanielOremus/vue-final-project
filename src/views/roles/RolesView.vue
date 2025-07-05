@@ -26,7 +26,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-content {
-  @apply h-full flex justify-center mx-4 py-6;
-}
+@import url("@/assets/style/views/roles_view.scss");
 </style>

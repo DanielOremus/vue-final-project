@@ -1,0 +1,24 @@
+.lang-icon-container {
+  @apply cursor-pointer flex items-center gap-2 hover:text-primary;
+}
+.lang-icon {
+  @apply text-2xl;
+}
+
+.container {
+  @apply absolute bg-surface-800 overflow-hidden right-0 top-[100%] rounded-xl flex flex-col min-w-[12rem] text-lg px-4 py-3;
+}
+.lang {
+  @apply transition-colors duration-100 ease-linear px-4 py-1.5 rounded-md cursor-pointer hover:bg-surface-700 hover:text-primary;
+}
+.selected {
+  @apply font-bold;
+}
+.v-enter-active,
+.v-leave-active {
+  @apply transition-opacity duration-100 ease-linear;
+}
+.v-enter-from,
+.v-leave-to {
+  @apply opacity-0;
+}

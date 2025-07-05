@@ -53,10 +53,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cart-manager {
-  @apply h-full w-full max-w-[800px] lg:max-w-[1200px];
-}
-.cart-manager__wrapper {
-  @apply flex justify-center;
-}
+@import url("@/assets/style/components/cart/cart_manager.scss");
 </style>

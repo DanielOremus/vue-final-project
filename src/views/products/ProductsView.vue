@@ -39,20 +39,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-content {
-  @apply bg-white h-full py-8 flex flex-col md:flex-row justify-between gap-4;
-  padding-inline: clamp(0rem, 2.326vw - 0.291rem, 2.5rem);
-}
-.filter-panel__wrapper {
-  position: sticky;
-  top: calc(theme("height.header-height") + 2rem);
-  color: black;
-}
-main {
-  @apply h-full;
-}
-
-aside {
-  @apply w-full md:max-w-[20rem];
-}
+@import url("@/assets/style/views/product/products_view.scss");
 </style>

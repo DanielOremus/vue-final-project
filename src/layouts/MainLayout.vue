@@ -31,11 +31,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-layout {
-  @apply min-h-screen grid w-full;
-  grid-template-rows: auto 1fr auto;
-}
-.content {
-  @apply min-h-0;
-}
+@import url("@/assets/style/layouts/main.scss");
 </style>

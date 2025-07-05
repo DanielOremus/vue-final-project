@@ -42,8 +42,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.role-creation-card__container {
-  @apply w-[20rem] sm:w-[30rem] lg:w-[38rem];
-  font-family: "Outfit", "Montserrat", sans-serif;
-}
+@import url("@/assets/style/components/role/role_creation_dialog.scss");
 </style>

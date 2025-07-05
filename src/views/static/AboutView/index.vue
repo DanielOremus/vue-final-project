@@ -14,7 +14,7 @@
 <script>
 import GeneralSection from "./GeneralSection.vue"
 import InfoSection from "./InfoSection.vue"
-import BrandsCarousel from "@/components/general/BrandsCarousel/index.vue"
+import BrandsCarousel from "@/components/views-components/about/BrandsCarousel/index.vue"
 export default {
   name: "AboutView",
   components: {

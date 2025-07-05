@@ -45,10 +45,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.products-list {
-  @apply grid justify-center grid-rows-[auto] gap-y-12 gap-x-10 grid-cols-[repeat(1,minmax(350px,450px))] lg:grid-cols-[repeat(2,minmax(380px,450px))] 2xl:grid-cols-[repeat(3,minmax(380px,450px))];
-}
-.products-list__container {
-  @apply grid grid-rows-[auto,1fr];
-}
+@import url("@/assets/style/components/product/products_list.scss");
 </style>

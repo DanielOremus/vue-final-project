@@ -88,8 +88,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-.form-container {
-  @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px];
-}
+<style lang="scss" scoped>
+@import url("@/assets/style/components/auth/form.scss");
 </style>

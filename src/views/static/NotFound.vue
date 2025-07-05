@@ -29,14 +29,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.caption {
-  @apply text-center text-lg max-w-screen-md mt-4 mb-8;
-  font-family: "Outfit", "Montserrat", sans-serif;
-}
-.not-found-img {
-  @apply max-w-screen-sm;
-}
-.page-content {
-  @apply h-screen;
-}
+@import url("@/assets/style/views/not_found_view.scss");
 </style>

@@ -1,0 +1,6 @@
+.cart-manager {
+  @apply h-full w-full max-w-[800px] lg:max-w-[1200px];
+}
+.cart-manager__wrapper {
+  @apply flex justify-center;
+}

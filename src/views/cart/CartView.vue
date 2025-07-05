@@ -27,11 +27,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-content {
-  @apply bg-white h-full py-8 flex justify-center;
-  padding-inline: clamp(0rem, 2.326vw - 0.291rem, 2.5rem);
-}
-main {
-  @apply w-full h-full;
-}
+@import url("@/assets/style/views/cart_view.scss");
 </style>
