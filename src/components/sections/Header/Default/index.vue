@@ -2,7 +2,7 @@
   <div class="default-variant">
     <div class="logo flex items-center">
       <img
-        src="@/assets/images/logo-light.png"
+        src="/images/logo-light.png"
         class="max-h-9 w-auto cursor-pointer"
         alt="Logo"
         @click="onLogoClick"

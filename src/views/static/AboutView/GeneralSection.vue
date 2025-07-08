@@ -29,14 +29,14 @@
       <div class="mt-20 flex gap-8">
         <div class="basis-7/12">
           <img
-            src="@/assets/images/pages-inner-images/about/about-1.jpg"
+            src="/images/pages-inner-images/about/about-1.jpg"
             class="lesson-img"
           />
         </div>
 
         <div class="basis-5/12">
           <img
-            src="@/assets/images/pages-inner-images/about/about-2.jpg"
+            src="/images/pages-inner-images/about/about-2.jpg"
             class="lesson-img"
           />
         </div>

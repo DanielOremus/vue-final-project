@@ -2,7 +2,7 @@
   <div class="page-content">
     <div class="flex flex-col h-full justify-center items-center">
       <img
-        src="@/assets/images/pages-inner-images/not-found/404.png"
+        src="/images/pages-inner-images/not-found/404.png"
         alt="Not Found"
         class="not-found-img"
       />

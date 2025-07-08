@@ -1,5 +1,5 @@
 <template>
-  <head-img-layout head-img-src="@/assets/images/pages-head-images/shop.jpg">
+  <head-img-layout head-img-src="/images/pages-head-images/shop.jpg">
     <div class="page-content">
       <aside>
         <div class="filter-panel__wrapper">

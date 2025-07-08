@@ -1,10 +1,10 @@
-import brand1 from "@/assets/images/brands/brand-1.png"
-import brand2 from "@/assets/images/brands/brand-2.png"
-import brand3 from "@/assets/images/brands/brand-3.png"
-import brand4 from "@/assets/images/brands/brand-4.png"
-import brand5 from "@/assets/images/brands/brand-5.png"
-import brand6 from "@/assets/images/brands/brand-6.png"
-import brand7 from "@/assets/images/brands/brand-7.png"
+import brand1 from "/images/brands/brand-1.png"
+import brand2 from "/images/brands/brand-2.png"
+import brand3 from "/images/brands/brand-3.png"
+import brand4 from "/images/brands/brand-4.png"
+import brand5 from "/images/brands/brand-5.png"
+import brand6 from "/images/brands/brand-6.png"
+import brand7 from "/images/brands/brand-7.png"
 
 export default {
   visible: 5,

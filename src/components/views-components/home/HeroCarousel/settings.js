@@ -1,7 +1,7 @@
-import hero1 from "@/assets/images/pages-inner-images/home/hero-image-1.jpg"
-import hero2 from "@/assets/images/pages-inner-images/home/hero-image-2.jpg"
-import hero3 from "@/assets/images/pages-inner-images/home/hero-image-3.jpg"
-import hero4 from "@/assets/images/pages-inner-images/home/hero-image-4.jpg"
+import hero1 from "/images/pages-inner-images/home/hero-image-1.jpg"
+import hero2 from "/images/pages-inner-images/home/hero-image-2.jpg"
+import hero3 from "/images/pages-inner-images/home/hero-image-3.jpg"
+import hero4 from "/images/pages-inner-images/home/hero-image-4.jpg"
 
 export const heroImages = [
   // {

@@ -1,4 +1,4 @@
-import noImageAvailable from "@/assets/images/no-image.png"
+import noImageAvailable from "/images/no-image.png"
 import LocaleController from "@/moduleHelpers/i18n"
 
 export const useDeleteDialogSettings = () => ({

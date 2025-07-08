@@ -1,6 +1,6 @@
-import service1 from "@/assets/images/pages-inner-images/about/service-icon1.png"
-import service2 from "@/assets/images/pages-inner-images/about/service-icon2.png"
-import service3 from "@/assets/images/pages-inner-images/about/service-icon3.png"
+import service1 from "/images/pages-inner-images/about/service-icon1.png"
+import service2 from "/images/pages-inner-images/about/service-icon2.png"
+import service3 from "/images/pages-inner-images/about/service-icon3.png"
 
 export const infoBlocksList = [
   {

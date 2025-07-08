@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .info-section {
-  background-image: url(@/assets/images/pages-inner-images/about/info-bg.jpg);
+  background-image: url("/images/pages-inner-images/about/info-bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

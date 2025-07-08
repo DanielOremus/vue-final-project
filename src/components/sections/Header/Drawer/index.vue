@@ -17,7 +17,7 @@
     </div>
     <div class="logo justify-center flex items-center">
       <img
-        src="@/assets/images/logo-light.png"
+        src="/images/logo-light.png"
         class="hidden sm:block max-h-9 w-auto cursor-pointer"
         alt="Logo"
         @click="onLogoClick"

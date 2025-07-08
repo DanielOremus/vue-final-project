@@ -1,6 +1,6 @@
 <template>
   <head-img-layout
-    head-img-src="@/assets/images/pages-head-images/about.jpg"
+    head-img-src="/images/pages-head-images/about.jpg"
     :content-overflow-hidden="true"
   >
     <general-section />
