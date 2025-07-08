@@ -1,0 +1,10 @@
+.user-card {
+  @apply w-full;
+  font-family: "Outfit", "Montserrat", sans-serif;
+}
+.action-btn {
+  @apply px-4 text-[0.95rem] font-medium;
+}
+.role-selector__container {
+  @apply w-full;
+}

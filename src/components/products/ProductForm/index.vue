@@ -120,7 +120,7 @@
         #default="$field"
         name="description"
         class="flex flex-col gap-1"
-        :initial-value="currentProduct?.description"
+        :initial-value="currentProductDescription"
       >
         <Textarea
           rows="5"
@@ -164,6 +164,7 @@ import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
 import { yupResolver } from "@primevue/forms/resolvers/yup"
 import ProductValidator from "@/validators/ProductValidator"
 import ImageUpload from "./components/ImageUploader.vue"
+import { decodeHTML } from "@/stores/helpers"
 export default {
   name: "ProductForm",
   components: {
@@ -205,6 +206,9 @@ export default {
       return this.currentProduct?._id
         ? this.$t("buttons.update")
         : this.$t("buttons.create")
+    },
+    currentProductDescription() {
+      return decodeHTML(this.currentProduct?.description)
     },
   },
   methods: {

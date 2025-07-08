@@ -2,11 +2,14 @@
   <Select
     class="md:w-56"
     show-clear
+    :label-id="labelId"
     v-model="selectedOption"
     :placeholder="placeholder"
     :options="options"
     :option-label="optionConfig.label"
     :option-value="optionConfig.value"
+    :loading="loading"
+    :disabled="disabled"
     :dt="dt"
     :pt="pt"
   >
@@ -32,6 +35,17 @@ export default {
     options: {
       type: Array,
       default: () => [],
+    },
+    labelId: {
+      type: String,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     placeholder: {
       type: String,

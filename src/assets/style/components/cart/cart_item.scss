@@ -1,6 +1,6 @@
 .cart-item {
   @apply grid grid-cols-[8.5rem,auto,25rem] grid-rows-[8.5rem] w-full items-center text-surface-950;
-  font-family: "Outfit", "Montserrat";
+  font-family: "Outfit", "Montserrat", sans-serif;
 }
 .counter__container {
   @apply flex gap-4;

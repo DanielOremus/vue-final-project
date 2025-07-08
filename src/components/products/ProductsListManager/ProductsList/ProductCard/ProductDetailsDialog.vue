@@ -38,7 +38,7 @@
       <!-- Опис -->
       <div class="details__description px-4 pb-4">
         <p class="mt-4 text-md text-neutral-400 whitespace-pre-line">
-          {{ product.description ?? "Опис відсутній." }}
+          {{ productDescription }}
         </p>
       </div>
     </div>
@@ -47,6 +47,7 @@
 
 <script>
 import { noImage } from "./settings"
+import { decodeHTML } from "@/stores/helpers"
 export default {
   name: "ProductDetailsDialog",
   emits: ["update:modelValue"],
@@ -68,6 +69,12 @@ export default {
       set(v) {
         this.$emit("update:modelValue", v)
       },
+    },
+    productDescription() {
+      return (
+        decodeHTML(this.product.description) ||
+        this.$t("views.productEdit.messages.noDescription")
+      )
     },
     noImage() {
       return noImage

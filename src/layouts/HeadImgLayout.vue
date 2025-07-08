@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Header from "@/components/sections/Header/index.vue"
+import Header from "@/components/sections/Header/Default/index.vue"
 import Footer from "@/components/sections/Footer/index.vue"
 export default {
   name: "HeadImgLayout",

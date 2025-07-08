@@ -1,24 +1,19 @@
-import { toastTypes } from "@/constants/toast"
+import { getToastSettings } from "@/constants/toast"
 import { app } from "@/config/app"
 
 const toast = app.config.globalProperties.$toast
 
 class ToastHelper {
-  constructor(toast, toastTypes) {
+  constructor(toast) {
     this.toast = toast
-    this.toastTypes = toastTypes
   }
-  showAlert(type = "default", additionalSettings = {}) {
-    const settingsToUse = this.toastTypes[type]
-    if (!settingsToUse) {
-      console.debug("No toast settings found!")
-    } else {
-      this.toast.add({ ...settingsToUse, ...additionalSettings })
-    }
+  showAlert(type = "default", additionalSettings) {
+    const settingsToUse = getToastSettings(type, additionalSettings)
+    this.toast.add(settingsToUse)
   }
   closeAlert() {
     this.toast.remove()
   }
 }
 
-export default new ToastHelper(toast, toastTypes)
+export default new ToastHelper(toast)

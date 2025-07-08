@@ -26,6 +26,15 @@
       "message": "Default message"
     }
   },
+  "header": {
+    "messages": {
+      "menu": "Menu",
+      "logout": {
+        "head": "Are you sure?",
+        "content": "Do you really want to log out?"
+      }
+    }
+  },
   "validation": {
     "alreadyInUse": "This {value} is already in use",
 
@@ -75,7 +84,8 @@
           "message": "Do you really want to delete this product?",
           "header": "Are you sure?"
         },
-        "renderedResults": "Showing {first}-{last} of {total} result(s)"
+        "renderedResults": "Showing {first}-{last} of {total} result(s)",
+        "noProducts": "We couldn't find anything by your request :("
       },
       "buttons": {
         "addToCart": "Add to cart",
@@ -106,7 +116,8 @@
         "image": "Image"
       },
       "messages": {
-        "deleteImg": "Delete preview image"
+        "deleteImg": "Delete preview image",
+        "noDescription": "No description."
       }
     },
     "auth": {
@@ -155,6 +166,9 @@
           "create": "Role was successfully created",
           "update": "Role was successfully updated"
         },
+        "error": {
+          "invalidData": "Please check the fields validity and try again!"
+        },
         "deleteConfirm": {
           "message": "You're trying to delete role, which has {userNumber} user(s). After removal, users' role will reset!",
           "header": "Wait, it's dangerous!"
@@ -176,6 +190,16 @@
       "messages": {
         "empty": "Cart is empty, let's add some product :)",
         "total": "Total"
+      }
+    },
+    "users": {
+      "title": {
+        "menu": "Users"
+      },
+      "messages": {
+        "success": {
+          "update": "User's role was updated successfully!"
+        }
       }
     }
   }

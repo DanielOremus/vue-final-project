@@ -1,6 +1,6 @@
 import LocaleController from "@/moduleHelpers/i18n"
 
-export const getDeletionDialogSettings = (userNumber) => ({
+export const useDeletionDialogSettings = (userNumber) => ({
   message: LocaleController.t("views.roles.messages.deleteConfirm.message", {
     userNumber,
   }),

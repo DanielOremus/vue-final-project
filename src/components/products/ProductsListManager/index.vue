@@ -138,8 +138,6 @@ export default {
       this.$router.push({ name: "productEdit" })
     },
     onAddToCart(id) {
-      console.log(id)
-
       this.cartStore.addProduct(id)
     },
   },

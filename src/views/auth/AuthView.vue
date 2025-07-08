@@ -14,7 +14,7 @@
 import { mapActions, mapState } from "pinia"
 import { useAuthStore } from "@/stores/auth"
 import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
-import { toastTypes } from "@/constants/toast"
+import { getToastSettings } from "@/constants/toast"
 export default {
   name: "AuthView",
   props: {
@@ -57,7 +57,7 @@ export default {
         case 400:
           return this.$t("views.auth.messages.error.invalidCredentials")
         default:
-          return toastTypes.error.detail
+          return getToastSettings("error").detail
       }
     },
   },

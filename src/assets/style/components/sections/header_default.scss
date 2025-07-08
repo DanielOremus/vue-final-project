@@ -1,0 +1,20 @@
+//todo: add some prods
+.default-variant {
+  @apply flex justify-between min-w-full bg-zinc-950 h-full 
+   sm:pl-[clamp(0.5rem,13.393vw-8.071rem,8rem)]
+   sm:pr-[clamp(0.5rem,0.988vw+0.815rem,2rem)];
+}
+:deep(.menu) {
+  @apply w-full h-full flex items-center justify-end;
+  gap: clamp(1rem, 7.143vw - 3.571rem, 5rem);
+}
+
+:deep(.menu-item) {
+  @apply text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-primary transition-colors duration-100 ease-in-out;
+  a {
+    @apply h-full flex items-center whitespace-nowrap border-b-2 border-transparent;
+  }
+}
+:deep(.active-header-link) {
+  @apply border-primary !important;
+}

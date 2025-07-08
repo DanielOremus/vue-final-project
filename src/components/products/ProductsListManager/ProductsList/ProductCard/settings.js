@@ -1,6 +1,7 @@
 import noImageAvailable from "@/assets/images/no-image.png"
 import LocaleController from "@/moduleHelpers/i18n"
-export const deleteDialogSettings = {
+
+export const useDeleteDialogSettings = () => ({
   message: LocaleController.t("views.shop.messages.deleteConfirm.message"),
 
   header: LocaleController.t("views.shop.messages.deleteConfirm.header"),
@@ -13,6 +14,5 @@ export const deleteDialogSettings = {
     label: LocaleController.t("views.shop.buttons.confirmRemoval"),
     severity: "danger",
   },
-}
-//TODO: add localization to dialogs
+})
 export const noImage = noImageAvailable

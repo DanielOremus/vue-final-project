@@ -22,7 +22,6 @@
 
 <script>
 import RoleCard from "./RoleCard/index.vue"
-//TODO: remake loading spinner parameters
 import LoadingSpinner from "@/components/general/LoadingSpinner.vue"
 export default {
   name: "RolesList",

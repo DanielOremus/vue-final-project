@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { deleteDialogSettings, noImage } from "./settings"
+import { noImage, useDeleteDialogSettings } from "./settings"
 import ProductDetailsDialog from "./ProductDetailsDialog.vue"
 export default {
   name: "ProductCard",
@@ -72,6 +72,7 @@ export default {
       this.$emit("product-edit", this.product._id)
     },
     onDelete() {
+      const deleteDialogSettings = useDeleteDialogSettings()
       this.$confirm.require({
         ...deleteDialogSettings,
         accept: () => this.$emit("product-delete", this.product._id),

@@ -15,6 +15,7 @@ export default Object.freeze({
   },
   roles: {
     fetchList: () => "/roles",
+    fetchAll: () => "/roles/all",
     fetchByName: (name) => `/roles/name/${name}`,
     update: (id) => `/roles/${id}`,
     create: () => `/roles`,
@@ -22,6 +23,7 @@ export default Object.freeze({
   },
   users: {
     fetchList: () => "/users",
+    update: (id) => `/users/${id}`,
     delete: () => "/users",
   },
   cart: {

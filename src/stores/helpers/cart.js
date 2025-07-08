@@ -6,8 +6,6 @@ export const getMergedProdsAndQty = (populatedProdsList, prodIdQtyObj) => {
   return resArr
 }
 export const getProdIdQtyObj = (cartProds) => {
-  console.log(cartProds)
-
   return cartProds.reduce((acc, el) => {
     acc[el.product] = el.quantity
     return acc

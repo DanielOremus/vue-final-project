@@ -27,8 +27,16 @@ export const useRolesStore = defineStore(STORE_NAME, {
       this.rolesList = []
       await storeTemplateObj.actions.fetchRoles.call(this, query)
     },
+    async fetchAllRoles() {
+      this.rolesList = []
+      await this.generalApiOperation({
+        operation: () => api.get(apiEndpoints.roles.fetchAll()),
+        successCallback: (res) => {
+          this.rolesList = res.data.data.roles
+        },
+      })
+    },
     async createRole(roleObj) {
-      this.startLoading()
       await this.generalApiOperation({
         operation: () => api.post(apiEndpoints.roles.create(), roleObj),
         successCallback: (res) => this.rolesList.push(res.data.data.role),

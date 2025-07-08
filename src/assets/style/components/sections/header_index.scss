@@ -1,29 +1,14 @@
 .header {
   @apply sticky top-0 z-20;
-  font-family: "Outfit", "Montserrat" sans-serif;
+  font-family: "Outfit", "Montserrat", sans-serif;
 }
 .header__wrapper {
   @apply h-header-height z-50;
 }
-.header__container {
-  @apply min-w-full bg-zinc-950 h-full px-1 sm:pl-[clamp(1rem,6.914vw-0.296rem,8rem)] sm:pr-[clamp(1rem,0.988vw+0.815rem,2rem)] flex justify-between;
-}
-.menu {
-  @apply w-full h-full flex items-center justify-end gap-20;
-  gap: clamp(2rem, 3.636vw + 0.636rem, 5rem);
-}
 .menu-right {
-  @apply flex justify-center items-center basis-1/4 m-0 sm:ml-8 text-[1.55rem];
+  @apply flex justify-center items-center basis-1/4 m-0 ml-4 xl:ml-8 text-[1.55rem];
 }
-.active-header-link {
-  @apply border-b-2 border-primary;
-}
-.menu-item {
-  @apply text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-primary transition-colors duration-100 ease-in-out;
-  a {
-    @apply h-full flex items-center;
-  }
-}
+
 .cart-icon__wrapper,
 .user-icon__wrapper,
 .logout-icon__wrapper {

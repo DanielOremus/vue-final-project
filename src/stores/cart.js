@@ -38,25 +38,30 @@ export const useCartStore = defineStore("cart", {
       this.isInitialized = true
     },
     async fetchUserCartProducts() {
-      this.startLoading()
-      try {
-        const response = await new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(api.get(apiEndpoints.cart.fetchProductsList()))
-          }, 2000)
-        })
-        const { cart } = response.data.data
-        this.populatedProductsList = cart.products
-        this.productsList = cart.products.map(({ product, quantity }) => ({
-          product: product._id,
-          quantity,
-        }))
-        this.isInitialized = true
-      } catch (error) {
-        this.setError(error)
-      } finally {
-        this.setLoading(false)
-      }
+      await this.generalApiOperation({
+        operation: () => api.get(apiEndpoints.cart.fetchProductsList()),
+        successCallback: (res) => {
+          const { cart } = res.data.data
+          this.populatedProductsList = cart.products
+          this.productsList = cart.products.map(({ product, quantity }) => ({
+            product: product._id,
+            quantity,
+          }))
+          this.isInitialized = true
+        },
+      })
+      // try {
+      //   const response = await new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       resolve(api.get(apiEndpoints.cart.fetchProductsList()))
+      //     }, 2000)
+      //   })
+
+      // } catch (error) {
+      //   this.setError(error)
+      // } finally {
+      //   this.setLoading(false)
+      // }
     },
 
     async addProduct(productId) {
@@ -158,39 +163,62 @@ export const useCartStore = defineStore("cart", {
       }
     },
     async mergeCarts() {
-      this.startLoading()
-      try {
-        const response = await api.post(apiEndpoints.cart.merge(), {
-          productsList: this.productsList,
-        })
-        const { cart } = response.data.data
-        this.productsList = cart.products
-        localStorage.removeItem("cart_products")
-      } catch (error) {
-        this.setError(error)
-      } finally {
-        this.setLoading(false)
-      }
+      await this.generalApiOperation({
+        operation: () =>
+          api.post(apiEndpoints.cart.merge(), {
+            productsList: this.productsList,
+          }),
+        successCallback: (res) => {
+          const { cart } = res.data.data
+          this.productsList = cart.products
+          localStorage.removeItem("cart_products")
+        },
+      })
+      // this.startLoading()
+      // try {
+      //   const response = await api.post(apiEndpoints.cart.merge(), {
+      //     productsList: this.productsList,
+      //   })
+      //   const { cart } = response.data.data
+      //   this.productsList = cart.products
+      //   localStorage.removeItem("cart_products")
+      // } catch (error) {
+      //   this.setError(error)
+      // } finally {
+      //   this.setLoading(false)
+      // }
     },
     async populateProductsList() {
-      this.startLoading()
-
       const prodIdQtyObj = getProdIdQtyObj(this.productsList)
+      await this.generalApiOperation({
+        operation: () =>
+          api.post(apiEndpoints.products.fetchByIds(), {
+            idsList: Object.keys(prodIdQtyObj),
+          }),
+        successCallback: (res) => {
+          const products = res.data.data.products
+          this.populatedProductsList = getMergedProdsAndQty(
+            products,
+            prodIdQtyObj
+          )
+        },
+      })
+      // this.startLoading()
 
-      try {
-        const response = await api.post(apiEndpoints.products.fetchByIds(), {
-          idsList: Object.keys(prodIdQtyObj),
-        })
-        const { products } = response.data.data
-        this.populatedProductsList = getMergedProdsAndQty(
-          products,
-          prodIdQtyObj
-        )
-      } catch (error) {
-        this.setError(error)
-      } finally {
-        this.setLoading(false)
-      }
+      // try {
+      //   const response = await api.post(apiEndpoints.products.fetchByIds(), {
+      //     idsList: Object.keys(prodIdQtyObj),
+      //   })
+      //   const { products } = response.data.data
+      //   this.populatedProductsList = getMergedProdsAndQty(
+      //     products,
+      //     prodIdQtyObj
+      //   )
+      // } catch (error) {
+      //   this.setError(error)
+      // } finally {
+      //   this.setLoading(false)
+      // }
     },
     clearPopulatedProducts() {
       this.populatedProductsList = []

@@ -31,16 +31,16 @@
 </template>
 
 <script>
-import { getDeletionDialogSettings } from "./settings"
+import { useDeletionDialogSettings } from "./settings"
 import { useAuthStore } from "@/stores/auth"
 import { useRolesStore } from "@/stores/roles"
 import { useUsersStore } from "@/stores/users"
 import { mapState, mapStores } from "pinia"
-import { config } from "peaker-perm-config"
+import { clientPermissionsConfig } from "peaker-perm-config"
 import { computed, toRef } from "vue"
 import RolesList from "./RolesList/index.vue"
 import RoleCreationDialog from "./RoleCreationDialog.vue"
-import GeneralPaginator from "../general/GeneralPaginator/index.vue"
+import GeneralPaginator from "@/components/general/GeneralPaginator/index.vue"
 import ToastHelper from "@/primeVueServiceHelpers/ToastHelper"
 export default {
   name: "RolesManager",
@@ -55,7 +55,7 @@ export default {
       operationPerms: computed(
         () => this.authStore.userPermissions?.roles ?? {}
       ),
-      permsConfig: config,
+      permsConfig: clientPermissionsConfig,
       isLoading: toRef(this.rolesStore, "isLoading"),
     }
   },
@@ -95,8 +95,16 @@ export default {
         this.errors[roleKey] = this.getRoleErrorObj(
           this.hasError.response?.data
         )
-        if (this.hasError.status !== 400) {
-          ToastHelper.showAlert("error")
+        switch (this.hasError.status) {
+          case 400:
+            ToastHelper.showAlert("error", {
+              detail: this.$t("views.roles.messages.error.invalidData"),
+            })
+            break
+          default:
+            ToastHelper.showAlert("error")
+            this.toggleCreationDialog(false)
+            break
         }
       } else {
         this.toggleCreationDialog(false)
@@ -116,7 +124,8 @@ export default {
         ToastHelper.showAlert("error")
         return
       }
-      const dialogSettings = getDeletionDialogSettings(usersNumber)
+      const dialogSettings = useDeletionDialogSettings(usersNumber)
+
       this.$confirm.require({
         ...dialogSettings,
         accept: () => this.rolesStore.deleteRole(roleId),

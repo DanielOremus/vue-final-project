@@ -34,13 +34,13 @@ class ProductValidator {
       }),
   })
   static defaultSchema = yup.object({
-    name: yup.string().required().min(3).max(30).trim(),
+    name: yup.string().required().min(3).max(50).trim(),
     description: yup
       .string()
       .transform((v, originalValue) => (originalValue === "" ? null : v))
       .nullable()
       .min(10)
-      .max(200)
+      .max(400)
       .trim(),
     price: yup.number().required().positive(),
     mass: yup

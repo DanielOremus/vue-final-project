@@ -4,6 +4,7 @@ import { productRoutes } from "./products"
 import { authRoutes } from "./auth"
 import { roleRoutes } from "./roles"
 import { cartRoutes } from "./cart"
+import { userRoutes } from "./users"
 import { useAuthStore } from "@/stores/auth"
 import { useCartStore } from "@/stores/cart"
 
@@ -13,6 +14,7 @@ const routes = [
   ...authRoutes,
   ...roleRoutes,
   ...cartRoutes,
+  ...userRoutes,
   {
     path: "/:pathNotFound(.*)*",
     name: "notFound",

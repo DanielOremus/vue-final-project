@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/stores/auth"
 
-export const isRouteAvailable = (routeItem) => {
+function isRouteAvailable(routeItem) {
   const authStore = useAuthStore()
 
   return (
@@ -10,3 +10,14 @@ export const isRouteAvailable = (routeItem) => {
     (authStore.isAuthenticated && !routeItem.meta?.hasAccess)
   )
 }
+
+function checkRoutesList(routeItems, menuRoutes) {
+  for (const routeItem of routeItems) {
+    if (routeItem.children) checkRoutesList(routeItem.children, menuRoutes)
+    else if (routeItem.meta?.useInMenu && isRouteAvailable(routeItem)) {
+      menuRoutes.push(routeItem)
+    }
+  }
+}
+
+export { isRouteAvailable, checkRoutesList }

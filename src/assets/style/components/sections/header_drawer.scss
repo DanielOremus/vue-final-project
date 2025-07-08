@@ -1,0 +1,18 @@
+.drawer-variant {
+  @apply grid grid-cols-[auto,1fr,auto] bg-zinc-950 h-full px-4;
+}
+
+:deep(.menu) {
+  @apply w-full flex flex-col items-center justify-center p-8;
+  gap: 2rem;
+}
+:deep(.menu-item) {
+  @apply text-[1rem] sm:text-[1.15rem] h-full uppercase font-semibold tracking-wider hover:text-primary transition-colors duration-100 ease-in-out;
+  a {
+    @apply whitespace-nowrap;
+  }
+}
+
+:deep(.active-header-link) {
+  @apply text-primary;
+}

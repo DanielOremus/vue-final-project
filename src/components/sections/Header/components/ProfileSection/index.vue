@@ -13,7 +13,7 @@
 <script>
 import { mapState, mapActions } from "pinia"
 import { useAuthStore } from "@/stores/auth"
-import { logoutDialogSettings } from "./settings"
+import { useLogoutDialogSettings } from "./settings"
 export default {
   name: "ProfileSection",
   computed: {
@@ -22,6 +22,7 @@ export default {
   methods: {
     ...mapActions(useAuthStore, ["logout"]),
     onLogout() {
+      const logoutDialogSettings = useLogoutDialogSettings()
       this.$confirm.require({
         ...logoutDialogSettings,
         accept: () => {

@@ -33,10 +33,13 @@
       >
         <div class="flex justify-evenly">
           <div
-            class="flex gap-2 flex-wrap items-center"
+            class="flex gap-2 flex-wrap items-center selection:bg-transparent"
             v-for="perm in permsConfig[page]"
           >
-            <label :for="`${currentRole?.name ?? 'new'}-${page}-${perm}`">
+            <label
+              :for="`${currentRole?.name ?? 'new'}-${page}-${perm}`"
+              class="cursor-pointer"
+            >
               {{ perm }}:
             </label>
             <Checkbox

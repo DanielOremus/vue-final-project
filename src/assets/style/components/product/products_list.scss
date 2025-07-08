@@ -10,3 +10,7 @@
 .products-list__container {
   @apply grid grid-rows-[auto,1fr];
 }
+.no-products-found {
+  @apply text-surface-900 font-medium;
+  font-family: "Montserrat", sans-serif;
+}

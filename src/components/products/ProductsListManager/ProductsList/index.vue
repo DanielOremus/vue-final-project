@@ -12,11 +12,14 @@
       </div>
     </div>
 
-    <div
-      v-if="isLoading && !products.length"
-      class="self-center justify-self-center"
-    >
-      <loading-spinner class="border-2 border-surface-800 w-8" />
+    <div v-if="!products.length" class="self-center justify-self-center">
+      <loading-spinner
+        v-if="isLoading"
+        class="border-2 border-surface-800 w-8"
+      />
+      <span v-else class="no-products-found">
+        {{ $t("views.shop.messages.noProducts") }}
+      </span>
     </div>
 
     <!-- <span v-if="!isLoading && !products.length" class="text-black"

@@ -11,26 +11,15 @@
 </template>
 
 <script>
-import { isRouteAvailable } from "@/router/helpers"
 import { routes } from "@/router/index.js"
+import { checkRoutesList } from "@/router/helpers"
 export default {
   name: "NavMenu",
   computed: {
     visibleLinks() {
       const visibleRoutes = []
-      this.checkRoutesList(routes, visibleRoutes)
+      checkRoutesList(routes, visibleRoutes)
       return visibleRoutes
-    },
-  },
-  methods: {
-    checkRoutesList(routeItems, menuRoutes) {
-      for (const routeItem of routeItems) {
-        if (routeItem.children)
-          this.checkRoutesList(routeItem.children, menuRoutes)
-        else if (routeItem.meta?.useInMenu && isRouteAvailable(routeItem)) {
-          menuRoutes.push(routeItem)
-        }
-      }
     },
   },
 }
